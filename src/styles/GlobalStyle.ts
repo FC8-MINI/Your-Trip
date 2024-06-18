@@ -99,7 +99,7 @@ const GlobalStyle = createGlobalStyle`
   * {
       margin: 0;
       padding: 0;
-      font-family: "Pretendard", "Helvetica", "Arial", sans-serif;
+      font-family: "Pretendard", "Arial", sans-serif;
       box-sizing: border-box;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -107,7 +107,7 @@ const GlobalStyle = createGlobalStyle`
   
   body {
     min-width: 32rem;
-    font-family: "Pretendard", "Helvetica", "Arial", sans-serif;
+    font-family: "Pretendard", "Arial", sans-serif;
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 1.25;
