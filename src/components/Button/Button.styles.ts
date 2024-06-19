@@ -13,16 +13,17 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
 
   padding: 0.8rem 3rem;
 
-  border: 0.1rem solid ${({ $mode }) => ($mode === "primary" ? "transparent" : "var(--color-gray)")};
+  border: 0.1rem solid ${({ $mode }) => ($mode === "common" ? "var(--color-gray)" : "transparent")};
   border-radius: 0.8rem;
 
-  background-color: ${({ $mode }) => ($mode === "primary" ? "var(--color-primary)" : "var(--color-white)")};
+  background-color: ${({ $mode }) =>
+    $mode === "primary" ? "var(--color-primary)" : $mode === "common" ? "var(--color-white)" : "#FFDE02"};
 
   transition: background-color 0.2s;
 
   &:hover {
     background-color: ${({ $mode }) =>
-      $mode === "primary" ? "var(--color-primary-hover)" : "var(--color-gray-hover)"};
+      $mode === "primary" ? "var(--color-primary-hover)" : $mode === "common" ? "var(--color-gray-hover)" : "#fbda00"};
   }
 `;
 

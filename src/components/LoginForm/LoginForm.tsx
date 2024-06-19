@@ -5,8 +5,10 @@ import { useRouter } from "next/navigation";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 import Hr from "@/components/Hr";
-import { LoginFormStyled, ToSignInText } from "./LoginForm.styles";
+import { LoginFormStyled, OAuthText, ToSignInText } from "./LoginForm.styles";
 import Container from "../Container";
+import { RiKakaoTalkFill } from "react-icons/ri";
+import { FcGoogle } from "react-icons/fc";
 
 const initialState = { email: "", password: "" };
 
@@ -16,7 +18,6 @@ const LoginForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm({ defaultValues: initialState });
 
@@ -56,8 +57,18 @@ const LoginForm = () => {
           로그인
         </Button>
       </LoginFormStyled>
-      <Button $size="large">구글로 로그인</Button>
-      <Button $size="large">카카오로 로그인</Button>
+      <Button $size="large">
+        <OAuthText>
+          <FcGoogle />
+          구글로 로그인
+        </OAuthText>
+      </Button>
+      <Button $mode="kakao" $size="large">
+        <OAuthText>
+          <RiKakaoTalkFill />
+          카카오로 로그인
+        </OAuthText>
+      </Button>
       <Hr $size="short" />
       <ToSignInText>계정이 없으신가요?</ToSignInText>
       <Button $size="large" onClick={() => router.push("/signup")}>

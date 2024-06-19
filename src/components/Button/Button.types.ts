@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export interface ButtonStyledProps {
-  $mode: "common" | "primary";
+  $mode: "common" | "primary" | "kakao";
   $size: "fit" | "large";
 }
 

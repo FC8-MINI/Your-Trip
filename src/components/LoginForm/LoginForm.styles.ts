@@ -8,6 +8,11 @@ export const LoginFormStyled = styled.form`
   gap: 1.6rem;
 `;
 
+export const OAuthText = styled.span`
+  display: flex;
+  gap: 0.5rem;
+`;
+
 export const ToSignInText = styled.p`
   font-size: 1.6rem;
   text-align: center;
