@@ -20,7 +20,7 @@ export const InputStyled = styled.input<InputStyledProps>`
   }
 
   &:focus {
-    border: 1px solid var(--color-primary);
+    border: 1px solid ${({ $error }) => ($error ? "var(--color-error)" : "var(--color-primary)")};
   }
 
   &:read-only {
