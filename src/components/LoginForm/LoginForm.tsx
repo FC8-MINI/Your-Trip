@@ -6,6 +6,7 @@ import Input from "@/components/Input";
 import Button from "@/components/Button";
 import Hr from "@/components/Hr";
 import { LoginFormStyled, ToSignInText } from "./LoginForm.styles";
+import Container from "../Container";
 
 const initialState = { email: "", password: "" };
 
@@ -28,7 +29,7 @@ const LoginForm = () => {
   };
 
   return (
-    <>
+    <Container $flex={true}>
       <LoginFormStyled onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="email"
@@ -62,7 +63,7 @@ const LoginForm = () => {
       <Button size="large" onClick={() => router.push("/signup")}>
         회원 가입
       </Button>
-    </>
+    </Container>
   );
 };
 
