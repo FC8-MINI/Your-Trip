@@ -6,5 +6,5 @@ export const HrStyled = styled.hr<HrStyledProps>`
 
   width: ${({ $size }) => ($size === "full" ? "100%" : "24rem")};
 
-  margin: 0.8rem 0;
+  ${({ $gap }) => $gap && "margin: 0.8rem 0;"}
 `;

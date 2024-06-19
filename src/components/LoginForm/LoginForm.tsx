@@ -58,7 +58,7 @@ const LoginForm = () => {
       </LoginFormStyled>
       <Button $size="large">구글로 로그인</Button>
       <Button $size="large">카카오로 로그인</Button>
-      <Hr />
+      <Hr $size="short" />
       <ToSignInText>계정이 없으신가요?</ToSignInText>
       <Button $size="large" onClick={() => router.push("/signup")}>
         회원 가입
