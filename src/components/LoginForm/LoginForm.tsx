@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 import Hr from "@/components/Hr";
-import { LoginFormStyled, OAuthText, ToSignInText } from "./LoginForm.styles";
+import { LoginFormStyled, OAuthText, ToSignupText } from "./LoginForm.styles";
 import Container from "../Container";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
@@ -54,7 +54,10 @@ const LoginForm = () => {
           autoComplete="off"
           {...register("password", {
             required: "비밀번호를 입력해주세요.",
-            min: "8자이상 입력해주세요.",
+            minLength: {
+              value: 8,
+              message: "8자이상 입력해주세요.",
+            },
           })}
           error={errors.password?.message}
         />
@@ -75,7 +78,7 @@ const LoginForm = () => {
         </OAuthText>
       </Button>
       <Hr $size="short" />
-      <ToSignInText>계정이 없으신가요?</ToSignInText>
+      <ToSignupText>계정이 없으신가요?</ToSignupText>
       <Button $size="large" onClick={() => router.push("/signup")}>
         회원 가입
       </Button>
