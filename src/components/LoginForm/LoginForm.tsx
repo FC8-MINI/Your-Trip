@@ -52,15 +52,15 @@ const LoginForm = () => {
           })}
           error={errors.password?.message}
         />
-        <Button type="submit" mode="primary" size="large">
+        <Button type="submit" $mode="primary" $size="large">
           로그인
         </Button>
       </LoginFormStyled>
-      <Button size="large">구글로 로그인</Button>
-      <Button size="large">카카오로 로그인</Button>
+      <Button $size="large">구글로 로그인</Button>
+      <Button $size="large">카카오로 로그인</Button>
       <Hr />
       <ToSignInText>계정이 없으신가요?</ToSignInText>
-      <Button size="large" onClick={() => router.push("/signup")}>
+      <Button $size="large" onClick={() => router.push("/signup")}>
         회원 가입
       </Button>
     </Container>

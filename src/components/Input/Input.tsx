@@ -6,7 +6,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(function RefInput({
   return (
     <label>
       {label && <LabelText>{label}</LabelText>}
-      <InputStyled ref={ref} error={!!error} {...props} />
+      <InputStyled ref={ref} $error={!!error} {...props} />
       {error && <ErrorText>{error}</ErrorText>}
     </label>
   );
