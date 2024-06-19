@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LoginFormStyled = styled.form`
+export const SignupFormStyled = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,12 +8,7 @@ export const LoginFormStyled = styled.form`
   gap: 1.6rem;
 `;
 
-export const OAuthText = styled.span`
-  display: flex;
-  gap: 0.5rem;
-`;
-
-export const ToSignupText = styled.p`
+export const ToLoginText = styled.p`
   font-size: 1.6rem;
   text-align: center;
 `;

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 import Hr from "@/components/Hr";
-import { LoginFormStyled, OAuthText, ToSignInText } from "./LoginForm.styles";
+import { LoginFormStyled, OAuthText, ToSignupText } from "./LoginForm.styles";
 import Container from "../Container";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
@@ -75,7 +75,7 @@ const LoginForm = () => {
         </OAuthText>
       </Button>
       <Hr $size="short" />
-      <ToSignInText>계정이 없으신가요?</ToSignInText>
+      <ToSignupText>계정이 없으신가요?</ToSignupText>
       <Button $size="large" onClick={() => router.push("/signup")}>
         회원 가입
       </Button>
