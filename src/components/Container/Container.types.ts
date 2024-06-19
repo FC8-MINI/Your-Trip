@@ -3,5 +3,5 @@ export interface ContainerStyledProps {
 }
 
 export interface ContainerProps extends Partial<ContainerStyledProps> {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
