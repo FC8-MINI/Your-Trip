@@ -12,7 +12,7 @@ export const InputStyled = styled.input<InputStyledProps>`
   padding: 0 1.5rem;
 
   border-radius: 0.6rem;
-  border: 1px solid ${({ error }) => (error ? "var(--color-error)" : "var(--color-gray)")};
+  border: 1px solid ${({ $error }) => ($error ? "var(--color-error)" : "var(--color-gray)")};
   background-color: var(--color-white);
 
   &::placeholder {
@@ -20,7 +20,7 @@ export const InputStyled = styled.input<InputStyledProps>`
   }
 
   &:focus {
-    border: 1px solid var(--color-primary);
+    border: 1px solid ${({ $error }) => ($error ? "var(--color-error)" : "var(--color-primary)")};
   }
 
   &:read-only {
