@@ -36,7 +36,14 @@ const LoginForm = () => {
           type="email"
           label="이메일"
           placeholder="이메일을 입력해주세요."
-          {...register("email", { required: "이메일을 입력해주세요." })}
+          {...register("email", {
+            required: "이메일을 입력해주세요.",
+            pattern: {
+              value:
+                /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+              message: "허용되지 않은 이메일 형식입니다.",
+            },
+          })}
           error={errors.email?.message}
         />
         <Input
@@ -44,12 +51,8 @@ const LoginForm = () => {
           label="비밀번호"
           placeholder="비밀번호를 입력해주세요."
           {...register("password", {
+            required: "비밀번호를 입력해주세요.",
             min: "8자이상 입력해주세요.",
-            pattern: {
-              value:
-                /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-              message: "허용되지 않은 이메일 형식입니다.",
-            },
           })}
           error={errors.password?.message}
         />
