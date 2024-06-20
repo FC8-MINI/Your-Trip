@@ -11,7 +11,7 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
 
   width: ${({ $size }) => ($size === "large" ? "40rem" : "fit-content")};
 
-  padding: 0.8rem 3rem;
+  padding: ${({ $size }) => ($size === "large" ? "1.2rem 3rem" : "0.8rem 3rem")};
 
   border: 0.1rem solid ${({ $mode }) => ($mode === "common" ? "var(--color-gray)" : "transparent")};
   border-radius: 0.8rem;
