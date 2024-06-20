@@ -1,5 +1,5 @@
 import AccomodationInfo from "../AccomodationInfo";
-import AccomodationRoom from "../AccomodationRoom";
+import AccomodationRoomList from "../AccomodationRoomList";
 import AccomodationSelect from "../AccomodationSelect";
 import { ImageStyled, ImageBox } from "./AccomodationDetail.styles";
 import thumb from "/public/images/thumb.jpg";
@@ -25,7 +25,7 @@ const AccomodationDetail = () => {
       </ImageBox>
       <AccomodationInfo {...AccomodationInfoData} />
       <AccomodationSelect />
-      <AccomodationRoom />
+      <AccomodationRoomList />
     </Container>
   );
 };
