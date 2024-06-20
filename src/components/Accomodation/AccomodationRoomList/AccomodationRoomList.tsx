@@ -17,50 +17,10 @@ import {
   CartButton,
   LinkStyled,
 } from "./AccomodationRoomList.styles";
-import thumb from "/public/images/thumb.jpg";
 import { RiUser3Fill, RiShoppingCart2Line } from "react-icons/ri";
-import { RoomProps } from "./AccomodationRoomList.types";
+import { AccomodationRoomListProps } from "./AccomodationRoomList.types";
 
-const rooms: RoomProps[] = [
-  {
-    id: 1,
-    name: "슈페리어 트윈 1",
-    maxPerson: 4,
-    minPerson: 2,
-    extraPrice: 20000,
-    totalPrice: 142000,
-    image: thumb,
-  },
-  {
-    id: 2,
-    name: "슈페리어 트윈 2",
-    maxPerson: 4,
-    minPerson: 2,
-    extraPrice: 20000,
-    totalPrice: 142000,
-    image: thumb,
-  },
-  {
-    id: 3,
-    name: "슈페리어 트윈 3",
-    maxPerson: 4,
-    minPerson: 2,
-    extraPrice: 20000,
-    totalPrice: 142000,
-    image: thumb,
-  },
-  {
-    id: 4,
-    name: "슈페리어 트윈 4",
-    maxPerson: 4,
-    minPerson: 2,
-    extraPrice: 20000,
-    totalPrice: 142000,
-    image: thumb,
-  },
-];
-
-const AccomodationRoomList: React.FC = () => {
+const AccomodationRoomList: React.FC<AccomodationRoomListProps> = ({ rooms }) => {
   return (
     <>
       <InfoTitleText>객실 선택</InfoTitleText>
