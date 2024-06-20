@@ -9,7 +9,6 @@ import {
   RoomInfoBox,
   RoomNameText,
   InfoWhiteBox,
-  RoomPersonBox,
   RoomPersonText,
   RoomPersonExtraText,
   RoomPriceBox,
@@ -77,7 +76,7 @@ const AccomodationRoom: React.FC = () => {
               <RoomNameText>{room.name}</RoomNameText>
 
               <InfoWhiteBox>
-                <RoomPersonBox>
+                <div>
                   <RiUser3Fill />
                   <RoomPersonText>
                     기준 <span>{room.minPerson}</span>인 / 최대 <span>{room.maxPerson}</span>인
@@ -85,7 +84,7 @@ const AccomodationRoom: React.FC = () => {
                   <RoomPersonExtraText>
                     인원 추가 시 인당 <span>{room.extraPrice.toLocaleString()}</span>원 비용 추가
                   </RoomPersonExtraText>
-                </RoomPersonBox>
+                </div>
 
                 <RoomPriceBox>
                   <DayPriceText>1박</DayPriceText>

@@ -56,7 +56,6 @@ export const InfoWhiteBox = styled.div`
   border-radius: 1.2rem;
   background-color: var(--color-white);
 `;
-export const RoomPersonBox = styled.div``;
 
 export const RoomPersonText = styled.span`
   display: inline-block;

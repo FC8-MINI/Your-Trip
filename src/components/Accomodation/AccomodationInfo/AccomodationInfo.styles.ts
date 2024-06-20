@@ -12,13 +12,16 @@ export const AddressList = styled.ul`
   padding-bottom: 1.6rem;
   color: var(--color-gray-darker);
 `;
+
 export const AddressItem = styled.li`
   margin-bottom: 0.6rem;
 `;
+
 export const AddressText = styled.span`
   display: inline-block;
   padding-left: 0.6rem;
 `;
+
 export const PostcodeText = styled.span`
   display: inline-block;
   padding-left: 0.6rem;
@@ -28,6 +31,7 @@ export const DescBox = styled.div`
   padding-bottom: 1.6rem;
   color: var(--color-gray-darker);
 `;
+
 export const DescText = styled.p`
   padding-left: 4rem;
 `;
