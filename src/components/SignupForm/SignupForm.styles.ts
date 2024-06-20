@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import { ContainerStyled } from "../Container";
+
+export const SignupFormContainer = styled(ContainerStyled)`
+  padding-top: 4rem;
+`;
 
 export const SignupFormStyled = styled.form`
   display: flex;

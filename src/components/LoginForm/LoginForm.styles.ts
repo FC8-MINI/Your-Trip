@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import { ContainerStyled } from "../Container";
+
+export const LoginFormContainer = styled(ContainerStyled)`
+  padding-top: 4rem;
+`;
 
 export const LoginFormStyled = styled.form`
   display: flex;
