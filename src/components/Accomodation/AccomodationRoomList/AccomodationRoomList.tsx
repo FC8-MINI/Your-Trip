@@ -1,5 +1,4 @@
 import * as React from "react";
-import Button from "@/components/Button";
 import { InfoTitleText } from "../AccomodationDetail/AccomodationDetail.styles";
 import {
   RoomList,
@@ -17,10 +16,10 @@ import {
   RoomButtonBox,
   CartButton,
   LinkStyled,
-} from "./AccomodationRoom.styles";
+} from "./AccomodationRoomList.styles";
 import thumb from "/public/images/thumb.jpg";
 import { RiUser3Fill, RiShoppingCart2Line } from "react-icons/ri";
-import { RoomProps } from "./AccomodationRoom.types";
+import { RoomProps } from "./AccomodationRoomList.types";
 
 const rooms: RoomProps[] = [
   {
@@ -61,7 +60,7 @@ const rooms: RoomProps[] = [
   },
 ];
 
-const AccomodationRoom: React.FC = () => {
+const AccomodationRoomList: React.FC = () => {
   return (
     <>
       <InfoTitleText>객실 선택</InfoTitleText>
@@ -107,4 +106,4 @@ const AccomodationRoom: React.FC = () => {
   );
 };
 
-export default AccomodationRoom;
+export default AccomodationRoomList;
