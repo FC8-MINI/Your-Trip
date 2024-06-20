@@ -25,7 +25,7 @@ import { RoomProps } from "./AccomodationRoom.types";
 const rooms: RoomProps[] = [
   {
     id: 1,
-    name: "슈페리어 트윈",
+    name: "슈페리어 트윈 1",
     maxPerson: 4,
     minPerson: 2,
     extraPrice: 20000,
@@ -34,7 +34,7 @@ const rooms: RoomProps[] = [
   },
   {
     id: 2,
-    name: "슈페리어 트윈",
+    name: "슈페리어 트윈 2",
     maxPerson: 4,
     minPerson: 2,
     extraPrice: 20000,
@@ -43,7 +43,7 @@ const rooms: RoomProps[] = [
   },
   {
     id: 3,
-    name: "슈페리어 트윈",
+    name: "슈페리어 트윈 3",
     maxPerson: 4,
     minPerson: 2,
     extraPrice: 20000,
@@ -52,7 +52,7 @@ const rooms: RoomProps[] = [
   },
   {
     id: 4,
-    name: "슈페리어 트윈",
+    name: "슈페리어 트윈 4",
     maxPerson: 4,
     minPerson: 2,
     extraPrice: 20000,
