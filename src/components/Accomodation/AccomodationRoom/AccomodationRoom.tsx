@@ -16,6 +16,7 @@ import {
   TotalPriceText,
   RoomButtonBox,
   CartButton,
+  LinkStyled,
 } from "./AccomodationRoom.styles";
 import thumb from "/public/images/thumb.jpg";
 import { RiUser3Fill, RiShoppingCart2Line } from "react-icons/ri";
@@ -95,9 +96,7 @@ const AccomodationRoom: React.FC = () => {
                   <CartButton type="button">
                     <RiShoppingCart2Line />
                   </CartButton>
-                  <Button type="button" $mode="primary">
-                    예약하기
-                  </Button>
+                  <LinkStyled href="./">객실 예약</LinkStyled>
                 </RoomButtonBox>
               </InfoWhiteBox>
             </RoomInfoBox>
