@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { InputStyledProps } from "./Input.types";
+import { InputStyledProps, LabelStyledProps } from "./Input.types";
 
 export const InputStyled = styled.input<InputStyledProps>`
   color: var(--color-black);
 
   display: block;
 
-  width: 40rem;
+  width: 100%;
   height: 5rem;
 
   padding: 0 1.5rem;
@@ -28,10 +28,12 @@ export const InputStyled = styled.input<InputStyledProps>`
   }
 `;
 
+export const LabelStyled = styled.label<LabelStyledProps>`
+  width: ${({ $size }) => ($size === "common" ? "40rem" : "100%")};
+`;
+
 export const LabelText = styled.p`
   font-weight: 600;
-
-  display: block;
 
   margin-bottom: 0.2rem;
 `;
