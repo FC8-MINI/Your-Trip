@@ -89,6 +89,7 @@ const GlobalStyle = createGlobalStyle`
     --color-primary-hover: #3269c3;
     --color-gray: #e0e2e7;
     --color-gray-dark: #A8A8A8;
+    --color-gray-darker: #707070;
     --color-gray-hover: #f7f8fa;
     --color-black: #333;
     --color-white: #fff;
