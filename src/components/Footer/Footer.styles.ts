@@ -3,8 +3,7 @@ import styled from "styled-components";
 export const FooterStyled = styled.footer`
   color: var(--color-gray-dark);
 
-  height: 40rem;
-  margin-top: 4rem;
+  margin-top: 10rem;
 
   background-color: var(--color-gray-hover);
 `;
@@ -14,7 +13,7 @@ export const TeamBox = styled.div`
   justify-content: flex-end;
   gap: 3rem;
 
-  padding: 3rem 2rem;
+  padding: 4rem 2rem;
 `;
 
 export const LogoBox = styled.div`
@@ -52,8 +51,9 @@ export const MemberText = styled.p`
 
 export const MetaBox = styled.div`
   font-size: 1.2rem;
+  line-height: 1.6rem;
 
-  padding: 2rem;
+  padding: 4rem 2rem;
 
   border-top: 1px solid var(--color-gray);
 `;
