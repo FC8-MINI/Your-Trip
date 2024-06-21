@@ -1,5 +1,6 @@
 import Button from "@/components/Button";
 import Image from "next/image";
+import Link from "next/link";
 import styled from "styled-components";
 
 export const RoomList = styled.ul`
@@ -56,7 +57,6 @@ export const InfoWhiteBox = styled.div`
   border-radius: 1.2rem;
   background-color: var(--color-white);
 `;
-export const RoomPersonBox = styled.div``;
 
 export const RoomPersonText = styled.span`
   display: inline-block;
@@ -97,4 +97,16 @@ export const RoomButtonBox = styled.div`
 
 export const CartButton = styled(Button)`
   padding: 1rem;
+`;
+
+export const LinkStyled = styled(Link)`
+  padding: 0.8rem 3rem;
+  border-radius: 0.8rem;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+  }
 `;

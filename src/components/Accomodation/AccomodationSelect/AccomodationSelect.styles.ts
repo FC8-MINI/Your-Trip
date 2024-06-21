@@ -34,5 +34,3 @@ export const WaveText = styled.span`
   margin-top: 2rem;
   padding: 0 0.5rem;
 `;
-
-// export const SelectBox = styled.div``;

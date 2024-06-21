@@ -9,3 +9,7 @@ export interface RoomProps {
   totalPrice: number;
   image: StaticImageData;
 }
+
+export interface AccomodationRoomListProps {
+  rooms: RoomProps[];
+}

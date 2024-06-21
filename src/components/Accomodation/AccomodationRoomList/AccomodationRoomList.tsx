@@ -1,5 +1,4 @@
 import * as React from "react";
-import Button from "@/components/Button";
 import { InfoTitleText } from "../AccomodationDetail/AccomodationDetail.styles";
 import {
   RoomList,
@@ -9,7 +8,6 @@ import {
   RoomInfoBox,
   RoomNameText,
   InfoWhiteBox,
-  RoomPersonBox,
   RoomPersonText,
   RoomPersonExtraText,
   RoomPriceBox,
@@ -17,51 +15,12 @@ import {
   TotalPriceText,
   RoomButtonBox,
   CartButton,
-} from "./AccomodationRoom.styles";
-import thumb from "/public/images/thumb.jpg";
+  LinkStyled,
+} from "./AccomodationRoomList.styles";
 import { RiUser3Fill, RiShoppingCart2Line } from "react-icons/ri";
-import { RoomProps } from "./AccomodationRoom.types";
+import { AccomodationRoomListProps } from "./AccomodationRoomList.types";
 
-const rooms: RoomProps[] = [
-  {
-    id: 1,
-    name: "슈페리어 트윈 1",
-    maxPerson: 4,
-    minPerson: 2,
-    extraPrice: 20000,
-    totalPrice: 142000,
-    image: thumb,
-  },
-  {
-    id: 2,
-    name: "슈페리어 트윈 2",
-    maxPerson: 4,
-    minPerson: 2,
-    extraPrice: 20000,
-    totalPrice: 142000,
-    image: thumb,
-  },
-  {
-    id: 3,
-    name: "슈페리어 트윈 3",
-    maxPerson: 4,
-    minPerson: 2,
-    extraPrice: 20000,
-    totalPrice: 142000,
-    image: thumb,
-  },
-  {
-    id: 4,
-    name: "슈페리어 트윈 4",
-    maxPerson: 4,
-    minPerson: 2,
-    extraPrice: 20000,
-    totalPrice: 142000,
-    image: thumb,
-  },
-];
-
-const AccomodationRoom: React.FC = () => {
+const AccomodationRoomList: React.FC<AccomodationRoomListProps> = ({ rooms }) => {
   return (
     <>
       <InfoTitleText>객실 선택</InfoTitleText>
@@ -77,7 +36,7 @@ const AccomodationRoom: React.FC = () => {
               <RoomNameText>{room.name}</RoomNameText>
 
               <InfoWhiteBox>
-                <RoomPersonBox>
+                <div>
                   <RiUser3Fill />
                   <RoomPersonText>
                     기준 <span>{room.minPerson}</span>인 / 최대 <span>{room.maxPerson}</span>인
@@ -85,7 +44,7 @@ const AccomodationRoom: React.FC = () => {
                   <RoomPersonExtraText>
                     인원 추가 시 인당 <span>{room.extraPrice.toLocaleString()}</span>원 비용 추가
                   </RoomPersonExtraText>
-                </RoomPersonBox>
+                </div>
 
                 <RoomPriceBox>
                   <DayPriceText>1박</DayPriceText>
@@ -96,9 +55,7 @@ const AccomodationRoom: React.FC = () => {
                   <CartButton type="button">
                     <RiShoppingCart2Line />
                   </CartButton>
-                  <Button type="button" $mode="primary">
-                    예약하기
-                  </Button>
+                  <LinkStyled href="./">객실 예약</LinkStyled>
                 </RoomButtonBox>
               </InfoWhiteBox>
             </RoomInfoBox>
@@ -109,4 +66,4 @@ const AccomodationRoom: React.FC = () => {
   );
 };
 
-export default AccomodationRoom;
+export default AccomodationRoomList;
