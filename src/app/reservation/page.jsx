@@ -1,7 +1,7 @@
-import ReservationLayout from "@/components/ReservationLayout";
+import Reservation from "@/components/Reservation";
 
-const Reservation = () => {
-  return <ReservationLayout />;
+const ReservationPage = () => {
+  return <Reservation />;
 };
 
-export default Reservation;
+export default ReservationPage;

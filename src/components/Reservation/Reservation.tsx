@@ -1,8 +1,9 @@
 import * as React from "react";
 import Container from "../Container";
-import { TitleText } from "./ReservationLayout.styles";
+import { TitleText } from "./Reservation.styles";
 import thumb from "/public/images/thumb.jpg";
 import ReservationList, { ReservationProps } from "./ReservationList";
+import ReservationDetail from "./ReservationDetail";
 
 const reservations: ReservationProps[] = [
   {
@@ -62,13 +63,15 @@ const reservations: ReservationProps[] = [
   },
 ];
 
-const ReservationLayout: React.FC = () => {
+const Reservation: React.FC = () => {
   return (
     <Container>
       <TitleText>예약 내역</TitleText>
       <ReservationList reservations={reservations} />
+
+      <ReservationDetail />
     </Container>
   );
 };
 
-export default ReservationLayout;
+export default Reservation;
