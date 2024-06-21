@@ -49,7 +49,7 @@ const ReservationDetail = ({ params }: { params: { id: string } }) => {
                 <span>
                   {reservation.checkOutDate} {reservation.checkOutTime}
                 </span>
-                <span>/ 1박</span>
+                <span> / 1박</span>
               </InfoDd>
             </div>
             <div>
