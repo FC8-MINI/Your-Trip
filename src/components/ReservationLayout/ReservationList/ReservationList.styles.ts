@@ -38,6 +38,7 @@ export const ReservationInfoBox = styled.div`
   justify-content: space-between;
   flex-grow: 2;
   flex-basis: 0;
+  position: relative;
   padding: 2.6rem 2.6rem 2.6rem 0;
 `;
 
@@ -55,6 +56,7 @@ export const AccomodationNameText = styled.strong`
 `;
 
 export const RoomNameText = styled.span`
+  font-size: 1.5rem;
   font-weight: 500;
   color: var(--color-gray-darker);
 `;
@@ -90,11 +92,10 @@ export const CheckInOutBox = styled.div`
   }
 `;
 
-export const DateText = styled.p`
-  font-size: 1.5rem;
-`;
-
 export const LinkStyled = styled(Link)`
+  position: absolute;
+  right: 2.6rem;
+  top: 2.6rem;
   margin-right: auto;
   padding: 0.8rem 3rem;
   border-radius: 0.8rem;
@@ -104,5 +105,17 @@ export const LinkStyled = styled(Link)`
 
   &:hover {
     background-color: var(--color-primary-hover);
+  }
+`;
+
+export const TotalPriceText = styled.p`
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-gray-darker);
+  & > span {
+    display: inline-block;
+    padding-left: 0.8rem;
+    font-size: 1.8rem;
+    color: var(--color-black);
   }
 `;

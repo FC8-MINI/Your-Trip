@@ -13,6 +13,7 @@ const reservations: ReservationProps[] = [
     checkInTime: "12:00",
     checkOutDate: "2024.09.06 (금)",
     checkOutTime: "11:00",
+    price: 120000,
     image: thumb,
   },
   {
@@ -23,6 +24,7 @@ const reservations: ReservationProps[] = [
     checkInTime: "12:00",
     checkOutDate: "2024.09.06 (금)",
     checkOutTime: "11:00",
+    price: 240000,
     image: thumb,
   },
   {
@@ -33,6 +35,7 @@ const reservations: ReservationProps[] = [
     checkInTime: "12:00",
     checkOutDate: "2024.09.06 (금)",
     checkOutTime: "11:00",
+    price: 270000,
     image: thumb,
   },
   {
@@ -43,6 +46,7 @@ const reservations: ReservationProps[] = [
     checkInTime: "12:00",
     checkOutDate: "2024.09.06 (금)",
     checkOutTime: "11:00",
+    price: 300000,
     image: thumb,
   },
   {
@@ -53,6 +57,7 @@ const reservations: ReservationProps[] = [
     checkInTime: "12:00",
     checkOutDate: "2024.09.06 (금)",
     checkOutTime: "11:00",
+    price: 240000,
     image: thumb,
   },
 ];

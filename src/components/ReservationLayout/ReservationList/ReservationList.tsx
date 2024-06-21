@@ -9,8 +9,8 @@ import {
   AccomodationNameText,
   RoomNameText,
   CheckInOutBox,
-  DateText,
   LinkStyled,
+  TotalPriceText,
 } from "./ReservationList.styles";
 import { ReservationListProps } from "./ReservationList.types";
 
@@ -24,30 +24,35 @@ const ReservationList: React.FC<ReservationListProps> = ({ reservations }) => {
           </ImageBox>
 
           <ReservationInfoBox>
-            <UseCheckText>예약확정</UseCheckText>
+            <UseCheckText>예약 완료</UseCheckText>
 
             <div>
               <AccomodationNameText>{reservation.name}</AccomodationNameText>
               <RoomNameText>
-                {reservation.roomName} / <span>1</span>박
+                {reservation.roomName} <span>/ 1박</span>
               </RoomNameText>
             </div>
 
             <CheckInOutBox>
               <div>
                 <span>체크인</span>
-                <DateText>
+                <p>
                   {reservation.checkInDate} {reservation.checkInTime}
-                </DateText>
+                </p>
               </div>
 
               <div>
                 <span>체크아웃</span>
-                <DateText>
+                <p>
                   {reservation.checkOutDate} {reservation.checkOutTime}
-                </DateText>
+                </p>
               </div>
             </CheckInOutBox>
+
+            <TotalPriceText>
+              결제 금액
+              <span>{reservation.price.toLocaleString()}원</span>
+            </TotalPriceText>
 
             <LinkStyled href="./">예약 상세</LinkStyled>
           </ReservationInfoBox>

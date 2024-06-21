@@ -8,6 +8,7 @@ export interface ReservationProps {
   checkInTime: string;
   checkOutDate: string;
   checkOutTime: string;
+  price: number;
   image: StaticImageData;
 }
 
