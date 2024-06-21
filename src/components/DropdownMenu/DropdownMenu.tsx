@@ -2,10 +2,15 @@
 
 import Link from "next/link";
 import { DropdownMenuList, DropdownMenuListItem, Hamburger, HamburgerLine } from "./DropdownMenu.styles";
-import { useReducer } from "react";
+import { MouseEventHandler, useReducer } from "react";
 
 const DropdownMenu = () => {
-  const [open, toggleMenu] = useReducer((v) => !v, false);
+  const [isOpened, toggleMenu] = useReducer((v) => !v, false);
+
+  const handleMenuClick: MouseEventHandler<HTMLAnchorElement> = (event) => {
+    event.stopPropagation();
+    toggleMenu();
+  };
 
   return (
     <>
@@ -17,14 +22,14 @@ const DropdownMenu = () => {
         <HamburgerLine />
         <HamburgerLine />
         <HamburgerLine />
-        {open && (
+        {isOpened && (
           <DropdownMenuList>
-            <DropdownMenuListItem>
-              <Link href="/reservation">예약 내역</Link>
-            </DropdownMenuListItem>
-            <DropdownMenuListItem>
-              <Link href="cart">장바구니</Link>
-            </DropdownMenuListItem>
+            <Link href="/reservation" onClick={handleMenuClick}>
+              <DropdownMenuListItem>예약 내역</DropdownMenuListItem>
+            </Link>
+            <Link href="/cart">
+              <DropdownMenuListItem onClick={handleMenuClick}>장바구니</DropdownMenuListItem>
+            </Link>
             <DropdownMenuListItem>
               <div>로그아웃</div>
             </DropdownMenuListItem>
