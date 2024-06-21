@@ -11,4 +11,6 @@ export const AccomodationListStyled = styled.ul`
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1.2rem;
+
+  margin-bottom: 3rem;
 `;

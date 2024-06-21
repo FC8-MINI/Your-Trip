@@ -15,7 +15,7 @@ const Category = ({ category }: CategoryProps) => {
         <CategoryList $isOpened={isOpened}>
           {CategoryData.map(({ id, categoryName }) => {
             return (
-              <Link key={id} href={`/?category=${categoryName}`} scroll={false}>
+              <Link key={id} href={`/?category=${categoryName}&page=1`} scroll={false}>
                 <CategoryItem $isActive={category === categoryName}>{categoryName}</CategoryItem>
               </Link>
             );
