@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { ContainerStyled } from "../Container";
 
 export const FooterStyled = styled.footer`
   color: var(--color-gray-dark);
@@ -9,8 +8,6 @@ export const FooterStyled = styled.footer`
 
   background-color: var(--color-gray-hover);
 `;
-
-export const FooterContainer = styled(ContainerStyled)``;
 
 export const TeamBox = styled.div`
   display: flex;

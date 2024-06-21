@@ -4,7 +4,6 @@ import {
   CopyrightText,
   EndBox,
   EndText,
-  FooterContainer,
   FooterStyled,
   LogoBox,
   LogoImageBox,
@@ -12,11 +11,12 @@ import {
   MetaBox,
   TeamBox,
 } from "./Footer.styles";
+import Container from "../Container";
 
 const Footer = () => {
   return (
     <FooterStyled>
-      <FooterContainer>
+      <Container>
         <TeamBox>
           <LogoBox>
             <LogoImageBox>
@@ -50,7 +50,7 @@ const Footer = () => {
           <br />
           <CopyrightText>&copy; {new Date().getFullYear()} 연매출2조. All Rights Reserved.</CopyrightText>
         </MetaBox>
-      </FooterContainer>
+      </Container>
     </FooterStyled>
   );
 };
