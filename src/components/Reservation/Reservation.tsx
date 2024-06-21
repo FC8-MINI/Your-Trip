@@ -3,9 +3,8 @@ import Container from "../Container";
 import { TitleText } from "./Reservation.styles";
 import thumb from "/public/images/thumb.jpg";
 import ReservationList, { ReservationProps } from "./ReservationList";
-import ReservationDetail from "./ReservationDetail";
 
-const reservations: ReservationProps[] = [
+export const reservations: ReservationProps[] = [
   {
     id: 1,
     name: "세인트존스 호텔 1",
@@ -68,8 +67,6 @@ const Reservation: React.FC = () => {
     <Container>
       <TitleText>예약 내역</TitleText>
       <ReservationList reservations={reservations} />
-
-      <ReservationDetail />
     </Container>
   );
 };

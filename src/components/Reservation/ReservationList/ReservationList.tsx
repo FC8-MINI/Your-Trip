@@ -54,7 +54,7 @@ const ReservationList: React.FC<ReservationListProps> = ({ reservations }) => {
               <span>{reservation.price.toLocaleString()}원</span>
             </TotalPriceText>
 
-            <LinkStyled href="./">예약 상세</LinkStyled>
+            <LinkStyled href={`/reservation/${reservation.id}`}>예약 상세</LinkStyled>
           </ReservationInfoBox>
         </ReservationHistoryItem>
       ))}

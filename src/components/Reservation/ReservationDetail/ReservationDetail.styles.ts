@@ -51,6 +51,7 @@ export const InfoDl = styled.dl`
 
   & > div {
     display: flex;
+    align-items: baseline;
   }
 `;
 

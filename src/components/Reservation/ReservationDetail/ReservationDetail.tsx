@@ -9,24 +9,32 @@ import {
   InfoDl,
   InfoDt,
   InfoDd,
-} from "./ReservationDetail.styles";
-import thumb from "/public/images/thumb.jpg";
+} from "@/components/Reservation/ReservationDetail";
+import { reservations } from "@/components/Reservation/Reservation";
+import { notFound } from "next/navigation";
 
-const ReservationDetail = () => {
+const ReservationDetail = ({ params }: { params: { id: string } }) => {
+  const { id } = params;
+  const reservation = reservations.find((res) => res.id === parseInt(id, 10));
+
+  if (!reservation) {
+    notFound();
+  }
+
   return (
     <Container>
       <TitleText>예약내역 상세</TitleText>
       <DetailBox>
         <ImageBox>
-          <ImageStyled src={thumb} width={"100%"} height={"100%"} alt="호텔 사진" />
+          <ImageStyled src={reservation.image} width={"100%"} height={"100%"} alt="호텔 사진" />
         </ImageBox>
 
         <InfoBox>
-          <NameText>세인트존스 호텔</NameText>
+          <NameText>{reservation.name}</NameText>
           <InfoDl>
             <div>
               <InfoDt>예약번호</InfoDt>
-              <InfoDd>2406202300AE1FYE1</InfoDd>
+              <InfoDd>{`24${reservation.id}`}</InfoDd>
             </div>
             <div>
               <InfoDt>예약자 이름</InfoDt>
@@ -35,14 +43,18 @@ const ReservationDetail = () => {
             <div>
               <InfoDt>예약 일정</InfoDt>
               <InfoDd>
-                <span>2024.09.05 (목) 16:00 ~ </span>
-                <span>2024.09.06 (금) 11:00 </span>
+                <span>
+                  {reservation.checkInDate} {reservation.checkInTime} ~
+                </span>
+                <span>
+                  {reservation.checkOutDate} {reservation.checkOutTime}
+                </span>
                 <span>/ 1박</span>
               </InfoDd>
             </div>
             <div>
               <InfoDt>객실 타입</InfoDt>
-              <InfoDd>디럭스 트윈</InfoDd>
+              <InfoDd>{reservation.roomName}</InfoDd>
             </div>
             <div>
               <InfoDt>
@@ -54,7 +66,7 @@ const ReservationDetail = () => {
             </div>
             <div>
               <InfoDt>총 결제 금액</InfoDt>
-              <InfoDd>240,000원</InfoDd>
+              <InfoDd>{reservation.price.toLocaleString()}원</InfoDd>
             </div>
           </InfoDl>
         </InfoBox>
