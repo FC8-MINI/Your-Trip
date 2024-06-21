@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import StyledComponentsRegistry from "@/lib/StyledComponentsRegistry";
 import GlobalStyle from "@/styles/GlobalStyle";
@@ -23,6 +24,7 @@ export default function RootLayout({
           <GlobalStyle />
           <Header />
           <main style={{ marginTop: "7.5rem" }}>{children}</main>
+          <Footer />
         </StyledComponentsRegistry>
       </body>
     </html>

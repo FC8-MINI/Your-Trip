@@ -29,7 +29,7 @@ const Pagination = ({ maxPage, nowPage, category }: PaginationProps) => {
 
     return pages;
   }, [nowPage, maxPage]);
-  console.log(pages);
+
   const baseUrl = useMemo(() => {
     if (category) return `/?categroy=${category}&`;
     else return "/?";
