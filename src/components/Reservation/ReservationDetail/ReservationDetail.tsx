@@ -62,7 +62,7 @@ const ReservationDetail = ({ params }: { params: { id: string } }) => {
                 <br />
                 (인원 추가)
               </InfoDt>
-              <InfoDd>20,000원</InfoDd>
+              <InfoDd>{reservation.extraPrice.toLocaleString()}원</InfoDd>
             </div>
             <div>
               <InfoDt>총 결제 금액</InfoDt>

@@ -7,6 +7,7 @@ import ReservationList, { ReservationProps } from "./ReservationList";
 export const reservations: ReservationProps[] = [
   {
     id: 1,
+    image: thumb,
     name: "세인트존스 호텔 1",
     roomName: "디럭스 트윈",
     checkInDate: "2024.09.05 (목)",
@@ -14,10 +15,11 @@ export const reservations: ReservationProps[] = [
     checkOutDate: "2024.09.06 (금)",
     checkOutTime: "11:00",
     price: 120000,
-    image: thumb,
+    extraPrice: 20000,
   },
   {
     id: 2,
+    image: thumb,
     name: "세인트존스 호텔 2",
     roomName: "디럭스 트윈",
     checkInDate: "2024.09.05 (목)",
@@ -25,10 +27,11 @@ export const reservations: ReservationProps[] = [
     checkOutDate: "2024.09.06 (금)",
     checkOutTime: "11:00",
     price: 240000,
-    image: thumb,
+    extraPrice: 10000,
   },
   {
     id: 3,
+    image: thumb,
     name: "세인트존스 호텔 3",
     roomName: "디럭스 트윈",
     checkInDate: "2024.09.05 (목)",
@@ -36,10 +39,11 @@ export const reservations: ReservationProps[] = [
     checkOutDate: "2024.09.06 (금)",
     checkOutTime: "11:00",
     price: 270000,
-    image: thumb,
+    extraPrice: 20000,
   },
   {
     id: 4,
+    image: thumb,
     name: "세인트존스 호텔 4",
     roomName: "디럭스 트윈",
     checkInDate: "2024.09.05 (목)",
@@ -47,10 +51,11 @@ export const reservations: ReservationProps[] = [
     checkOutDate: "2024.09.06 (금)",
     checkOutTime: "11:00",
     price: 300000,
-    image: thumb,
+    extraPrice: 10000,
   },
   {
     id: 5,
+    image: thumb,
     name: "세인트존스 호텔 5",
     roomName: "디럭스 트윈",
     checkInDate: "2024.09.05 (목)",
@@ -58,7 +63,7 @@ export const reservations: ReservationProps[] = [
     checkOutDate: "2024.09.06 (금)",
     checkOutTime: "11:00",
     price: 240000,
-    image: thumb,
+    extraPrice: 20000,
   },
 ];
 
