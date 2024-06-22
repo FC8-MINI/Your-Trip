@@ -55,7 +55,11 @@ const LoginForm = () => {
             required: "비밀번호를 입력해주세요.",
             minLength: {
               value: 8,
-              message: "8자이상 입력해주세요.",
+              message: "비밀번호는 8자 이상입니다.",
+            },
+            maxLength: {
+              value: 16,
+              message: "비밀번호는 16자 이하입니다.",
             },
           })}
           error={errors.password?.message}
