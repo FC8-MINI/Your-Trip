@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const DropdownMenuBox = styled.div`
+  position: relative;
+`;
+
 export const Hamburger = styled.div`
   position: relative;
 
