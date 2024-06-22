@@ -1,12 +1,11 @@
 "use client";
 
 import Button from "../Button";
-import Container from "../Container";
 import Input from "../Input";
 import Hr from "../Hr";
 import { FcGoogle } from "react-icons/fc";
 import { OAuthText } from "../LoginForm";
-import { SignupFormStyled, ToLoginText } from "./SignupForm.styles";
+import { SignupFormContainer, SignupFormStyled, ToLoginText } from "./SignupForm.styles";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 import { type SubmitHandler, useForm } from "react-hook-form";
@@ -32,7 +31,7 @@ const SignupForm = () => {
   };
 
   return (
-    <Container $flex={true}>
+    <SignupFormContainer $flex={true}>
       <SignupFormStyled onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="email"
@@ -58,7 +57,11 @@ const SignupForm = () => {
             required: "비밀번호를 입력해주세요.",
             minLength: {
               value: 8,
-              message: "8자이상 입력해주세요.",
+              message: "비밀번호는 8자 이상입니다.",
+            },
+            maxLength: {
+              value: 16,
+              message: "비밀번호는 16자 이하입니다.",
             },
           })}
           error={errors.password?.message}
@@ -119,7 +122,7 @@ const SignupForm = () => {
       <Button $size="large" onClick={() => router.push("/login")}>
         로그인
       </Button>
-    </Container>
+    </SignupFormContainer>
   );
 };
 

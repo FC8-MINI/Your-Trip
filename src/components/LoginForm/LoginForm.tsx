@@ -5,8 +5,7 @@ import { useRouter } from "next/navigation";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 import Hr from "@/components/Hr";
-import { LoginFormStyled, OAuthText, ToSignupText } from "./LoginForm.styles";
-import Container from "../Container";
+import { LoginFormContainer, LoginFormStyled, OAuthText, ToSignupText } from "./LoginForm.styles";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
 
@@ -30,7 +29,7 @@ const LoginForm = () => {
   };
 
   return (
-    <Container $flex={true}>
+    <LoginFormContainer $flex={true}>
       <LoginFormStyled onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="email"
@@ -56,7 +55,11 @@ const LoginForm = () => {
             required: "비밀번호를 입력해주세요.",
             minLength: {
               value: 8,
-              message: "8자이상 입력해주세요.",
+              message: "비밀번호는 8자 이상입니다.",
+            },
+            maxLength: {
+              value: 16,
+              message: "비밀번호는 16자 이하입니다.",
             },
           })}
           error={errors.password?.message}
@@ -82,7 +85,7 @@ const LoginForm = () => {
       <Button $size="large" onClick={() => router.push("/signup")}>
         회원 가입
       </Button>
-    </Container>
+    </LoginFormContainer>
   );
 };
 
