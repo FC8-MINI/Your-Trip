@@ -1,6 +1,7 @@
 "use client";
 
 import { createGlobalStyle } from "styled-components";
+import { device } from "./media";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -96,6 +97,10 @@ const GlobalStyle = createGlobalStyle`
     --color-error: #ee5151;
 
     font-size: 10px;
+
+    @media ${device.tablet} {
+      font-size: 9px;
+    }
   }
 
   * {
