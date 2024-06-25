@@ -1,6 +1,6 @@
-import Image from "next/image";
 import styled from "styled-components";
 import Link from "next/link";
+import { device } from "@/styles/media";
 
 export const ReservationHistoryList = styled.ul`
   margin-bottom: 5rem;
@@ -9,13 +9,15 @@ export const ReservationHistoryList = styled.ul`
 export const ReservationHistoryItem = styled.li`
   display: flex;
   justify-content: space-between;
-  flex-grow: 1;
-  flex-basis: 0;
   gap: 3rem;
   overflow: hidden;
   margin-bottom: 3rem;
   border-radius: 1.6rem;
   box-shadow: 0 2px 16px rgb(235, 235, 235);
+
+  @media ${device.tablet} {
+    flex-direction: column;
+  }
 `;
 
 export const ImageBox = styled.div`
@@ -23,23 +25,26 @@ export const ImageBox = styled.div`
   overflow: hidden;
   width: 34%;
   height: 28rem;
-`;
 
-export const ImageStyled = styled(Image)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  @media ${device.tablet} {
+    width: 100%;
+    height: 0;
+    padding-top: 45%;
+  }
 `;
 
 export const ReservationInfoBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex-grow: 2;
-  flex-basis: 0;
+  flex-grow: 1;
   position: relative;
   padding: 2.6rem 2.6rem 2.6rem 0;
+
+  @media ${device.tablet} {
+    padding: 0 2.6rem 2.6rem;
+    gap: 1.4rem;
+  }
 `;
 
 export const UseCheckText = styled.span`
@@ -71,6 +76,10 @@ export const CheckInOutBox = styled.div`
 
     &:first-child {
       padding-right: 3rem;
+
+      @media ${device.tablet} {
+        padding-right: 1.2rem;
+      }
     }
 
     &:first-child::after {
@@ -83,6 +92,11 @@ export const CheckInOutBox = styled.div`
       background-color: var(--color-gray);
     }
   }
+
+  @media ${device.tablet} {
+    gap: 1.2rem;
+  }
+
   span {
     display: block;
     margin-bottom: 0.4rem;
@@ -105,6 +119,16 @@ export const LinkStyled = styled(Link)`
 
   &:hover {
     background-color: var(--color-primary-hover);
+  }
+
+  @media ${device.tablet} {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin-right: 0;
+    margin-top: 1rem;
+    text-align: center;
   }
 `;
 
