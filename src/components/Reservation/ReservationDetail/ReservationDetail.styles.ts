@@ -63,4 +63,5 @@ export const InfoDt = styled.dt`
 export const InfoDd = styled.dd`
   font-size: 1.7rem;
   font-weight: 500;
+  word-break: keep-all;
 `;
