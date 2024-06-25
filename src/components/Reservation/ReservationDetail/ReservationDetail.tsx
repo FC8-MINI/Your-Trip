@@ -3,7 +3,6 @@ import {
   DetailBox,
   TitleText,
   ImageBox,
-  ImageStyled,
   InfoBox,
   NameText,
   InfoDl,
@@ -12,6 +11,7 @@ import {
 } from "@/components/Reservation/ReservationDetail";
 import { reservations } from "@/components/Reservation/Reservation";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 
 const ReservationDetail = ({ params }: { params: { id: string } }) => {
   const { id } = params;
@@ -26,7 +26,7 @@ const ReservationDetail = ({ params }: { params: { id: string } }) => {
       <TitleText>예약내역 상세</TitleText>
       <DetailBox>
         <ImageBox>
-          <ImageStyled src={reservation.image} width={"100%"} height={"100%"} alt="호텔 사진" />
+          <Image src="/images/thumb.jpg" alt={reservation.name} fill objectFit="cover" />
         </ImageBox>
 
         <InfoBox>

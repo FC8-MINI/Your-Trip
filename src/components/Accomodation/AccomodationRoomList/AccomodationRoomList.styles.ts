@@ -1,5 +1,5 @@
 import Button from "@/components/Button";
-import Image from "next/image";
+import { device } from "@/styles/media";
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -10,13 +10,15 @@ export const RoomList = styled.ul`
 export const RoomItem = styled.li`
   display: flex;
   justify-content: space-between;
-  flex-grow: 1;
-  flex-basis: 0;
   gap: 3rem;
   padding: 3.2rem;
   margin-bottom: 2.4rem;
   border-radius: 1.6rem;
   background-color: var(--color-gray-hover);
+
+  @media ${device.tablet} {
+    display: block;
+  }
 `;
 
 export const RoomImageBox = styled.div`
@@ -25,13 +27,12 @@ export const RoomImageBox = styled.div`
   width: 35%;
   height: 24rem;
   border-radius: 1.2rem;
-`;
 
-export const RoomImageStyled = styled(Image)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  @media ${device.tablet} {
+    width: 100%;
+    height: 20rem;
+    margin-bottom: 1.2rem;
+  }
 `;
 
 export const RoomInfoBox = styled.div`
@@ -39,8 +40,7 @@ export const RoomInfoBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 2rem;
-  flex-grow: 2;
-  flex-basis: 0;
+  flex-grow: 1;
 `;
 
 export const RoomNameText = styled.strong`
@@ -56,6 +56,10 @@ export const InfoWhiteBox = styled.div`
   padding: 2.4rem;
   border-radius: 1.2rem;
   background-color: var(--color-white);
+
+  @media ${device.mobile} {
+    gap: 1.4rem;
+  }
 `;
 
 export const RoomPersonText = styled.span`
@@ -68,12 +72,18 @@ export const RoomPersonText = styled.span`
 export const RoomPersonExtraText = styled.p`
   padding-left: 2.2rem;
   color: var(--color-gray-darker);
+  word-break: keep-all;
 `;
 
 export const RoomPriceBox = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
+
+  @media ${device.mobile} {
+    flex-grow: 1;
+    text-align: center;
+  }
 `;
 
 export const DayPriceText = styled.span`
@@ -93,6 +103,10 @@ export const RoomButtonBox = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 1rem;
+
+  @media ${device.mobile} {
+    justify-content: flex-start;
+  }
 `;
 
 export const CartButton = styled(Button)`
@@ -108,5 +122,10 @@ export const LinkStyled = styled(Link)`
 
   &:hover {
     background-color: var(--color-primary-hover);
+  }
+
+  @media ${device.mobile} {
+    flex-grow: 1;
+    text-align: center;
   }
 `;

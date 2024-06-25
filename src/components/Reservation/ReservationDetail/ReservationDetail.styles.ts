@@ -1,15 +1,15 @@
-import Image from "next/image";
+import { device } from "@/styles/media";
 import styled from "styled-components";
 
 export const DetailBox = styled.div`
   overflow: hidden;
   max-width: 70rem;
-  margin: 5rem auto;
+  margin: 0 auto;
   border-radius: 1.6rem;
 `;
 
 export const TitleText = styled.h2`
-  margin-bottom: 2rem;
+  padding: 3rem 0 2rem;
   font-size: 2.4rem;
   font-weight: 700;
 `;
@@ -18,15 +18,9 @@ export const ImageBox = styled.div`
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 30rem;
+  height: 0;
+  padding-top: 50%;
   margin: 0 auto;
-`;
-
-export const ImageStyled = styled(Image)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 `;
 
 export const InfoBox = styled.div`
@@ -52,6 +46,10 @@ export const InfoDl = styled.dl`
   & > div {
     display: flex;
     align-items: baseline;
+
+    @media ${device.tablet} {
+      display: block;
+    }
   }
 `;
 
@@ -65,4 +63,5 @@ export const InfoDt = styled.dt`
 export const InfoDd = styled.dd`
   font-size: 1.7rem;
   font-weight: 500;
+  word-break: keep-all;
 `;

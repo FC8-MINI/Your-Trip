@@ -1,6 +1,20 @@
 import styled from "styled-components";
 import { RiDoubleQuotesR } from "react-icons/ri";
 
+export const AccomodationInfoStyled = styled.div`
+  padding-top: 4rem;
+`;
+
+export const ImageBox = styled.div`
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  padding-top: 40%;
+  margin-bottom: 2.6rem;
+  border-radius: 1.2rem;
+`;
+
 export const NameText = styled.strong`
   display: block;
   margin-bottom: 1.6rem;
@@ -33,7 +47,8 @@ export const DescBox = styled.div`
 `;
 
 export const DescText = styled.p`
-  padding-left: 4rem;
+  padding: 0 4rem;
+  line-height: 1.4;
 `;
 
 export const RiDoubleQuotesRStyled = styled(RiDoubleQuotesR)`

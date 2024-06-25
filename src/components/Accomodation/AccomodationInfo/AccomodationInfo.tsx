@@ -1,6 +1,8 @@
 import { RiMapPin2Fill, RiSignpostFill, RiTimeFill, RiParkingBoxFill, RiDoubleQuotesL } from "react-icons/ri";
 import { PiCookingPotFill } from "react-icons/pi";
 import {
+  AccomodationInfoStyled,
+  ImageBox,
   NameText,
   AddressList,
   AddressItem,
@@ -14,10 +16,10 @@ import {
   RiDoubleQuotesRStyled,
 } from "./AccomodationInfo.styles";
 import { InfoTitleText } from "../AccomodationDetail/AccomodationDetail.styles";
-
 import Hr from "@/components/Hr";
 import { AccomodationInfoProps } from "./AccomodationInfo.types";
 import { formatTime } from "@/utils/time";
+import Image from "next/image";
 
 const AccomodationInfo: React.FC<AccomodationInfoProps> = ({
   id,
@@ -32,7 +34,11 @@ const AccomodationInfo: React.FC<AccomodationInfoProps> = ({
   categoryId,
 }) => {
   return (
-    <>
+    <AccomodationInfoStyled>
+      <ImageBox>
+        <Image src="/images/thumb.jpg" fill objectFit="cover" alt={name} />
+      </ImageBox>
+
       <NameText>{name}</NameText>
 
       <AddressList>
@@ -78,7 +84,7 @@ const AccomodationInfo: React.FC<AccomodationInfoProps> = ({
       </UseInfoList>
 
       <Hr $gap={true} />
-    </>
+    </AccomodationInfoStyled>
   );
 };
 

@@ -3,7 +3,6 @@ import {
   ReservationHistoryList,
   ReservationHistoryItem,
   ImageBox,
-  ImageStyled,
   ReservationInfoBox,
   UseCheckText,
   AccomodationNameText,
@@ -13,6 +12,7 @@ import {
   TotalPriceText,
 } from "./ReservationList.styles";
 import { ReservationListProps } from "./ReservationList.types";
+import Image from "next/image";
 
 const ReservationList: React.FC<ReservationListProps> = ({ reservations }) => {
   return (
@@ -20,7 +20,7 @@ const ReservationList: React.FC<ReservationListProps> = ({ reservations }) => {
       {reservations.map((reservation) => (
         <ReservationHistoryItem key={reservation.id}>
           <ImageBox>
-            <ImageStyled src={reservation.image} width={"100%"} height={"100%"} alt="호텔 사진" />
+            <Image src="/images/thumb.jpg" alt={reservation.name} fill objectFit="cover" />
           </ImageBox>
 
           <ReservationInfoBox>
