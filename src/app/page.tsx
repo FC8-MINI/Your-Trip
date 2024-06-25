@@ -11,13 +11,22 @@ interface HomeProps {
   };
 }
 
-export default function Home({ searchParams: { category, page } }: HomeProps) {
+export default async function Home({ searchParams: { category, page } }: HomeProps) {
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/accomodation${category ? "/category?region=category_name" : ""}`;
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const { body: data } = await response.json();
+
   return (
     <>
       <HeroSection />
       <Category category={category} />
-      <AccomodationList />
-      <Pagination maxPage={20} nowPage={Number(page) || 1} category={category} />
+      <AccomodationList category={category} totalElements={data.totalElements} accomodationItems={data.content} />
+      <Pagination maxPage={data.totalPages} nowPage={Number(page) || 1} category={category} />
     </>
   );
 }

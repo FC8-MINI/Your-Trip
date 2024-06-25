@@ -19,6 +19,7 @@ import {
 } from "./AccomodationRoomList.styles";
 import { RiUser3Fill, RiShoppingCart2Line } from "react-icons/ri";
 import { AccomodationRoomListProps } from "./AccomodationRoomList.types";
+import thumb from "/public/images/thumb.jpg";
 
 const AccomodationRoomList: React.FC<AccomodationRoomListProps> = ({ rooms }) => {
   return (
@@ -29,7 +30,7 @@ const AccomodationRoomList: React.FC<AccomodationRoomListProps> = ({ rooms }) =>
         {rooms.map((room) => (
           <RoomItem key={room.id}>
             <RoomImageBox>
-              <RoomImageStyled src={room.image} width={"100%"} height={"100%"} alt="호텔 사진" />
+              <RoomImageStyled src={thumb} width={"100%"} height={"100%"} alt="호텔 사진" />
             </RoomImageBox>
 
             <RoomInfoBox>
@@ -39,16 +40,16 @@ const AccomodationRoomList: React.FC<AccomodationRoomListProps> = ({ rooms }) =>
                 <div>
                   <RiUser3Fill />
                   <RoomPersonText>
-                    기준 <span>{room.minPerson}</span>인 / 최대 <span>{room.maxPerson}</span>인
+                    기준 <span>{room.baseGuests}</span>인 / 최대 <span>{room.maxGuests}</span>인
                   </RoomPersonText>
                   <RoomPersonExtraText>
-                    인원 추가 시 인당 <span>{room.extraPrice.toLocaleString()}</span>원 비용 추가
+                    인원 추가 시 인당 <span>{room.extraPersonCharge.toLocaleString()}</span>원 비용 추가
                   </RoomPersonExtraText>
                 </div>
 
                 <RoomPriceBox>
                   <DayPriceText>1박</DayPriceText>
-                  <TotalPriceText>{room.totalPrice.toLocaleString()}원</TotalPriceText>
+                  <TotalPriceText>{room.price.toLocaleString()}원</TotalPriceText>
                 </RoomPriceBox>
 
                 <RoomButtonBox>
