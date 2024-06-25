@@ -7,6 +7,7 @@ import {
   FooterStyled,
   LogoBox,
   LogoImageBox,
+  MemberBox,
   MemberText,
   MetaBox,
   TeamBox,
@@ -26,15 +27,19 @@ const Footer = () => {
           </LogoBox>
           <EndBox>
             <EndText>Front End</EndText>
-            {FRONT_END.map(({ name }) => {
-              return <MemberText key={name}>{name}</MemberText>;
-            })}
+            <MemberBox>
+              {FRONT_END.map(({ name }) => {
+                return <MemberText key={name}>{name}</MemberText>;
+              })}
+            </MemberBox>
           </EndBox>
           <EndBox>
             <EndText>Back End</EndText>
-            {BACK_END.map(({ name }) => {
-              return <MemberText key={name}>{name}</MemberText>;
-            })}
+            <MemberBox>
+              {BACK_END.map(({ name }) => {
+                return <MemberText key={name}>{name}</MemberText>;
+              })}
+            </MemberBox>
           </EndBox>
         </TeamBox>
         <MetaBox>

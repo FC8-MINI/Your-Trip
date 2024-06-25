@@ -1,3 +1,4 @@
+import { device } from "@/styles/media";
 import styled from "styled-components";
 
 export const AccomodationListTitle = styled.h2`
@@ -7,10 +8,16 @@ export const AccomodationListTitle = styled.h2`
 `;
 
 export const AccomodationListStyled = styled.ul`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 
   margin-bottom: 3rem;
+
+  @media ${device.notebook} {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media ${device.tablet} {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 `;

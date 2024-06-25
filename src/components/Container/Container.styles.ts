@@ -13,4 +13,12 @@ export const ContainerStyled = styled.div<ContainerStyledProps>`
   @media ${device.desktop} {
     padding: 0 4rem;
   }
+
+  @media ${device.tablet} {
+    padding: 0 3rem;
+  }
+
+  @media ${device.mobile} {
+    padding: 0 2rem;
+  }
 `;
