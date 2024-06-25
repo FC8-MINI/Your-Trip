@@ -56,6 +56,10 @@ export const InfoWhiteBox = styled.div`
   padding: 2.4rem;
   border-radius: 1.2rem;
   background-color: var(--color-white);
+
+  @media ${device.mobile} {
+    gap: 1.4rem;
+  }
 `;
 
 export const RoomPersonText = styled.span`
@@ -68,12 +72,18 @@ export const RoomPersonText = styled.span`
 export const RoomPersonExtraText = styled.p`
   padding-left: 2.2rem;
   color: var(--color-gray-darker);
+  word-break: keep-all;
 `;
 
 export const RoomPriceBox = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
+
+  @media ${device.mobile} {
+    flex-grow: 1;
+    text-align: center;
+  }
 `;
 
 export const DayPriceText = styled.span`
@@ -93,6 +103,10 @@ export const RoomButtonBox = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 1rem;
+
+  @media ${device.mobile} {
+    justify-content: flex-start;
+  }
 `;
 
 export const CartButton = styled(Button)`
@@ -108,5 +122,10 @@ export const LinkStyled = styled(Link)`
 
   &:hover {
     background-color: var(--color-primary-hover);
+  }
+
+  @media ${device.mobile} {
+    flex-grow: 1;
+    text-align: center;
   }
 `;

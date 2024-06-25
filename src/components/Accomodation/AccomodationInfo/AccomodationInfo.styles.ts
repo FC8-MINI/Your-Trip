@@ -10,7 +10,7 @@ export const ImageBox = styled.div`
   overflow: hidden;
   width: 100%;
   height: 0;
-  padding-top: 45%;
+  padding-top: 40%;
   margin-bottom: 2.6rem;
   border-radius: 1.2rem;
 `;
