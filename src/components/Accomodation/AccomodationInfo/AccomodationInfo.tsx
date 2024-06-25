@@ -17,16 +17,19 @@ import { InfoTitleText } from "../AccomodationDetail/AccomodationDetail.styles";
 
 import Hr from "@/components/Hr";
 import { AccomodationInfoProps } from "./AccomodationInfo.types";
+import { formatTime } from "@/utils/time";
 
 const AccomodationInfo: React.FC<AccomodationInfoProps> = ({
+  id,
   name,
-  address,
-  postcode,
   description,
-  checkInTime,
-  checkOutTime,
-  parkingInfo,
-  cookingInfo,
+  postalCode,
+  address,
+  parkingAvailable,
+  cookingAvailable,
+  checkIn,
+  checkOut,
+  categoryId,
 }) => {
   return (
     <>
@@ -39,7 +42,7 @@ const AccomodationInfo: React.FC<AccomodationInfoProps> = ({
         </AddressItem>
         <AddressItem>
           <RiSignpostFill color="var(--color-black)" />
-          <PostcodeText>{postcode}</PostcodeText>
+          <PostcodeText>{postalCode}</PostcodeText>
         </AddressItem>
       </AddressList>
 
@@ -59,18 +62,18 @@ const AccomodationInfo: React.FC<AccomodationInfoProps> = ({
         <UseInfoItem>
           <RiTimeFill color="var(--color-black)" />
           <UseInfoText>
-            체크인: <span>{checkInTime}</span> | 체크아웃: <span>{checkOutTime}</span>
+            체크인: <span>{formatTime(checkIn)}</span> | 체크아웃: <span>{formatTime(checkOut)}</span>
           </UseInfoText>
         </UseInfoItem>
 
         <UseInfoItem>
           <RiParkingBoxFill color="var(--color-black)" />
-          <UseInfoText>{parkingInfo}</UseInfoText>
+          <UseInfoText>{parkingAvailable ? "주차 가능" : "주차 불가능"}</UseInfoText>
         </UseInfoItem>
 
         <UseInfoItem>
           <PiCookingPotFill color="var(--color-black)" />
-          <UseInfoText>{cookingInfo}</UseInfoText>
+          <UseInfoText>{cookingAvailable ? "객실 내 취사 가능" : "취사 불가능"}</UseInfoText>
         </UseInfoItem>
       </UseInfoList>
 

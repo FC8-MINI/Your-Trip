@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CategoryData } from "./Category.constants";
+import { CATEGORY_DATA } from "./Category.constants";
 import { CategoryBorder, CategoryContainer, CategoryItem, CategoryList, CategoryToggleButton } from "./Category.styles";
 import { useReducer } from "react";
 import { CategoryProps } from "./Category.types";
@@ -13,7 +13,7 @@ const Category = ({ category }: CategoryProps) => {
     <CategoryBorder>
       <CategoryContainer>
         <CategoryList $isOpened={isOpened}>
-          {CategoryData.map(({ id, categoryName }) => {
+          {CATEGORY_DATA.map(({ id, categoryName }) => {
             return (
               <Link key={id} href={`/?category=${categoryName}&page=1`} scroll={false}>
                 <CategoryItem $isActive={category === categoryName}>{categoryName}</CategoryItem>

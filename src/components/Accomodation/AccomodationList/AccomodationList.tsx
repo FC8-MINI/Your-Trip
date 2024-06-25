@@ -1,23 +1,18 @@
 import Container from "@/components/Container";
 import AccomodationItem from "../AccomodationItem";
 import { AccomodationListStyled, AccomodationListTitle } from "./AccomodationList.styles";
+import { AccomodationListProps } from "./AccomodationList.types";
 
-const AccomodationList = () => {
+const AccomodationList = ({ category, totalElements, accomodationItems }: AccomodationListProps) => {
   return (
     <Container>
-      <AccomodationListTitle>인기 추천 숙소!</AccomodationListTitle>
+      <AccomodationListTitle>
+        {category ? `검색결과: ${category} (${totalElements}개)` : "인기 추천 숙소!"}
+      </AccomodationListTitle>
       <AccomodationListStyled>
-        <AccomodationItem />
-        <AccomodationItem />
-        <AccomodationItem />
-        <AccomodationItem />
-        <AccomodationItem />
-        <AccomodationItem />
-        <AccomodationItem />
-        <AccomodationItem />
-        <AccomodationItem />
-        <AccomodationItem />
-        <AccomodationItem />
+        {accomodationItems.map((accomodationItem) => {
+          return <AccomodationItem key={accomodationItem.id} accomodationItem={accomodationItem} />;
+        })}
       </AccomodationListStyled>
     </Container>
   );

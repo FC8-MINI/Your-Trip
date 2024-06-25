@@ -12,11 +12,14 @@ import Link from "next/link";
 import { MdOutlineNoMeals } from "react-icons/md";
 import { GiMeal } from "react-icons/gi";
 import { TbParking, TbParkingOff } from "react-icons/tb";
+import { AccomodationItemProps } from "./AccomodationItem.types";
 
-const AccomodationItem = () => {
+const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
+  const { id, categoryId, name, address, parkingAvailable, cookingAvailable } = accomodationItem;
+
   return (
     <li>
-      <Link href="/">
+      <Link href={`/accomodation/${id}`}>
         <AccomodationItemStyled>
           <Image
             src="/images/hero_background_image.jpg"
@@ -26,14 +29,20 @@ const AccomodationItem = () => {
             style={{ borderRadius: "1.6rem" }}
           />
           <Description>
-            <DescriptionCategory>카테고리</DescriptionCategory>
-            <DescriptionTitle>숙소 이름</DescriptionTitle>
-            <DescriptionAddress>위치</DescriptionAddress>
+            <DescriptionCategory>{categoryId}</DescriptionCategory>
+            <DescriptionTitle>{name}</DescriptionTitle>
+            <DescriptionAddress>{address}</DescriptionAddress>
             <DescriptionAvailable>
-              <MdOutlineNoMeals style={{ color: "#f57373" }} />
-              <GiMeal style={{ color: "#A8A8A8" }} />
-              <TbParkingOff style={{ color: "#f57373" }} />
-              <TbParking style={{ color: "#A8A8A8" }} />
+              {parkingAvailable ? (
+                <TbParking style={{ color: "#A8A8A8" }} />
+              ) : (
+                <TbParkingOff style={{ color: "#f57373" }} />
+              )}
+              {cookingAvailable ? (
+                <GiMeal style={{ color: "#A8A8A8" }} />
+              ) : (
+                <MdOutlineNoMeals style={{ color: "#f57373" }} />
+              )}
             </DescriptionAvailable>
             <DescriptionPrice>123,000원</DescriptionPrice>
           </Description>
