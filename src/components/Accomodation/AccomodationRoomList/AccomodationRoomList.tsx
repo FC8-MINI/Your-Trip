@@ -4,7 +4,6 @@ import {
   RoomList,
   RoomItem,
   RoomImageBox,
-  RoomImageStyled,
   RoomInfoBox,
   RoomNameText,
   InfoWhiteBox,
@@ -19,7 +18,7 @@ import {
 } from "./AccomodationRoomList.styles";
 import { RiUser3Fill, RiShoppingCart2Line } from "react-icons/ri";
 import { AccomodationRoomListProps } from "./AccomodationRoomList.types";
-import thumb from "/public/images/thumb.jpg";
+import Image from "next/image";
 
 const AccomodationRoomList: React.FC<AccomodationRoomListProps> = ({ rooms }) => {
   return (
@@ -30,7 +29,7 @@ const AccomodationRoomList: React.FC<AccomodationRoomListProps> = ({ rooms }) =>
         {rooms.map((room) => (
           <RoomItem key={room.id}>
             <RoomImageBox>
-              <RoomImageStyled src={thumb} width={"100%"} height={"100%"} alt="호텔 사진" />
+              <Image src="/images/thumb.jpg" fill alt={room.name} objectFit="cover" />
             </RoomImageBox>
 
             <RoomInfoBox>
