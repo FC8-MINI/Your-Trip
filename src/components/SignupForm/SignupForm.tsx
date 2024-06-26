@@ -10,7 +10,7 @@ import { RiKakaoTalkFill } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 import { type SubmitHandler, useForm } from "react-hook-form";
 
-const initialState = { email: "", password: "", passwordConfirm: "", name: "", nickname: "" };
+const initialState = { email: "", password: "", passwordConfirm: "", name: "" };
 
 const SignupForm = () => {
   const router = useRouter();
@@ -91,15 +91,6 @@ const SignupForm = () => {
             required: "이름을 입력해주세요.",
           })}
           error={errors.name?.message}
-        />
-        <Input
-          label="닉네임"
-          placeholder="사용하실 닉네임을 입력해주세요."
-          autoComplete="off"
-          {...register("nickname", {
-            required: "닉네임을 입력해주세요.",
-          })}
-          error={errors.nickname?.message}
         />
         <Button type="submit" $mode="primary" $size="large">
           회원 가입
