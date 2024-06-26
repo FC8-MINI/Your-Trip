@@ -9,7 +9,8 @@ export const NotFoundContainer = styled(ContainerStyled)`
   text-align: center;
   word-break: keep-all;
 
-  padding-top: 7rem;
+  padding-top: 14rem;
+  padding-bottom: 7rem;
 `;
 
 export const CodeText = styled.p`
