@@ -167,6 +167,12 @@ const GlobalStyle = createGlobalStyle`
     -moz-appearance: none;
     -webkit-appearance: none;
   }
+
+  .category-swiper {
+    .swiper-slide {
+      width: auto;
+    }
+  }
 `;
 
 export default GlobalStyle;
