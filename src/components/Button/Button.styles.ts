@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ButtonStyledProps } from "./Button.types";
+import { device } from "@/styles/media";
 
 const ButtonStyled = styled.button<ButtonStyledProps>`
   color: ${({ $mode }) => ($mode === "primary" ? "var(--color-white)" : "var(--color-black)")};
@@ -24,6 +25,11 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   &:hover {
     background-color: ${({ $mode }) =>
       $mode === "primary" ? "var(--color-primary-hover)" : $mode === "common" ? "var(--color-gray-hover)" : "#fbda00"};
+  }
+
+  @media ${device.mobile} {
+    width: ${({ $size }) => $size === "large" && "100%"};
+    max-width: ${({ $size }) => $size === "large" && "40rem"};
   }
 `;
 

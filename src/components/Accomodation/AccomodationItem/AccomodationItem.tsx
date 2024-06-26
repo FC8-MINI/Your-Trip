@@ -1,5 +1,5 @@
-import Image from "next/image";
 import {
+  AccomodationItemImageBox,
   AccomodationItemStyled,
   Description,
   DescriptionAddress,
@@ -13,6 +13,7 @@ import { MdOutlineNoMeals } from "react-icons/md";
 import { GiMeal } from "react-icons/gi";
 import { TbParking, TbParkingOff } from "react-icons/tb";
 import { AccomodationItemProps } from "./AccomodationItem.types";
+import Image from "next/image";
 
 const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
   const { id, categoryId, name, address, parkingAvailable, cookingAvailable } = accomodationItem;
@@ -21,13 +22,9 @@ const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
     <li>
       <Link href={`/accomodation/${id}`}>
         <AccomodationItemStyled>
-          <Image
-            src="/images/hero_background_image.jpg"
-            alt="숙소 이미지"
-            width={259}
-            height={260}
-            style={{ borderRadius: "1.6rem" }}
-          />
+          <AccomodationItemImageBox>
+            <Image src="/images/hero_background_image.jpg" alt={name} fill objectFit="cover" />
+          </AccomodationItemImageBox>
           <Description>
             <DescriptionCategory>{categoryId}</DescriptionCategory>
             <DescriptionTitle>{name}</DescriptionTitle>

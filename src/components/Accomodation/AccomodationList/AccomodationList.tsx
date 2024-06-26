@@ -6,14 +6,16 @@ import { AccomodationListProps } from "./AccomodationList.types";
 const AccomodationList = ({ category, totalElements, accomodationItems }: AccomodationListProps) => {
   return (
     <Container>
-      <AccomodationListTitle>
-        {category ? `검색결과: ${category} (${totalElements}개)` : "인기 추천 숙소!"}
-      </AccomodationListTitle>
-      <AccomodationListStyled>
-        {accomodationItems.map((accomodationItem) => {
-          return <AccomodationItem key={accomodationItem.id} accomodationItem={accomodationItem} />;
-        })}
-      </AccomodationListStyled>
+      <div>
+        <AccomodationListTitle>
+          {category ? `검색결과: ${category} (${totalElements}개)` : "인기 추천 숙소!"}
+        </AccomodationListTitle>
+        <AccomodationListStyled>
+          {accomodationItems.map((accomodationItem) => {
+            return <AccomodationItem key={accomodationItem.id} accomodationItem={accomodationItem} />;
+          })}
+        </AccomodationListStyled>
+      </div>
     </Container>
   );
 };

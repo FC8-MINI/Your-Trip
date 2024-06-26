@@ -2,16 +2,37 @@ import styled from "styled-components";
 import { DescriptionAvailableProps } from "./AccomodationItem.types";
 
 export const AccomodationItemStyled = styled.div`
-  width: 29.1rem;
-  height: 35rem;
+  width: 100%;
 
   padding: 1.5rem;
 
-  border: 1px solid var(--color-gray);
   border-radius: 1.6rem;
+`;
 
-  &:hover {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+export const AccomodationItemImageBox = styled.div`
+  position: relative;
+
+  width: 100%;
+  height: 0;
+
+  border-radius: 1.6rem;
+  border: 1px solid var(--color-gray);
+
+  padding-bottom: 75%;
+
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover::after {
+    background-color: rgba(0, 0, 0, 0.16);
   }
 `;
 
@@ -20,7 +41,7 @@ export const Description = styled.div`
   flex-direction: column;
   gap: 0.3rem;
 
-  margin-top: 2rem;
+  margin-top: 5%;
 `;
 
 export const DescriptionCategory = styled.p`
@@ -48,5 +69,5 @@ export const DescriptionPrice = styled.p`
   font-size: 1.8rem;
   font-weight: 600;
 
-  margin-top: 3.5rem;
+  margin-top: 10%;
 `;

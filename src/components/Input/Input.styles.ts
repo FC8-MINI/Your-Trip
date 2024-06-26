@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { InputStyledProps, LabelStyledProps } from "./Input.types";
+import { device } from "@/styles/media";
 
 export const InputStyled = styled.input<InputStyledProps>`
   color: var(--color-black);
@@ -30,6 +31,10 @@ export const InputStyled = styled.input<InputStyledProps>`
 
 export const LabelStyled = styled.label<LabelStyledProps>`
   width: ${({ $size }) => ($size === "common" ? "40rem" : "100%")};
+
+  @media ${device.mobile} {
+    width: ${({ $size }) => $size === "common" && "100%;"};
+  }
 `;
 
 export const LabelText = styled.p`

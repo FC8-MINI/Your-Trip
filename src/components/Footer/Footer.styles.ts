@@ -1,3 +1,4 @@
+import { device } from "@/styles/media";
 import styled from "styled-components";
 
 export const FooterStyled = styled.footer`
@@ -14,6 +15,14 @@ export const TeamBox = styled.div`
   gap: 3rem;
 
   padding: 4rem 2rem;
+
+  @media ${device.mobile} {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+
+    text-align: center;
+  }
 `;
 
 export const LogoBox = styled.div`
@@ -27,6 +36,11 @@ export const LogoBox = styled.div`
 export const LogoImageBox = styled.div`
   width: calc(420px * 0.6);
   height: calc(77px * 0.6);
+
+  @media ${device.tablet} {
+    width: calc(420px * 0.5);
+    height: calc(77px * 0.5);
+  }
 `;
 
 export const EndBox = styled.div`
@@ -35,6 +49,14 @@ export const EndBox = styled.div`
   gap: 1rem;
 
   margin-right: 8rem;
+
+  @media ${device.notebook} {
+    margin-right: 5rem;
+  }
+
+  @media ${device.tablet} {
+    margin-right: 2rem;
+  }
 `;
 
 export const EndText = styled.p`
@@ -43,6 +65,16 @@ export const EndText = styled.p`
   font-weight: 500;
 
   margin-bottom: 0.2rem;
+`;
+
+export const MemberBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media ${device.mobile} {
+    flex-direction: row;
+  }
 `;
 
 export const MemberText = styled.p`
