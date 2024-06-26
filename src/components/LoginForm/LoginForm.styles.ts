@@ -11,6 +11,9 @@ export const LoginFormStyled = styled.form`
   justify-content: center;
   align-items: center;
   gap: 1.6rem;
+
+  width: 100%;
+  max-width: 40rem;
 `;
 
 export const OAuthText = styled.span`
