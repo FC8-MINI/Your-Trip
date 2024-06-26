@@ -122,10 +122,13 @@ export const LinkStyled = styled(Link)`
   }
 
   @media ${device.tablet} {
+    top: 0;
+  }
+
+  @media ${device.mobile} {
     position: relative;
     left: 0;
     right: 0;
-    top: 0;
     margin-right: 0;
     margin-top: 1rem;
     text-align: center;
