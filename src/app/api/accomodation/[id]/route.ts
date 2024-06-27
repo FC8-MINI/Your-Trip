@@ -21,7 +21,7 @@ export async function GET(_request: NextRequest, { params }: { params: { id: str
         checkOut: "2024-06-18T00:00:00",
         categoryId: 1,
       },
-      rooms: [
+      accomodationRoomItems: [
         {
           id: 1,
           name: "일반",
