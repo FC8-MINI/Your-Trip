@@ -6,9 +6,9 @@ export const CartTitle = styled.h2`
   margin-bottom: 2rem;
   font-size: 2.4rem;
   font-weight: 700;
-  text-align: center;
 `;
 
 export const StyledContainer = styled(Container)`
   display: flex;
+  flex-direction: column;
 `;

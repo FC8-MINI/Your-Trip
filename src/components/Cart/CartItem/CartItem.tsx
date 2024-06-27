@@ -1,4 +1,4 @@
-import { useFormContext } from "react-hook-form";
+import { useFormContext, Controller } from "react-hook-form";
 import {
   ItemContainer,
   ImageWrapper,
@@ -10,12 +10,13 @@ import {
   ItemInfoBox,
   CheckInOutBox,
   Person,
+  ImageCheckbox,
 } from "./CartItem.styles";
 import { CartItemProps } from "./CartItem.types";
 import CartEdit from "../CartEdit";
 
 const CartItem = ({ item, roomNames, peopleOptions, dateOptions, index }: CartItemProps & { index: number }) => {
-  const { setValue, watch } = useFormContext();
+  const { setValue, watch, control } = useFormContext();
   const isEditOpen = watch(`items[${index}].isEditOpen`, false);
 
   const checkInDate: string = watch(`items[${index}].checkInDate`, item.checkInDate);
@@ -38,6 +39,17 @@ const CartItem = ({ item, roomNames, peopleOptions, dateOptions, index }: CartIt
     <>
       <ItemContainer>
         <ImageWrapper>
+          <Controller
+            name={`items.${index}.selected`}
+            control={control}
+            render={({ field }) => (
+              <ImageCheckbox
+                type="checkbox"
+                checked={field.value || false}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => field.onChange(e.target.checked)}
+              />
+            )}
+          />
           <ItemImage src={item.imageUrl} alt={item.name} />
         </ImageWrapper>
         <ItemInfoBox>
