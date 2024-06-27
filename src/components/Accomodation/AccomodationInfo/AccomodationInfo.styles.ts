@@ -11,8 +11,6 @@ export const TitleBox = styled.div`
   justify-content: space-between;
 `;
 
-export const LikeIconBox = styled.div``;
-
 export const ImageBox = styled.div`
   position: relative;
   overflow: hidden;
