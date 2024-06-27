@@ -1,14 +1,13 @@
-import * as React from "react";
 import AccomodationInfo from "../AccomodationInfo";
 import AccomodationRoomList from "../AccomodationRoomList";
 import Container from "@/components/Container";
 import { AccomodationDetailProps } from "./AccomodationDetail.types";
 
-const AccomodationDetail: React.FC<AccomodationDetailProps> = ({ accomodationDetail, rooms }) => {
+const AccomodationDetail = ({ accomodationDetail, accomodationRoomItems }: AccomodationDetailProps) => {
   return (
     <Container>
       <AccomodationInfo {...accomodationDetail} />
-      <AccomodationRoomList rooms={rooms} />
+      <AccomodationRoomList accomodationRoomItems={accomodationRoomItems} />
     </Container>
   );
 };

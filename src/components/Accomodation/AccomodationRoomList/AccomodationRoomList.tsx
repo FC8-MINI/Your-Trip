@@ -20,35 +20,36 @@ import { RiUser3Fill, RiShoppingCart2Line } from "react-icons/ri";
 import { AccomodationRoomListProps } from "./AccomodationRoomList.types";
 import Image from "next/image";
 
-const AccomodationRoomList: React.FC<AccomodationRoomListProps> = ({ rooms }) => {
+const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListProps) => {
   return (
     <>
       <InfoTitleText>객실 선택</InfoTitleText>
 
       <RoomList>
-        {rooms.map((room) => (
-          <RoomItem key={room.id}>
+        {accomodationRoomItems.map((accomodationRoomItem) => (
+          <RoomItem key={accomodationRoomItem.id}>
             <RoomImageBox>
-              <Image src="/images/thumb.jpg" fill alt={room.name} objectFit="cover" />
+              <Image src="/images/thumb.jpg" fill alt={accomodationRoomItem.name} objectFit="cover" />
             </RoomImageBox>
 
             <RoomInfoBox>
-              <RoomNameText>{room.name}</RoomNameText>
+              <RoomNameText>{accomodationRoomItem.name}</RoomNameText>
 
               <InfoWhiteBox>
                 <div>
                   <RiUser3Fill />
                   <RoomPersonText>
-                    기준 <span>{room.baseGuests}</span>인 / 최대 <span>{room.maxGuests}</span>인
+                    기준 <span>{accomodationRoomItem.baseGuests}</span>인 / 최대{" "}
+                    <span>{accomodationRoomItem.maxGuests}</span>인
                   </RoomPersonText>
                   <RoomPersonExtraText>
-                    인원 추가 시 인당 <span>{room.extraPersonCharge.toLocaleString()}</span>원 비용 추가
+                    인원 추가 시 인당 <span>{accomodationRoomItem.extraPersonCharge.toLocaleString()}</span>원 비용 추가
                   </RoomPersonExtraText>
                 </div>
 
                 <RoomPriceBox>
                   <DayPriceText>1박</DayPriceText>
-                  <TotalPriceText>{room.price.toLocaleString()}원</TotalPriceText>
+                  <TotalPriceText>{accomodationRoomItem.price.toLocaleString()}원</TotalPriceText>
                 </RoomPriceBox>
 
                 <RoomButtonBox>

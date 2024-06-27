@@ -1,4 +1,4 @@
-export interface Room {
+export interface AccomodationRoomList {
   id: number;
   name?: string;
   baseGuests: number;
@@ -8,5 +8,5 @@ export interface Room {
 }
 
 export interface AccomodationRoomListProps {
-  rooms: Room[];
+  accomodationRoomItems: AccomodationRoomList[];
 }

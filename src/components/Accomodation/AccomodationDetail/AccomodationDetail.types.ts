@@ -1,7 +1,7 @@
 import { AccomodationItem } from "../AccomodationItem";
-import { Room } from "../AccomodationRoomList";
+import { AccomodationRoomList } from "../AccomodationRoomList";
 
 export interface AccomodationDetailProps {
   accomodationDetail: AccomodationItem;
-  rooms: Room[];
+  accomodationRoomItems: AccomodationRoomList[];
 }

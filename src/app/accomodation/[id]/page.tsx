@@ -10,7 +10,9 @@ const Accomodation = async ({ params: { id } }: { params: { id: string } }) => {
   });
   const { body: data } = await response.json();
 
-  return <AccomodationDetail accomodationDetail={data.accomodation} rooms={data.rooms} />;
+  return (
+    <AccomodationDetail accomodationDetail={data.accomodation} accomodationRoomItems={data.accomodationRoomItems} />
+  );
 };
 
 export default Accomodation;
