@@ -12,7 +12,7 @@ export interface AccomodationItem {
   cookingAvailable: boolean;
   checkIn: string;
   checkOut: string;
-  categoryId: number;
+  category: string;
 }
 
 export interface AccomodationItemProps {

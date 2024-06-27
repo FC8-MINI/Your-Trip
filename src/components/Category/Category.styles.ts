@@ -1,28 +1,15 @@
 import styled from "styled-components";
-import ButtonStyled from "../Button/Button.styles";
 import { ContainerStyled } from "../Container";
-import { CategoryItemProps, CategoryListProps } from "./Category.types";
-
-export const CategoryBorder = styled.div`
-  box-shadow:
-    rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
-    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-`;
+import { CategoryItemProps } from "./Category.types";
 
 export const CategoryContainer = styled(ContainerStyled)`
   display: flex;
+
+  margin-top: 1rem;
 `;
 
-export const CategoryList = styled.div<CategoryListProps>`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-
-  overflow: hidden;
-
-  ${({ $isOpened }) => !$isOpened && "height: 6.2rem;"}
-
-  padding: 1rem;
+export const CategorySwiperBox = styled.div`
+  width: calc(100% - 14.4rem);
 `;
 
 export const CategoryItem = styled.div<CategoryItemProps>`
@@ -41,11 +28,21 @@ export const CategoryItem = styled.div<CategoryItemProps>`
   }
 `;
 
-export const CategoryToggleButton = styled(ButtonStyled)`
-  flex-shrink: 0;
+export const CategoryNavButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  width: 10.4rem;
+  width: 4.2rem;
   height: 4.2rem;
 
-  margin: 1rem 1rem 0 1rem;
+  color: var(--color-dark);
+
+  border: 1px solid var(--color-gray);
+  border-radius: 50%;
+
+  background-color: var(--color-white);
+
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
 `;
