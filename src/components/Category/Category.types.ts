@@ -1,9 +1,5 @@
 import { CATEGORY_DATA } from "./Category.constants";
 
-export interface CategoryListProps {
-  $isOpened: boolean;
-}
-
 export interface CategoryItemProps {
   $isActive: boolean;
 }
