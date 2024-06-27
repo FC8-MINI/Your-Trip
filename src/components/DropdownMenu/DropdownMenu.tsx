@@ -9,6 +9,7 @@ import {
   HamburgerLine,
 } from "./DropdownMenu.styles";
 import { useEffect, useReducer, useRef } from "react";
+import { DROPDOWN_MENU_LINKS } from "./DropdownMenu.constants";
 
 const DropdownMenu = () => {
   const [isOpened, toggleMenu] = useReducer((v) => !v, false);
@@ -45,24 +46,19 @@ const DropdownMenu = () => {
       </Hamburger>
       {isOpened && (
         <DropdownMenuList ref={dropDownMenuListRef}>
-          <Link href="/reservation">
-            <DropdownMenuListItem
-              onClick={() => {
-                toggleMenu();
-              }}
-            >
-              예약 내역
-            </DropdownMenuListItem>
-          </Link>
-          <Link href="/cart">
-            <DropdownMenuListItem
-              onClick={() => {
-                toggleMenu();
-              }}
-            >
-              장바구니
-            </DropdownMenuListItem>
-          </Link>
+          {DROPDOWN_MENU_LINKS.map(({ name, href }) => {
+            return (
+              <Link key={name} href={href}>
+                <DropdownMenuListItem
+                  onClick={() => {
+                    toggleMenu();
+                  }}
+                >
+                  {name}
+                </DropdownMenuListItem>
+              </Link>
+            );
+          })}
           <DropdownMenuListItem
             onClick={() => {
               toggleMenu();
