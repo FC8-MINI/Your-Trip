@@ -1,7 +1,7 @@
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import CartItem from "../CartItem";
 import { CartListProps } from "./CartList.types";
-import { ListBox, Wrapper, Checkbox, DeleteButton, ControlContainer, InfoContainer } from "./CartList.styles";
+import { ListBox, Wrapper, SelectBox, DeleteButton, ControlContainer, InfoContainer } from "./CartList.styles";
 
 const CartList = ({ roomNames, peopleOptions, dateOptions, items: initialItems }: CartListProps) => {
   const methods = useForm({
@@ -10,7 +10,7 @@ const CartList = ({ roomNames, peopleOptions, dateOptions, items: initialItems }
     },
   });
 
-  const { control, watch, setValue, getValues } = methods;
+  const { watch, setValue, getValues } = methods;
   const items = watch("items");
 
   const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,24 +31,16 @@ const CartList = ({ roomNames, peopleOptions, dateOptions, items: initialItems }
     <ListBox {...methods}>
       <Wrapper>
         <ControlContainer>
-          <Checkbox type="checkbox" onChange={handleSelectAll} />
+          <SelectBox>
+            <input type="checkbox" onChange={handleSelectAll} />
+            <div>전체선택</div>
+          </SelectBox>
           <DeleteButton onClick={handleDelete}>삭제</DeleteButton>
         </ControlContainer>
 
         <div>
           {items.map((item, index) => (
             <InfoContainer key={item.id}>
-              <Controller
-                name={`items.${index}.selected`}
-                control={control}
-                render={({ field }) => (
-                  <Checkbox
-                    type="checkbox"
-                    checked={field.value || false}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => field.onChange(e.target.checked)}
-                  />
-                )}
-              />
               <CartItem
                 item={item}
                 roomNames={roomNames}

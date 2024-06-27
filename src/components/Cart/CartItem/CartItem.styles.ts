@@ -9,16 +9,28 @@ export const ItemContainer = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
+  position: relative;
   overflow: hidden;
   width: 34%;
   height: 28rem;
   border-radius: 1.6rem 0 0 1.6rem;
+  display: flex; /* 추가된 부분 */
+  align-items: flex-start; /* 추가된 부분 */
 `;
 
 export const ItemImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+`;
+
+export const ImageCheckbox = styled.input`
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  z-index: 1;
 `;
 
 export const ItemInfoBox = styled.div`
@@ -86,6 +98,7 @@ export const CheckInOutBox = styled.div`
 
     &:first-child {
       padding-right: 3rem;
+    }
 
     &:first-child::after {
       content: "";

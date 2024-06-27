@@ -17,12 +17,10 @@ export const ControlContainer = styled.div`
   display: flex;
   align-items: center;
   font-size: 1rem;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 6rem;
   border-bottom: 0.1rem solid var(--color-gray);
-  & > input {
-    margin: 0 0 0 1rem;
-  }
+  padding-left: 1rem; /* 추가된 부분 */
 `;
 
 export const InfoContainer = styled.div`
@@ -30,14 +28,22 @@ export const InfoContainer = styled.div`
   justify-content: center;
 `;
 
-export const Checkbox = styled.input`
-  display: inline-block;
-  align-item: center;
-  margin: 0 0 1rem 1rem;
+export const SelectBox = styled.div`
+  display: flex;
+  align-items: center;
+  & > input {
+    margin: 0;
+  }
+  & > div {
+    margin-left: 0.8rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
 `;
 
 export const DeleteButton = styled.button`
   padding: 0.8rem 3rem;
+  margin-left: auto; /* 수정된 부분 */
   margin-right: 2.6rem;
   border: none;
   border-radius: 0.8rem;
