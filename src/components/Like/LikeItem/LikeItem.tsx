@@ -1,15 +1,36 @@
-import { LikeItemTitle } from "./LikeItem.styles";
+import Image from "next/image";
+import {
+  LikeItemLayout,
+  ImageBox,
+  InfoBox,
+  InfoName,
+  InfoPostcodeText,
+  InfoDescText,
+  InfoAddressText,
+} from "./LikeItem.styles";
+import { LikeItemProps } from "./LikeItem.types";
+import { RiMapPin2Fill, RiSignpostFill } from "react-icons/ri";
 
-const LikeItem = () => {
+const LikeItem = ({ id, name, description, postalCode, address }: LikeItemProps) => {
   return (
-    <li>
-      <LikeItemTitle>숙소 이름</LikeItemTitle>
-      <div>
-        <span>우편번호</span>
-      </div>
-      <p>숙소 설명</p>
-      <address>숙소 주소</address>
-    </li>
+    <LikeItemLayout>
+      <ImageBox>
+        <Image src="/images/thumb.jpg" fill objectFit="cover" alt={name} />
+      </ImageBox>
+
+      <InfoBox>
+        <InfoName>{name}</InfoName>
+        <InfoDescText>{description}</InfoDescText>
+        <div>
+          <RiSignpostFill />
+          <InfoPostcodeText>{postalCode}</InfoPostcodeText>
+        </div>
+        <div>
+          <RiMapPin2Fill />
+          <InfoAddressText>{address}</InfoAddressText>
+        </div>
+      </InfoBox>
+    </LikeItemLayout>
   );
 };
 
