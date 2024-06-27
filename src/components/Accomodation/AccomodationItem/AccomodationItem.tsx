@@ -22,8 +22,8 @@ const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
 
   return (
     <li>
-      <Link href={`/accomodation/${id}`}>
-        <AccomodationItemBox>
+      <AccomodationItemBox>
+        <Link href={`/accomodation/${id}`}>
           <AccomodationItemStyled>
             <AccomodationItemImageBox className="accomodation-description__image">
               <Image src="/images/hero_background_image.jpg" alt={name} fill objectFit="cover" />
@@ -49,8 +49,8 @@ const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
               </DescriptionDetail>
             </Description>
           </AccomodationItemStyled>
-        </AccomodationItemBox>
-      </Link>
+        </Link>
+      </AccomodationItemBox>
     </li>
   );
 };
