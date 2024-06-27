@@ -1,14 +1,19 @@
 import styled from "styled-components";
 import { ContainerStyled } from "../Container";
-import { CategoryItemProps } from "./Category.types";
+import { CategoryItemProps, CategoryNavButtonProps } from "./Category.types";
 
 export const CategoryContainer = styled(ContainerStyled)`
+  position: relative;
+
   display: flex;
 
   margin-top: 1rem;
 `;
 
 export const CategorySwiperBox = styled.div`
+  position: relative;
+  z-index: 10;
+
   width: calc(100% - 14.4rem);
 `;
 
@@ -23,12 +28,34 @@ export const CategoryItem = styled.div<CategoryItemProps>`
 
   background-color: ${({ $isActive }) => ($isActive ? "var(--color-primary)" : "var(--color-white)")};
 
+  cursor: pointer;
+
   &:hover {
     background-color: ${({ $isActive }) => ($isActive ? "var(--color-primary)" : "var(--color-gray-hover)")};
   }
 `;
 
-export const CategoryNavButton = styled.button`
+export const CategorySwiperGradient = styled.div`
+  position: absolute;
+  z-index: 20;
+
+  width: 2rem;
+  height: 100%;
+`;
+
+export const CategorySwiperLeftGradient = styled(CategorySwiperGradient)`
+  left: 7.2rem;
+
+  background-image: linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
+`;
+
+export const CategorySwiperRightGradient = styled(CategorySwiperGradient)`
+  right: 7.2rem;
+
+  background-image: linear-gradient(90deg, hsla(0, 0%, 100%, 0), #fff);
+`;
+
+export const CategoryNavButton = styled.button<CategoryNavButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,8 +68,14 @@ export const CategoryNavButton = styled.button`
   border: 1px solid var(--color-gray);
   border-radius: 50%;
 
-  background-color: var(--color-white);
+  background-color: ${({ $disabled }) => ($disabled ? "var(--color-gray-hover)" : "var(--color-white)")};
 
   margin-left: 1.5rem;
   margin-right: 1.5rem;
+
+  cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
+
+  &:hover {
+    box-shadow: ${({ $disabled }) => ($disabled ? "none" : "rgba(0, 0, 0, 0.3) 0 0.2rem 0.8rem 0")};
+  }
 `;
