@@ -1,4 +1,3 @@
-import * as React from "react";
 import {
   ReservationHistoryList,
   ReservationHistoryItem,
@@ -14,7 +13,7 @@ import {
 import { ReservationListProps } from "./ReservationList.types";
 import Image from "next/image";
 
-const ReservationList: React.FC<ReservationListProps> = ({ reservations }) => {
+const ReservationList = ({ reservations }: ReservationListProps) => {
   return (
     <ReservationHistoryList>
       {reservations.map((reservation) => (

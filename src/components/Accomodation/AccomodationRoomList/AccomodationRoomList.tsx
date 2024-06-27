@@ -1,5 +1,5 @@
 import * as React from "react";
-import { InfoTitleText } from "../AccomodationDetail/AccomodationDetail.styles";
+import { InfoTitle } from "../AccomodationDetail/AccomodationDetail.styles";
 import {
   RoomList,
   RoomItem,
@@ -23,7 +23,7 @@ import Image from "next/image";
 const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListProps) => {
   return (
     <>
-      <InfoTitleText>객실 선택</InfoTitleText>
+      <InfoTitle>객실 선택</InfoTitle>
 
       <RoomList>
         {accomodationRoomItems.map((accomodationRoomItem) => (

@@ -1,4 +1,3 @@
-import * as React from "react";
 import Container from "../Container";
 import { TitleText } from "./Reservation.styles";
 import thumb from "/public/images/thumb.jpg";
@@ -67,7 +66,7 @@ export const reservations: ReservationProps[] = [
   },
 ];
 
-const Reservation: React.FC = () => {
+const Reservation = () => {
   return (
     <Container>
       <TitleText>예약 내역</TitleText>
