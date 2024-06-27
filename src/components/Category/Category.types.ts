@@ -4,6 +4,10 @@ export interface CategoryItemProps {
   $isActive: boolean;
 }
 
+export interface CategoryNavButtonProps {
+  $disabled: boolean;
+}
+
 export type CategoryType = (typeof CATEGORY_DATA)[number]["categoryName"];
 
 export interface CategoryProps {
