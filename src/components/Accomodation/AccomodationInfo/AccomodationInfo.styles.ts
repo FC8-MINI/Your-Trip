@@ -5,6 +5,14 @@ export const AccomodationInfoStyled = styled.div`
   padding-top: 4rem;
 `;
 
+export const TitleBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const LikeIconBox = styled.div``;
+
 export const ImageBox = styled.div`
   position: relative;
   overflow: hidden;
@@ -15,7 +23,7 @@ export const ImageBox = styled.div`
   border-radius: 1.2rem;
 `;
 
-export const NameText = styled.strong`
+export const AccomodationName = styled.h2`
   display: block;
   margin-bottom: 1.6rem;
   font-size: 3.2rem;

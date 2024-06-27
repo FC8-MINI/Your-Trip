@@ -3,7 +3,8 @@ import { PiCookingPotFill } from "react-icons/pi";
 import {
   AccomodationInfoStyled,
   ImageBox,
-  NameText,
+  TitleBox,
+  AccomodationName,
   AddressList,
   AddressItem,
   AddressText,
@@ -15,14 +16,15 @@ import {
   UseInfoText,
   RiDoubleQuotesRStyled,
 } from "./AccomodationInfo.styles";
-import { InfoTitleText } from "../AccomodationDetail/AccomodationDetail.styles";
+import { InfoTitle } from "../AccomodationDetail/AccomodationDetail.styles";
 import Hr from "@/components/Hr";
 import { AccomodationInfoProps } from "./AccomodationInfo.types";
 import { formatTime } from "@/utils/time";
 import Image from "next/image";
+import SocialAction from "@/components/SocialAction";
+import { useState } from "react";
 
-const AccomodationInfo: React.FC<AccomodationInfoProps> = ({
-  id,
+const AccomodationInfo = ({
   name,
   description,
   postalCode,
@@ -31,15 +33,23 @@ const AccomodationInfo: React.FC<AccomodationInfoProps> = ({
   cookingAvailable,
   checkIn,
   checkOut,
-  categoryId,
-}) => {
+}: AccomodationInfoProps) => {
+  const [isLike, setIsLike] = useState(false);
+
+  const handleToggleLike = () => {
+    setIsLike(!isLike);
+  };
+
   return (
     <AccomodationInfoStyled>
       <ImageBox>
         <Image src="/images/thumb.jpg" fill objectFit="cover" alt={name} />
       </ImageBox>
 
-      <NameText>{name}</NameText>
+      <TitleBox>
+        <AccomodationName>{name}</AccomodationName>
+        <SocialAction isLike={isLike} handleToggleLike={handleToggleLike} />
+      </TitleBox>
 
       <AddressList>
         <AddressItem>
@@ -54,7 +64,7 @@ const AccomodationInfo: React.FC<AccomodationInfoProps> = ({
 
       <Hr $gap={true} />
 
-      <InfoTitleText>숙소 소개</InfoTitleText>
+      <InfoTitle>숙소 소개</InfoTitle>
       <DescBox>
         <RiDoubleQuotesL color="var(--color-gray)" fontSize={28} />
         <DescText>{description}</DescText>
@@ -63,7 +73,7 @@ const AccomodationInfo: React.FC<AccomodationInfoProps> = ({
 
       <Hr $gap={true} />
 
-      <InfoTitleText>숙소 이용 정보</InfoTitleText>
+      <InfoTitle>숙소 이용 정보</InfoTitle>
       <UseInfoList>
         <UseInfoItem>
           <RiTimeFill color="var(--color-black)" />
