@@ -8,7 +8,7 @@ export interface CategoryNavButtonProps {
   $disabled: boolean;
 }
 
-export type CategoryType = (typeof CATEGORY_DATA)[number]["categoryName"];
+export type CategoryType = (typeof CATEGORY_DATA)[number];
 
 export interface CategoryProps {
   category?: CategoryType;

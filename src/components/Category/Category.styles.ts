@@ -28,6 +28,8 @@ export const CategoryItem = styled.div<CategoryItemProps>`
 
   background-color: ${({ $isActive }) => ($isActive ? "var(--color-primary)" : "var(--color-white)")};
 
+  cursor: pointer;
+
   &:hover {
     background-color: ${({ $isActive }) => ($isActive ? "var(--color-primary)" : "var(--color-gray-hover)")};
   }

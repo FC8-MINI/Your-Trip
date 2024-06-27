@@ -15,6 +15,7 @@ import { useRef, useState } from "react";
 import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
+import { useRouter } from "next/navigation";
 
 const Category = ({ category }: CategoryProps) => {
   const [swiper, setSwiper] = useState<SwiperClass>();
@@ -22,6 +23,7 @@ const Category = ({ category }: CategoryProps) => {
   const [isEnd, setIsEnd] = useState(false);
   const prevBtnRef = useRef<HTMLButtonElement>();
   const nextBtnRef = useRef<HTMLButtonElement>();
+  const router = useRouter();
 
   return (
     <div>
@@ -60,14 +62,40 @@ const Category = ({ category }: CategoryProps) => {
               }
             }}
           >
-            {CATEGORY_DATA.map(({ id, categoryName }) => {
-              return (
-                <SwiperSlide key={id}>
-                  <Link key={id} href={`/?category=${categoryName}&page=1`} scroll={false}>
-                    <CategoryItem $isActive={category === categoryName}>{categoryName}</CategoryItem>
-                  </Link>
-                </SwiperSlide>
-              );
+            {CATEGORY_DATA.map((categoryName) => {
+              if (categoryName !== "전체") {
+                return (
+                  <SwiperSlide key={categoryName}>
+                    <CategoryItem
+                      $isActive={category === categoryName}
+                      onClick={() => {
+                        if (category === categoryName) {
+                          router.push("/", { scroll: false });
+                        } else {
+                          router.push(`/?category=${categoryName}&page=1`, { scroll: false });
+                        }
+                      }}
+                    >
+                      {categoryName}
+                    </CategoryItem>
+                  </SwiperSlide>
+                );
+              } else {
+                return (
+                  <SwiperSlide key={categoryName}>
+                    <CategoryItem
+                      $isActive={!category}
+                      onClick={() => {
+                        if (category !== "전체") {
+                          router.push("/", { scroll: false });
+                        }
+                      }}
+                    >
+                      {categoryName}
+                    </CategoryItem>
+                  </SwiperSlide>
+                );
+              }
             })}
           </Swiper>
         </CategorySwiperBox>
