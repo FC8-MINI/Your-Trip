@@ -22,7 +22,6 @@ import { formatTime } from "@/utils/time";
 import Image from "next/image";
 
 const AccomodationInfo: React.FC<AccomodationInfoProps> = ({
-  id,
   name,
   description,
   postalCode,
@@ -31,7 +30,6 @@ const AccomodationInfo: React.FC<AccomodationInfoProps> = ({
   cookingAvailable,
   checkIn,
   checkOut,
-  categoryId,
 }) => {
   return (
     <AccomodationInfoStyled>
