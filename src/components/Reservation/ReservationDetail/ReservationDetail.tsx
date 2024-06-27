@@ -10,15 +10,19 @@ import {
   InfoDd,
 } from "@/components/Reservation/ReservationDetail";
 import { reservations } from "@/components/Reservation/Reservation";
-import { notFound } from "next/navigation";
 import Image from "next/image";
 
 const ReservationDetail = ({ params }: { params: { id: string } }) => {
   const { id } = params;
   const reservation = reservations.find((res) => res.id === parseInt(id, 10));
+  const NoReservation = () => (
+    <Container>
+      <TitleText>예약 내역이 없습니다</TitleText>
+    </Container>
+  );
 
   if (!reservation) {
-    notFound();
+    return <NoReservation />;
   }
 
   return (
