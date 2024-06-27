@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { CATEGORY_DATA } from "./Category.constants";
 import {
   CategoryContainer,
