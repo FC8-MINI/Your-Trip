@@ -152,7 +152,7 @@ const GlobalStyle = createGlobalStyle`
   input,
   select,
   textarea {
-    font-size: 1.6rem;
+    font-size: inherit;
     background-color: transparent;
     border: 0;
     border-radius: 0.6rem;
