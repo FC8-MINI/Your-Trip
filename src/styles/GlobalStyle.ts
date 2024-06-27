@@ -1,6 +1,7 @@
 "use client";
 
 import { createGlobalStyle } from "styled-components";
+import { device } from "./media";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -88,18 +89,24 @@ const GlobalStyle = createGlobalStyle`
     --color-primary: #3b82f6;
     --color-primary-hover: #3269c3;
     --color-gray: #e0e2e7;
+    --color-gray-dark: #A8A8A8;
+    --color-gray-darker: #707070;
     --color-gray-hover: #f7f8fa;
     --color-black: #333;
     --color-white: #fff;
     --color-error: #ee5151;
 
     font-size: 10px;
+
+    @media ${device.tablet} {
+      font-size: 9px;
+    }
   }
 
   * {
       margin: 0;
       padding: 0;
-      font-family: "Pretendard", "Helvetica", "Arial", sans-serif;
+      font-family: "Pretendard", "Arial", sans-serif;
       box-sizing: border-box;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -107,7 +114,7 @@ const GlobalStyle = createGlobalStyle`
   
   body {
     min-width: 32rem;
-    font-family: "Pretendard", "Helvetica", "Arial", sans-serif;
+    font-family: "Pretendard", "Arial", sans-serif;
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 1.25;
@@ -159,6 +166,12 @@ const GlobalStyle = createGlobalStyle`
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
+  }
+
+  .category-swiper {
+    .swiper-slide {
+      width: auto;
+    }
   }
 `;
 

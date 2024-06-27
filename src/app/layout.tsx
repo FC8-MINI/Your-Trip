@@ -1,6 +1,10 @@
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import Loading from "@/components/Loading";
 import StyledComponentsRegistry from "@/lib/StyledComponentsRegistry";
 import GlobalStyle from "@/styles/GlobalStyle";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: {
@@ -20,7 +24,11 @@ export default function RootLayout({
       <body>
         <StyledComponentsRegistry>
           <GlobalStyle />
-          {children}
+          <Header />
+          <main style={{ marginTop: "7.5rem" }}>
+            <Suspense fallback={<Loading />}>{children}</Suspense>
+          </main>
+          <Footer />
         </StyledComponentsRegistry>
       </body>
     </html>
