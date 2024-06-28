@@ -1,5 +1,7 @@
+// import { device } from "@/styles/media";
 import styled from "styled-components";
 import { FormProvider as OriginalFormProvider } from "react-hook-form";
+import Button from "@/components/Button";
 
 export const ListBox = styled(OriginalFormProvider)`
   flex-direction: column;
@@ -19,11 +21,11 @@ export const ControlContainer = styled.div`
   justify-content: flex-start;
   height: 6rem;
   border-bottom: 0.1rem solid var(--color-gray);
-  padding-left: 1rem; /* 추가된 부분 */
+  padding-left: 1rem;
+  margin-bottom: 2rem;
 `;
 
 export const InfoContainer = styled.div`
-  padding: 1.5rem 0 0 0;
   justify-content: center;
 `;
 
@@ -40,7 +42,14 @@ export const SelectBox = styled.div`
   }
 `;
 
-export const DeleteButton = styled.button`
+export const DeleteButton = styled(Button).attrs({ $mode: "common" })`
+  color: var(--color-black);
+  background-color: var(--color-white);
+
+  &:hover {
+    background-color: var(--color-gray-hover);
+  }
+
   padding: 0.8rem 3rem;
   margin-left: auto;
   margin-right: 2.6rem;
