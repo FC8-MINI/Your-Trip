@@ -3,7 +3,7 @@ import AccomodationItem from "../AccomodationItem";
 import { AccomodationListStyled, AccomodationListTitle } from "./AccomodationList.styles";
 import { AccomodationListProps } from "./AccomodationList.types";
 
-const AccomodationList = ({ category, totalElements, accomodationItems }: AccomodationListProps) => {
+const AccomodationList = ({ category, accomodationItems }: AccomodationListProps) => {
   return (
     <Container>
       <div>

@@ -59,5 +59,13 @@ export async function GET() {
     },
   };
 
+  // const data = {
+  //   result: {
+  //     resultCode: "NOT_FOUND",
+  //     resultMessage: "error",
+  //     resultDescription: "요청한 리소스를 찾을 수 없습니다.",
+  //   },
+  // };
+
   return NextResponse.json(data);
 }

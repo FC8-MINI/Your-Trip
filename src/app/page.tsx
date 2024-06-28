@@ -1,3 +1,4 @@
+import AccomodationEmpty from "@/components/Accomodation/AccomodationEmpty";
 import AccomodationList from "@/components/Accomodation/AccomodationList";
 import Category from "@/components/Category";
 import { type CategoryType } from "@/components/Category/Category.types";
@@ -19,14 +20,20 @@ export default async function Home({ searchParams: { category, page } }: HomePro
       "Content-Type": "application/json",
     },
   });
-  const { body: data } = await response.json();
+  const { result, body } = await response.json();
 
   return (
     <>
       <HeroSection />
-      <Category category={category} />
-      <AccomodationList category={category} totalElements={data.totalElements} accomodationItems={data.content} />
-      <Pagination maxPage={data.totalPages} nowPage={Number(page) || 1} category={category} />
+      {result.resultCode === "OK" ? (
+        <>
+          <Category category={category} />
+          <AccomodationList category={category} accomodationItems={body.content} />
+          <Pagination maxPage={body.totalPages} nowPage={Number(page) || 1} category={category} />
+        </>
+      ) : (
+        <AccomodationEmpty />
+      )}
     </>
   );
 }
