@@ -85,6 +85,7 @@ export const DescriptionAddress = styled.p`
 
 export const DescriptionAvailable = styled.div<DescriptionAvailableProps>`
   display: flex;
+  gap: 0.3rem;
 
   color: ${({ $available }) => ($available ? "var(--color-gray)" : "#f57373")};
 `;
