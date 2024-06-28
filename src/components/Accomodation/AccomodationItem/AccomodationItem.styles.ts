@@ -76,6 +76,11 @@ export const DescriptionAddress = styled.p`
   text-overflow: ellipsis;
 
   overflow: hidden;
+
+  > svg {
+    transform: translateY(0.2rem);
+    margin-right: 0.1rem;
+  }
 `;
 
 export const DescriptionAvailable = styled.div<DescriptionAvailableProps>`
