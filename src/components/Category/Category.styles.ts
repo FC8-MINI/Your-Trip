@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { ContainerStyled } from "../Container";
 import { CategoryItemProps, CategoryNavButtonProps } from "./Category.types";
+import { device } from "@/styles/media";
 
 export const CategoryContainer = styled(ContainerStyled)`
   position: relative;
@@ -47,12 +48,36 @@ export const CategorySwiperLeftGradient = styled(CategorySwiperGradient)`
   left: 7.2rem;
 
   background-image: linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
+
+  @media ${device.desktop} {
+    left: 11.2rem;
+  }
+
+  @media ${device.tablet} {
+    left: 10.2rem;
+  }
+
+  @media ${device.mobile} {
+    left: 9.2rem;
+  }
 `;
 
 export const CategorySwiperRightGradient = styled(CategorySwiperGradient)`
   right: 7.2rem;
 
   background-image: linear-gradient(90deg, hsla(0, 0%, 100%, 0), #fff);
+
+  @media ${device.desktop} {
+    right: 11.2rem;
+  }
+
+  @media ${device.tablet} {
+    right: 10.2rem;
+  }
+
+  @media ${device.mobile} {
+    right: 9.2rem;
+  }
 `;
 
 export const CategoryNavButton = styled.button<CategoryNavButtonProps>`

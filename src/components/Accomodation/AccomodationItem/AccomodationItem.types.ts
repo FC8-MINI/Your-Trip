@@ -13,6 +13,8 @@ export interface AccomodationItem {
   checkIn: string;
   checkOut: string;
   category: string;
+  minPrice: number;
+  reservationAble: boolean;
 }
 
 export interface AccomodationItemProps {

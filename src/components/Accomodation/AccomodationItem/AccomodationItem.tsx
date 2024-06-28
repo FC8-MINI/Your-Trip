@@ -16,9 +16,10 @@ import { GiMeal } from "react-icons/gi";
 import { TbParking, TbParkingOff } from "react-icons/tb";
 import { AccomodationItemProps } from "./AccomodationItem.types";
 import Image from "next/image";
+import { RiMapPin2Fill } from "react-icons/ri";
 
 const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
-  const { id, name, address, parkingAvailable, cookingAvailable, description } = accomodationItem;
+  const { id, name, address, parkingAvailable, cookingAvailable, description, minPrice } = accomodationItem;
 
   return (
     <li>
@@ -30,20 +31,18 @@ const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
             </AccomodationItemImageBox>
             <Description>
               <DescriptionTitle>{name}</DescriptionTitle>
-              <DescriptionAddress>{address}</DescriptionAddress>
+              <DescriptionAddress>
+                <RiMapPin2Fill />
+                {address}
+              </DescriptionAddress>
               <DescriptionAvailable>
-                {parkingAvailable ? (
-                  <TbParking style={{ color: "#A8A8A8" }} />
-                ) : (
-                  <TbParkingOff style={{ color: "#f57373" }} />
-                )}
-                {cookingAvailable ? (
-                  <GiMeal style={{ color: "#A8A8A8" }} />
-                ) : (
-                  <MdOutlineNoMeals style={{ color: "#f57373" }} />
-                )}
+                {parkingAvailable ? <TbParking color="#A8A8A8" /> : <TbParkingOff color="#f57373" />}
+                {cookingAvailable ? <GiMeal color="#A8A8A8" /> : <MdOutlineNoMeals color="#f57373" />}
               </DescriptionAvailable>
-              <DescriptionPrice>123,000원</DescriptionPrice>
+              <DescriptionPrice>
+                {minPrice.toLocaleString()}
+                <span>원</span>
+              </DescriptionPrice>
               <DescriptionDetail className="accomodation-description__detail">
                 <DescriptionDetailText>{description}</DescriptionDetailText>
               </DescriptionDetail>

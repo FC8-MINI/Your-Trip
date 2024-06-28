@@ -62,6 +62,7 @@ export const Description = styled.div`
 export const DescriptionTitle = styled.h3`
   font-size: 1.6rem;
   font-weight: 600;
+  line-height: 2rem;
   white-space: nowrap;
   text-overflow: ellipsis;
 
@@ -75,10 +76,16 @@ export const DescriptionAddress = styled.p`
   text-overflow: ellipsis;
 
   overflow: hidden;
+
+  > svg {
+    transform: translateY(0.2rem);
+    margin-right: 0.1rem;
+  }
 `;
 
 export const DescriptionAvailable = styled.div<DescriptionAvailableProps>`
   display: flex;
+  gap: 0.3rem;
 
   color: ${({ $available }) => ($available ? "var(--color-gray)" : "#f57373")};
 `;
@@ -88,6 +95,13 @@ export const DescriptionPrice = styled.p`
   font-weight: 600;
 
   margin-top: 7%;
+
+  > span {
+    font-size: 1.5rem;
+    font-weight: 400;
+
+    margin-left: 0.2rem;
+  }
 `;
 
 export const DescriptionDetail = styled.div`
