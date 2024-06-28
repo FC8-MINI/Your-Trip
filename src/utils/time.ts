@@ -30,7 +30,6 @@ export const getCurrentKSTDateTimeLocal = (): string => {
   const day = String(kstTime.getUTCDate()).padStart(2, "0");
   const hours = String(kstTime.getUTCHours()).padStart(2, "0");
   const minutes = String(kstTime.getUTCMinutes()).padStart(2, "0");
-  const seconds = String(kstTime.getUTCSeconds()).padStart(2, "0");
 
   return `${year}-${month}-${day}T${hours}:${minutes}`;
 };
