@@ -7,9 +7,7 @@ const AccomodationList = ({ category, totalElements, accomodationItems }: Accomo
   return (
     <Container>
       <div>
-        <AccomodationListTitle>
-          {category ? `검색결과: ${category} (${totalElements}개)` : "인기 추천 숙소!"}
-        </AccomodationListTitle>
+        <AccomodationListTitle>{category ? `${category} 지역 추천 숙소!` : "인기 추천 숙소!"}</AccomodationListTitle>
         <AccomodationListStyled>
           {accomodationItems.map((accomodationItem) => {
             return <AccomodationItem key={accomodationItem.id} accomodationItem={accomodationItem} />;

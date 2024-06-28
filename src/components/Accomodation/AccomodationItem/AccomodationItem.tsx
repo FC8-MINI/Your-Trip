@@ -18,7 +18,7 @@ import { AccomodationItemProps } from "./AccomodationItem.types";
 import Image from "next/image";
 
 const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
-  const { id, name, address, parkingAvailable, cookingAvailable, description } = accomodationItem;
+  const { id, name, address, parkingAvailable, cookingAvailable, description, minPrice } = accomodationItem;
 
   return (
     <li>
@@ -43,7 +43,10 @@ const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
                   <MdOutlineNoMeals style={{ color: "#f57373" }} />
                 )}
               </DescriptionAvailable>
-              <DescriptionPrice>123,000원</DescriptionPrice>
+              <DescriptionPrice>
+                {minPrice.toLocaleString()}
+                <span>원</span>
+              </DescriptionPrice>
               <DescriptionDetail className="accomodation-description__detail">
                 <DescriptionDetailText>{description}</DescriptionDetailText>
               </DescriptionDetail>
