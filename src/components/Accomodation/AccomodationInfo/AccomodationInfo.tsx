@@ -23,6 +23,7 @@ import { formatTime } from "@/utils/time";
 import Image from "next/image";
 import SocialAction from "@/components/SocialAction";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const AccomodationInfo = ({
   name,
@@ -38,6 +39,20 @@ const AccomodationInfo = ({
 
   const handleToggleLike = () => {
     setIsLike(!isLike);
+
+    Swal.fire({
+      customClass: {
+        confirmButton: "btn btn-primary",
+      },
+      icon: "success",
+      timerProgressBar: true,
+      title: "찜 목록에 추가했습니다.",
+      confirmButtonText: "찜 목록보기",
+      timer: 2500,
+      preConfirm: () => {
+        window.location.href = "/cart";
+      },
+    });
   };
 
   return (

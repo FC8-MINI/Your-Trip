@@ -1,4 +1,3 @@
-import * as React from "react";
 import { InfoTitle } from "../AccomodationDetail/AccomodationDetail.styles";
 import {
   RoomList,
@@ -19,8 +18,25 @@ import {
 import { RiUser3Fill, RiShoppingCart2Line } from "react-icons/ri";
 import { AccomodationRoomListProps } from "./AccomodationRoomList.types";
 import Image from "next/image";
+import Swal from "sweetalert2";
 
 const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListProps) => {
+  const handleCartButtonClick = () => {
+    Swal.fire({
+      customClass: {
+        confirmButton: "btn btn-primary",
+      },
+      icon: "success",
+      timerProgressBar: true,
+      title: "장바구니에 상품이 담겼습니다.",
+      confirmButtonText: "장바구니 보기",
+      timer: 2500,
+      preConfirm: () => {
+        window.location.href = "/cart";
+      },
+    });
+  };
+
   return (
     <>
       <InfoTitle>객실 선택</InfoTitle>
@@ -53,7 +69,7 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
                 </RoomPriceBox>
 
                 <RoomButtonBox>
-                  <CartButton type="button">
+                  <CartButton type="button" onClick={handleCartButtonClick}>
                     <RiShoppingCart2Line />
                   </CartButton>
                   <LinkStyled href="./">객실 예약</LinkStyled>
