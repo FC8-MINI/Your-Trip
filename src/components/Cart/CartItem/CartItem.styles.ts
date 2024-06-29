@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 export const ItemContainer = styled.div`
   display: flex;
@@ -73,7 +74,7 @@ export const TotalPriceText = styled.p`
   }
 `;
 
-export const EditButton = styled.button`
+export const ReservationButton = styled(Link)`
   position: absolute;
   right: 2.6rem;
   top: 2.6rem;

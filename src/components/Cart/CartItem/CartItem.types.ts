@@ -3,20 +3,15 @@ export interface Item {
   imageUrl: string;
   name: string;
   address: string;
-  checkInDate: string;
-  checkInTime: string;
-  checkOutDate: string;
-  checkOutTime: string;
+  checkIn: string;
+  checkOut: string;
   roomName: string;
-  people: number;
+  peopleNumber: number;
   price: number;
-  selected?: boolean;
-  isEditOpen?: boolean;
+  roomId: number;
 }
 
 export interface CartItemProps {
   item: Item;
   roomNames: string[];
-  peopleOptions: { value: number; label: string }[];
-  dateOptions: { value: string; label: string }[];
 }
