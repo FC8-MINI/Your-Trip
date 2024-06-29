@@ -24,7 +24,8 @@ const SignupForm = () => {
 
   const onSubmit: SubmitHandler<typeof initialState> = (data) => {
     try {
-      router.push("/");
+      console.log(data);
+      // router.push("/");
     } catch (error) {
       console.error("실패!!");
     }
@@ -51,7 +52,7 @@ const SignupForm = () => {
         <Input
           type="password"
           label="비밀번호"
-          placeholder="비밀번호를 입력해주세요."
+          placeholder="비밀번호를 입력해주세요. (8 ~ 16자)"
           autoComplete="off"
           {...register("password", {
             required: "비밀번호를 입력해주세요.",
