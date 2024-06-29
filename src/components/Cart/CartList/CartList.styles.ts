@@ -16,7 +16,6 @@ export const Wrapper = styled.div`
 export const ControlContainer = styled.div`
   display: flex;
   align-items: center;
-  font-size: 1rem;
   justify-content: flex-start;
   height: 6rem;
   border-bottom: 0.1rem solid var(--color-gray);
@@ -36,23 +35,23 @@ export const SelectBox = styled.div`
   }
   & > div {
     margin-left: 0.8rem;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 600;
   }
 `;
 
 export const DeleteButton = styled.button`
   padding: 0.8rem 3rem;
-  margin-left: auto; /* 수정된 부분 */
+  margin-left: auto;
   margin-right: 2.6rem;
-  border: none;
+  border: 0.1rem solid var(--color-gray);
   border-radius: 0.8rem;
-  color: var(--color-white);
-  background-color: var(--color-gray-dark);
+  color: var(--color-black);
+  background-color: var(--color-white);
   transition: background-color 0.2s;
   cursor: pointer;
 
   &:hover {
-    background-color: var(--color-gray-darker);
+    background-color: var(--color-gray-hover);
   }
 `;

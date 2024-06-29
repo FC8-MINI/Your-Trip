@@ -78,7 +78,7 @@ const CartItem = ({ item, roomNames, peopleOptions, dateOptions, index }: CartIt
             결제금액
             <span>{item.price.toLocaleString()}원</span>
           </TotalPriceText>
-          <EditButton onClick={() => setValue(`items[${index}].isEditOpen`, true)}>수정</EditButton>
+          <EditButton onClick={() => setValue(`items[${index}].isEditOpen`, true)}>예약</EditButton>
         </ItemInfoBox>
       </ItemContainer>
       {isEditOpen && (
