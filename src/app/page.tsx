@@ -1,3 +1,4 @@
+import { getAccommodationList } from "@/apis/getAccommodationList";
 import AccomodationEmpty from "@/components/Accomodation/AccomodationEmpty";
 import AccomodationList from "@/components/Accomodation/AccomodationList";
 import Category from "@/components/Category";
@@ -9,30 +10,25 @@ interface HomeProps {
   searchParams: {
     category?: CategoryType;
     page?: string;
+    checkIn?: string;
+    checkOut?: string;
   };
 }
 
-export default async function Home({ searchParams: { category, page } }: HomeProps) {
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/accomodation${category ? "/category?region=category_name" : ""}`;
-  const response = await fetch(url, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const { result, body } = await response.json();
+export default async function Home({ searchParams: { category, page, checkIn, checkOut } }: HomeProps) {
+  const [error, data] = await getAccommodationList();
 
   return (
     <>
       <HeroSection />
-      {result.resultCode === "OK" ? (
+      {error ? (
+        <AccomodationEmpty />
+      ) : (
         <>
           <Category category={category} />
-          <AccomodationList category={category} accomodationItems={body.content} />
-          <Pagination maxPage={body.totalPages} nowPage={Number(page) || 1} category={category} />
+          <AccomodationList category={category} accomodationItems={data.body.content} />
+          <Pagination maxPage={data.body.totalPages} nowPage={Number(page) || 1} category={category} />
         </>
-      ) : (
-        <AccomodationEmpty />
       )}
     </>
   );

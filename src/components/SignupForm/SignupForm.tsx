@@ -22,10 +22,27 @@ const SignupForm = () => {
     formState: { errors },
   } = useForm({ defaultValues: initialState });
 
-  const onSubmit: SubmitHandler<typeof initialState> = (data) => {
+  const onSubmit: SubmitHandler<typeof initialState> = async (data) => {
     try {
       console.log(data);
-      // router.push("/");
+      // const response = await fetch("https://api.miniteam2.store/api/auth/register", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     name: data.name,
+      //     nickname: data.nickname,
+      //     email: data.email,
+      //     password: data.password,
+      //   }),
+      // });
+      // const { result: R, body: B } = await response.json();
+      // if (R.resultCode === "CREATED") {
+      //   router.push("/");
+      // } else {
+      //   console.log("실패!!");
+      // }
     } catch (error) {
       console.error("실패!!");
     }
