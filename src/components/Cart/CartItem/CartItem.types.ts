@@ -1,22 +1,22 @@
-export interface Item {
-  id: number;
-  imageUrl: string;
+export interface Cart {
+  id: string;
   name: string;
+  imageUrl: string;
   address: string;
-  checkInDate: string;
-  checkInTime: string;
-  checkOutDate: string;
-  checkOutTime: string;
+  checkIn: string;
+  checkOut: string;
   roomName: string;
-  people: number;
+  peopleNumber: number;
   price: number;
-  selected?: boolean;
-  isEditOpen?: boolean;
 }
 
-export interface CartItemProps {
-  item: Item;
+export interface CartProps {
+  item: Cart;
   roomNames: string[];
-  peopleOptions: { value: number; label: string }[];
-  dateOptions: { value: string; label: string }[];
+}
+
+export interface CartComponentProps extends CartProps {
+  index: number;
+  isSelected: boolean;
+  onToggle: () => void;
 }
