@@ -1,8 +1,6 @@
-import { Item } from "../CartItem/CartItem.types";
+import { Cart } from "../CartItem/CartItem.types";
 
 export interface CartPageProps {
-  initialItems: Item[];
+  initialItems: Cart[];
   roomNames: string[];
-  peopleOptions: { value: number; label: string }[];
-  dateOptions: { value: string; label: string }[];
 }
