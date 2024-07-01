@@ -33,13 +33,8 @@ const AccomodationInfo = ({
   cookingAvailable,
   checkIn,
   checkOut,
-}: AccomodationInfoProps) => {
-  const [isLike, setIsLike] = useState(false);
-
-  const handleToggleLike = () => {
-    setIsLike(!isLike);
-  };
-
+  categoryId,
+}) => {
   return (
     <AccomodationInfoStyled>
       <ImageBox>
