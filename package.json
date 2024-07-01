@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "https": "next dev --experimental-https",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -18,6 +19,7 @@
     "react-hook-form": "^7.52.0",
     "react-icons": "^5.2.1",
     "styled-components": "^6.1.11",
+    "sweetalert2": "^11.12.1",
     "swiper": "^11.1.4"
   },
   "devDependencies": {

@@ -2,8 +2,9 @@ import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
 import { AccomodationEmptyTitle, ButtonBox, DescriptionBox, DescriptionText } from "./AccomodationEmpty.styles";
 import Container from "@/components/Container";
+import { AccomodationEmptyProps } from "./AccomodationEmpty.types";
 
-const AccomodationEmpty = () => {
+const AccomodationEmpty = ({ message }: AccomodationEmptyProps) => {
   const router = useRouter();
 
   return (
@@ -11,9 +12,9 @@ const AccomodationEmpty = () => {
       <AccomodationEmptyTitle>검색 결과 0개</AccomodationEmptyTitle>
       <DescriptionBox>
         <DescriptionText>
-          검색 결과가 없어요.
+          검색 결과가 없습니다.
           <br />
-          검색어를 정확하게 입력했는지 확인해보세요.
+          {message || "검색어를 정확하게 입력했는지 확인해보세요."}
         </DescriptionText>
         <ButtonBox>
           <Button onClick={() => router.replace("/")}>메인으로</Button>

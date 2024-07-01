@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DescriptionAvailableProps } from "./AccomodationItem.types";
+import { DescriptionAvailableProps, DescriptionPriceProps, DescriptionPriceUnitProps } from "./AccomodationItem.types";
 
 export const AccomodationItemBox = styled.div`
   padding: 1.5rem;
@@ -47,6 +47,23 @@ export const AccomodationItemImageBox = styled.div`
   transition: transform 0.3s ease-in-out;
 `;
 
+export const SoldOutImageCover = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--color-white);
+  font-size: 3rem;
+  font-weight: 900;
+  background-color: rgba(0, 0, 0, 0.4);
+`;
+
 export const Description = styled.div`
   position: relative;
 
@@ -90,18 +107,38 @@ export const DescriptionAvailable = styled.div<DescriptionAvailableProps>`
   color: ${({ $available }) => ($available ? "var(--color-gray)" : "#f57373")};
 `;
 
-export const DescriptionPrice = styled.p`
-  font-size: 1.8rem;
-  font-weight: 600;
+export const DescriptionPriceBox = styled.div`
+  display: flex;
+  align-items: flex-end;
 
   margin-top: 7%;
+`;
 
-  > span {
-    font-size: 1.5rem;
-    font-weight: 400;
+export const SoldOutPrice = styled.span`
+  color: var(--color-gray-darker);
+  font-size: 2rem;
+  font-weight: 600;
 
-    margin-left: 0.2rem;
-  }
+  margin-right: 0.5rem;
+`;
+
+export const DescriptionPrice = styled.span<DescriptionPriceProps>`
+  display: flex;
+  align-items: flex-end;
+
+  color: ${({ $reservationAvailable }) =>
+    $reservationAvailable ? "var(--color-gray-dark)" : "var(--color-gray-dark)"};
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-decoration: ${({ $reservationAvailable }) => ($reservationAvailable ? "none" : "line-through")};
+`;
+
+export const DescriptionPriceUnit = styled.span<DescriptionPriceUnitProps>`
+  color: ${({ $reservationAvailable }) => ($reservationAvailable ? "#000" : "var(--color-gray-dark)")};
+  font-size: 1.5rem;
+  font-weight: 400;
+
+  margin-left: 0.2rem;
 `;
 
 export const DescriptionDetail = styled.div`

@@ -14,9 +14,17 @@ export interface AccomodationItem {
   checkOut: string;
   category: string;
   minPrice: number;
-  reservationAble: boolean;
+  reservationAvailable: boolean;
 }
 
 export interface AccomodationItemProps {
   accomodationItem: AccomodationItem;
+}
+
+export interface DescriptionPriceProps {
+  $reservationAvailable: boolean;
+}
+
+export interface DescriptionPriceUnitProps {
+  $reservationAvailable: boolean;
 }
