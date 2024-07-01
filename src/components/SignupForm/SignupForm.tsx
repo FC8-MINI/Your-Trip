@@ -9,7 +9,7 @@ import { SignupFormContainer, SignupFormStyled, ToLoginText } from "./SignupForm
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 import { type SubmitHandler, useForm } from "react-hook-form";
-import { postRegiter } from "@/apis/auth/postRegister";
+import { postRegister } from "@/apis/auth/postRegister";
 import Swal from "sweetalert2";
 
 const initialState = { email: "", password: "", passwordConfirm: "", name: "", nickname: "" };
@@ -27,7 +27,7 @@ const SignupForm = () => {
   } = useForm({ defaultValues: initialState });
 
   const onSubmit: SubmitHandler<typeof initialState> = async (formData) => {
-    const [error, data] = await postRegiter(formData);
+    const [error, data] = await postRegister(formData);
 
     if (error) {
       await Swal.fire({

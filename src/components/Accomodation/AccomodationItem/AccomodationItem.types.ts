@@ -24,3 +24,7 @@ export interface AccomodationItemProps {
 export interface DescriptionPriceProps {
   $reservationAvailable: boolean;
 }
+
+export interface DescriptionPriceUnitProps {
+  $reservationAvailable: boolean;
+}

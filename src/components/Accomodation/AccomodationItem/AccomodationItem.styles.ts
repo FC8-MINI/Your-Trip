@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DescriptionAvailableProps, DescriptionPriceProps } from "./AccomodationItem.types";
+import { DescriptionAvailableProps, DescriptionPriceProps, DescriptionPriceUnitProps } from "./AccomodationItem.types";
 
 export const AccomodationItemBox = styled.div`
   padding: 1.5rem;
@@ -58,10 +58,10 @@ export const SoldOutImageCover = styled.div`
   justify-content: center;
   align-items: center;
 
-  color: var(--color-error);
+  color: var(--color-white);
   font-size: 3rem;
   font-weight: 900;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
 `;
 
 export const Description = styled.div`
@@ -115,7 +115,7 @@ export const DescriptionPriceBox = styled.div`
 `;
 
 export const SoldOutPrice = styled.span`
-  color: var(--color-error);
+  color: var(--color-gray-darker);
   font-size: 2rem;
   font-weight: 600;
 
@@ -126,12 +126,15 @@ export const DescriptionPrice = styled.span<DescriptionPriceProps>`
   display: flex;
   align-items: flex-end;
 
+  color: ${({ $reservationAvailable }) =>
+    $reservationAvailable ? "var(--color-gray-dark)" : "var(--color-gray-dark)"};
   font-size: 1.8rem;
   font-weight: 600;
   text-decoration: ${({ $reservationAvailable }) => ($reservationAvailable ? "none" : "line-through")};
 `;
 
-export const DescriptionPriceUnit = styled.span`
+export const DescriptionPriceUnit = styled.span<DescriptionPriceUnitProps>`
+  color: ${({ $reservationAvailable }) => ($reservationAvailable ? "#000" : "var(--color-gray-dark)")};
   font-size: 1.5rem;
   font-weight: 400;
 

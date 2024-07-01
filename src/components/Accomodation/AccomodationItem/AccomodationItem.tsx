@@ -50,7 +50,7 @@ const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
                 <DescriptionPrice $reservationAvailable={reservationAvailable}>
                   {minPrice.toLocaleString()}
                 </DescriptionPrice>
-                <DescriptionPriceUnit>원</DescriptionPriceUnit>
+                <DescriptionPriceUnit $reservationAvailable={reservationAvailable}>원</DescriptionPriceUnit>
               </DescriptionPriceBox>
               <DescriptionDetail className="accomodation-description__detail">
                 <DescriptionDetailText>{description}</DescriptionDetailText>

@@ -12,7 +12,7 @@ interface RegisterResponseBody {
   body: string;
 }
 
-export const postRegiter = async (registerData: RegisterData) => {
+export const postRegister = async (registerData: RegisterData) => {
   const baseUrl = `https://api.miniteam2.store/api/auth/register`;
 
   return await to<RegisterResponseBody, AuthErrorCode>(
