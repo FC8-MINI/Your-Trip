@@ -5,6 +5,7 @@ export interface AccomodationRoomList {
   price: number;
   maxGuests: number;
   extraPersonCharge: number;
+  reservationAvailable: boolean;
 }
 
 export interface AccomodationRoomListProps {

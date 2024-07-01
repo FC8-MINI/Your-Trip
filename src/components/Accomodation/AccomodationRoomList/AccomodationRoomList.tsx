@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import { InfoTitle } from "../AccomodationDetail/AccomodationDetail.styles";
 import {
   RoomList,
@@ -13,28 +14,43 @@ import {
   TotalPriceText,
   RoomButtonBox,
   CartButton,
-  LinkStyled,
 } from "./AccomodationRoomList.styles";
 import { RiUser3Fill, RiShoppingCart2Line } from "react-icons/ri";
 import { AccomodationRoomListProps } from "./AccomodationRoomList.types";
 import Image from "next/image";
 import Swal from "sweetalert2";
+import Button from "@/components/Button";
 
 const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListProps) => {
-  const handleCartButtonClick = () => {
-    Swal.fire({
-      customClass: {
-        confirmButton: "btn btn-primary",
-      },
-      icon: "success",
-      timerProgressBar: true,
-      title: "장바구니에 상품이 담겼습니다.",
-      confirmButtonText: "장바구니 보기",
-      timer: 2500,
-      preConfirm: () => {
+  const router = useRouter();
+
+  const handleCartButtonClick = async () => {
+    try {
+      const result = await Swal.fire({
+        customClass: {
+          confirmButton: "btn btn-primary",
+        },
+        icon: "success",
+        timerProgressBar: true,
+        title: "장바구니에 상품이 담겼습니다.",
+        confirmButtonText: "장바구니 보기",
+        timer: 2500,
+      });
+
+      if (result.isConfirmed) {
         window.location.href = "/cart";
-      },
-    });
+      }
+    } catch (error) {
+      console.error("Swal error:", error);
+    }
+  };
+
+  const handleReserveButtonClick = async () => {
+    try {
+      await router.push("/pay");
+    } catch (error) {
+      console.error("Navigation error:", error);
+    }
   };
 
   return (
@@ -69,10 +85,19 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
                 </RoomPriceBox>
 
                 <RoomButtonBox>
-                  <CartButton type="button" onClick={handleCartButtonClick}>
-                    <RiShoppingCart2Line />
-                  </CartButton>
-                  <LinkStyled href="./">객실 예약</LinkStyled>
+                  {accomodationRoomItem.reservationAvailable && (
+                    <CartButton type="button" onClick={handleCartButtonClick}>
+                      <RiShoppingCart2Line />
+                    </CartButton>
+                  )}
+                  <Button
+                    type="button"
+                    $mode="primary"
+                    onClick={handleReserveButtonClick}
+                    disabled={!accomodationRoomItem.reservationAvailable}
+                  >
+                    객실 예약
+                  </Button>
                 </RoomButtonBox>
               </InfoWhiteBox>
             </RoomInfoBox>
