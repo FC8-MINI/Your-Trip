@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { PaginationProps } from "./Pagination.types";
 import { PaginationContainer, PaginationItem } from "./Pagination.styles";
 
-const Pagination = ({ maxPage, nowPage, category }: PaginationProps) => {
+const Pagination = ({ maxPage, nowPage, category, pagePath }: PaginationProps) => {
   const pages = useMemo(() => {
     const pages: (number | string)[] = [];
     const startPage = Math.max(nowPage - 2, 1);
@@ -32,8 +32,9 @@ const Pagination = ({ maxPage, nowPage, category }: PaginationProps) => {
 
   const baseUrl = useMemo(() => {
     if (category) return `/?categroy=${category}&`;
+    else if (pagePath) return `${pagePath}`;
     else return "/?";
-  }, [category]);
+  }, [category, pagePath]);
 
   return (
     <PaginationContainer>
