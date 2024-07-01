@@ -12,7 +12,7 @@ export const ItemContainer = styled.div`
 
   @media ${device.tablet} {
     flex-direction: column;
-    align-items: flex-start; // 가운데 정렬하지 않음
+    align-items: flex-start;
     width: 100%;
     height: auto;
     max-width: 100vw;
@@ -106,6 +106,8 @@ export const ReservationButton = styled(Link)`
   color: var(--color-white);
   background-color: var(--color-primary);
   transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
 
   &:hover {
     background-color: var(--color-primary-hover);

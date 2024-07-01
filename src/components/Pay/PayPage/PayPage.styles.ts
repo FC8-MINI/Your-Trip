@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "@/styles/media";
 
 export const PayTitle = styled.h2`
   padding: 3rem 0 2rem;
@@ -14,6 +15,15 @@ export const PayContainer = styled.div`
   border-radius: 1.6rem;
   box-shadow: 0 2px 16px rgb(235, 235, 235);
   margin: 2rem 0;
+
+  @media ${device.tablet} {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    max-width: 100vw;
+    aspect-ratio: 5 / 3;
+  }
 `;
 
 export const PayImageWrapper = styled.div`
@@ -21,6 +31,12 @@ export const PayImageWrapper = styled.div`
   width: 34%;
   height: 28rem;
   border-radius: 1.6rem 0 0 1.6rem;
+
+  @media ${device.tablet} {
+    width: 100%;
+    height: 50%;
+    border-radius: 1.6rem 1.6rem 0 0;
+  }
 `;
 
 export const PayItemImage = styled.img`
@@ -36,6 +52,12 @@ export const PayInfoBox = styled.div`
   flex-grow: 2;
   position: relative;
   padding: 2.6rem 2.6rem 2.6rem 0;
+
+  @media ${device.tablet} {
+    width: 100%;
+    gap: 1.4rem;
+    padding: 0 2.6rem 2.6rem;
+  }
 `;
 
 export const AccommodationName = styled.strong`
@@ -93,6 +115,10 @@ export const CheckInOutBox = styled.div`
     font-weight: 600;
     color: var(--color-gray-dark);
   }
+
+  @media ${device.tablet} {
+    gap: 2rem;
+  }
 `;
 
 export const EditButton = styled.button`
@@ -109,5 +135,9 @@ export const EditButton = styled.button`
   cursor: pointer;
   &:hover {
     background-color: var(--color-primary-hover);
+  }
+
+  @media ${device.tablet} {
+    top: 0;
   }
 `;
