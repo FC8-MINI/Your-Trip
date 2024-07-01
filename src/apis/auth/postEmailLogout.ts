@@ -6,7 +6,7 @@ export const postEmailLogout = async () => {
 
   return await to<AuthErrorCode>(
     fetch(baseUrl, {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
