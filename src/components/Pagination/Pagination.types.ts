@@ -9,4 +9,5 @@ export interface PaginationProps {
   maxPage: number;
   nowPage: number;
   category?: CategoryType;
+  pagePath?: string;
 }
