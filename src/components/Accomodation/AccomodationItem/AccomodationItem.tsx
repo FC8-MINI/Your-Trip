@@ -8,7 +8,11 @@ import {
   DescriptionDetail,
   DescriptionDetailText,
   DescriptionPrice,
+  DescriptionPriceBox,
+  DescriptionPriceUnit,
   DescriptionTitle,
+  SoldOutImageCover,
+  SoldOutPrice,
 } from "./AccomodationItem.styles";
 import Link from "next/link";
 import { MdOutlineNoMeals } from "react-icons/md";
@@ -19,7 +23,8 @@ import Image from "next/image";
 import { RiMapPin2Fill } from "react-icons/ri";
 
 const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
-  const { id, name, address, parkingAvailable, cookingAvailable, description, minPrice } = accomodationItem;
+  const { id, name, address, parkingAvailable, cookingAvailable, description, minPrice, reservationAvailable } =
+    accomodationItem;
 
   return (
     <li>
@@ -28,6 +33,7 @@ const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
           <AccomodationItemStyled>
             <AccomodationItemImageBox className="accomodation-description__image">
               <Image src="/images/hero_background_image.jpg" alt={name} fill objectFit="cover" />
+              {reservationAvailable || <SoldOutImageCover>예약 마감</SoldOutImageCover>}
             </AccomodationItemImageBox>
             <Description>
               <DescriptionTitle>{name}</DescriptionTitle>
@@ -39,10 +45,13 @@ const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
                 {parkingAvailable ? <TbParking color="#A8A8A8" /> : <TbParkingOff color="#f57373" />}
                 {cookingAvailable ? <GiMeal color="#A8A8A8" /> : <MdOutlineNoMeals color="#f57373" />}
               </DescriptionAvailable>
-              <DescriptionPrice>
-                {minPrice.toLocaleString()}
-                <span>원</span>
-              </DescriptionPrice>
+              <DescriptionPriceBox>
+                {reservationAvailable || <SoldOutPrice>예약 마감</SoldOutPrice>}
+                <DescriptionPrice $reservationAvailable={reservationAvailable}>
+                  {minPrice.toLocaleString()}
+                </DescriptionPrice>
+                <DescriptionPriceUnit>원</DescriptionPriceUnit>
+              </DescriptionPriceBox>
               <DescriptionDetail className="accomodation-description__detail">
                 <DescriptionDetailText>{description}</DescriptionDetailText>
               </DescriptionDetail>
