@@ -31,6 +31,31 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
     width: ${({ $size }) => $size === "large" && "100%"};
     max-width: ${({ $size }) => $size === "large" && "40rem"};
   }
+
+  &.swal2-popup {
+    font-size: 1.6rem;
+
+    .btn {
+      color: var(--color-black);
+      border: 0.1rem solid var(--color-gray-dark);
+      background-color: var(--color-white);
+      transition: background-color 0.2s;
+
+      &.btn-primary {
+        color: var(--color-white);
+        background-color: var(--color-primary);
+        border: none;
+
+        &:hover {
+          background-color: var(--color-primary-hover);
+        }
+      }
+
+      &:hover {
+        background-color: var(--color-gray-hover);
+      }
+    }
+  }
 `;
 
 export default ButtonStyled;

@@ -19,7 +19,7 @@ const terms = [
   { id: "agreeProvide", label: "개인정보 제 3자 제공" },
 ];
 
-const PayTerms: React.FC<PayTermsProps> = ({ amount }) => {
+const PayTerms = ({ amount }: PayTermsProps) => {
   const { control, setValue, watch, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       agreeAll: false,
@@ -51,8 +51,11 @@ const PayTerms: React.FC<PayTermsProps> = ({ amount }) => {
   const onSubmit = () => {
     MySwal.fire({
       title: "결제가 완료되었습니다.",
-      html: <ViewRes href="/Reservation">예약내역 조회</ViewRes>,
+      html: <ViewRes href="/reservation">예약내역 조회</ViewRes>,
       showConfirmButton: false,
+      customClass: {
+        confirmButton: "btn btn-primary",
+      },
     });
   };
 

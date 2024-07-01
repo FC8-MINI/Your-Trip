@@ -59,3 +59,9 @@ export const BoldLabel = styled.label`
 export const RegularLabel = styled.label`
   font-weight: normal;
 `;
+
+export const SwalPopup = styled.div`
+  &.custom-swal-height {
+    height: 400px; // 원하는 높이로 설정
+  }
+`;

@@ -15,8 +15,6 @@ import {
   CheckInOutBox,
   EditButton,
 } from "./PayPage.styles";
-
-// Import the types and interfaces from the correct path
 import { ItemSubset, PayEditFormValues } from "../PayEdit/PayEdit.types";
 
 const formatDateTime = (dateString: string) => {
