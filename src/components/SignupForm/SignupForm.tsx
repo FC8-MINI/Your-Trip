@@ -9,6 +9,8 @@ import { SignupFormContainer, SignupFormStyled, ToLoginText } from "./SignupForm
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 import { type SubmitHandler, useForm } from "react-hook-form";
+import { postRegiter } from "@/apis/auth/postRegister";
+import Swal from "sweetalert2";
 
 const initialState = { email: "", password: "", passwordConfirm: "", name: "", nickname: "" };
 
@@ -20,31 +22,48 @@ const SignupForm = () => {
     handleSubmit,
     getValues,
     formState: { errors },
+    setFocus,
+    setError,
   } = useForm({ defaultValues: initialState });
 
-  const onSubmit: SubmitHandler<typeof initialState> = async (data) => {
-    try {
-      console.log(data);
-      // const response = await fetch("https://api.miniteam2.store/api/auth/register", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     name: data.name,
-      //     nickname: data.nickname,
-      //     email: data.email,
-      //     password: data.password,
-      //   }),
-      // });
-      // const { result: R, body: B } = await response.json();
-      // if (R.resultCode === "CREATED") {
-      //   router.push("/");
-      // } else {
-      //   console.log("실패!!");
-      // }
-    } catch (error) {
-      console.error("실패!!");
+  const onSubmit: SubmitHandler<typeof initialState> = async (formData) => {
+    const [error, data] = await postRegiter(formData);
+
+    if (error) {
+      await Swal.fire({
+        customClass: {
+          confirmButton: "btn btn-primary",
+        },
+        icon: "error",
+        title: "회원가입에 실패했습니다.",
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 1500,
+        willClose: () => {
+          if (error.result.resultCode === "NAME_ALREADY_EXISTS") {
+            setFocus("name");
+            setError("name", { type: error.result.resultCode, message: error.result.resultDescription });
+          }
+          if (error.result.resultCode === "EMAIL_ALREADY_EXISTS") {
+            setFocus("email");
+            setError("email", { type: error.result.resultCode, message: error.result.resultDescription });
+          }
+        },
+      });
+    } else {
+      await Swal.fire({
+        customClass: {
+          confirmButton: "btn btn-primary",
+        },
+        icon: "success",
+        title: data.body,
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 1500,
+        willClose: () => {
+          router.push("/login");
+        },
+      });
     }
   };
 

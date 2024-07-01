@@ -173,6 +173,31 @@ const GlobalStyle = createGlobalStyle`
       width: auto;
     }
   }
+
+  .swal2-popup {
+    font-size: 1.6rem;
+
+    .btn {
+      color: var(--color-black);
+      border: .1rem solid var(--color-gray-dark);
+      background-color: var(--color-white);
+      transition: background-color .2s;
+
+      &.btn-primary{
+        color: var(--color-white);
+        background-color: var(--color-primary);
+        border: none;
+
+        &:hover {
+          background-color: var(--color-primary-hover);
+        }
+      }
+
+      &:hover {
+        background-color: var(--color-gray-hover);
+      }
+    }
+  }
 `;
 
 export default GlobalStyle;

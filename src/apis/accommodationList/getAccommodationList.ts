@@ -1,6 +1,7 @@
 import { AccomodationItem } from "@/components/Accomodation/AccomodationItem";
 import { CategoryType } from "@/components/Category/Category.types";
 import to from "@/utils/awaitToFetch";
+import { AccommodationErrorCode, accommodationErrorCodes } from "./error";
 
 interface AccommodationListFilter {
   category?: CategoryType;
@@ -10,24 +11,11 @@ interface AccommodationListFilter {
   page?: number;
 }
 
-interface AccommodationListResponse {
-  result: {
-    resultCode: string;
-    resultMessage: string;
-    resultDescription: string;
-  };
+interface AccommodationListBody {
   body: {
     totalPages: number;
     totalElements: number;
     content: AccomodationItem[];
-  };
-}
-
-interface AccommodationListError {
-  result: {
-    resultCode: string;
-    resultMessage: string;
-    resultDescription: string;
   };
 }
 
@@ -37,8 +25,8 @@ export const getAccommodationList = async ({
   checkIn = "",
   checkOut = "",
   page = 1,
-}: AccommodationListFilter = {}): Promise<[AccommodationListError, null] | [null, AccommodationListResponse]> => {
-  const baseUrl = `https://api.miniteam2.store/api/${category && category !== "전체" ? "category?" : "accommodation?"}`;
+}: AccommodationListFilter = {}) => {
+  const baseUrl = `https://api.miniteam2.store/api/accommodation${category && category !== "전체" ? "/category?" : "?"}`;
 
   let query = "";
 
@@ -62,12 +50,13 @@ export const getAccommodationList = async ({
     query += `${query && "&"}page=${page}`;
   }
 
-  return await to<AccommodationListResponse, AccommodationListError>(
+  return await to<AccommodationListBody, AccommodationErrorCode>(
     fetch(baseUrl + query, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     }),
+    accommodationErrorCodes,
   );
 };

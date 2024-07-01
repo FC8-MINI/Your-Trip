@@ -10,8 +10,12 @@ import {
 } from "./DropdownMenu.styles";
 import { useEffect, useReducer, useRef } from "react";
 import { DROPDOWN_MENU_LINKS } from "./DropdownMenu.constants";
+import { postEmailLogout } from "@/apis/auth/postEmailLogout";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 const DropdownMenu = () => {
+  const router = useRouter();
   const [isOpened, toggleMenu] = useReducer((v) => !v, false);
 
   const dropDownMenuListRef = useRef<HTMLDivElement>(null);
@@ -31,6 +35,38 @@ const DropdownMenu = () => {
       document.removeEventListener("click", listener);
     };
   }, [dropDownMenuListRef, isOpened]);
+
+  const onClickLogout = async () => {
+    const [error, data] = await postEmailLogout();
+
+    if (error) {
+      await Swal.fire({
+        customClass: {
+          confirmButton: "btn btn-primary",
+        },
+        icon: "error",
+        title: "로그아웃에 실패했습니다.",
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 1500,
+      });
+    } else {
+      await Swal.fire({
+        customClass: {
+          confirmButton: "btn btn-primary",
+        },
+        icon: "success",
+        title: "로그아웃에 성공했습니다.",
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 1500,
+        willClose: () => {
+          toggleMenu();
+          router.push("/");
+        },
+      });
+    }
+  };
 
   return (
     <DropdownMenuBox>
@@ -59,13 +95,7 @@ const DropdownMenu = () => {
               </Link>
             );
           })}
-          <DropdownMenuListItem
-            onClick={() => {
-              toggleMenu();
-            }}
-          >
-            <div>로그아웃</div>
-          </DropdownMenuListItem>
+          <DropdownMenuListItem onClick={onClickLogout}>로그아웃</DropdownMenuListItem>
         </DropdownMenuList>
       )}
     </DropdownMenuBox>

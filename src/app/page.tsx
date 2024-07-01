@@ -1,4 +1,4 @@
-import { getAccommodationList } from "@/apis/getAccommodationList";
+import { getAccommodationList } from "@/apis/accommodationList/getAccommodationList";
 import AccomodationEmpty from "@/components/Accomodation/AccomodationEmpty";
 import AccomodationList from "@/components/Accomodation/AccomodationList";
 import Category from "@/components/Category";
@@ -16,13 +16,13 @@ interface HomeProps {
 }
 
 export default async function Home({ searchParams: { category, page, checkIn, checkOut } }: HomeProps) {
-  const [error, data] = await getAccommodationList();
+  const [error, data] = await getAccommodationList({ category, checkIn, checkOut, page: Number(page) });
 
   return (
     <>
       <HeroSection />
       {error ? (
-        <AccomodationEmpty />
+        <AccomodationEmpty message={error.result.resultDescription} />
       ) : (
         <>
           <Category category={category} />
