@@ -96,7 +96,7 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
                     onClick={handleReserveButtonClick}
                     disabled={!accomodationRoomItem.reservationAvailable}
                   >
-                    객실 예약
+                    {accomodationRoomItem.reservationAvailable ? "객실 예약" : "예약 마감"}
                   </Button>
                 </RoomButtonBox>
               </InfoWhiteBox>
