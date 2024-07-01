@@ -27,6 +27,11 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
       $mode === "primary" ? "var(--color-primary-hover)" : $mode === "common" ? "var(--color-gray-hover)" : "#fbda00"};
   }
 
+  &:disabled {
+    background-color: var(--color-gray-dark);
+    pointer-events: none;
+  }
+
   @media ${device.mobile} {
     width: ${({ $size }) => $size === "large" && "100%"};
     max-width: ${({ $size }) => $size === "large" && "40rem"};
