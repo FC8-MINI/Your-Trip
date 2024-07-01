@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import { RiMapPin2Fill, RiSignpostFill, RiTimeFill, RiParkingBoxFill, RiDoubleQuotesL } from "react-icons/ri";
 import { PiCookingPotFill } from "react-icons/pi";
 import {
@@ -36,6 +37,7 @@ const AccomodationInfo = ({
   checkOut,
 }: AccomodationInfoProps) => {
   const [isLike, setIsLike] = useState(false);
+  const router = useRouter();
 
   const handleToggleLike = async () => {
     setIsLike(!isLike);
@@ -53,10 +55,10 @@ const AccomodationInfo = ({
       });
 
       if (result.isConfirmed) {
-        window.location.href = "/like";
+        router.push("/like");
       }
     } catch (error) {
-      console.error("Error showing Swal:", error);
+      console.error("Swal error:", error);
     }
   };
 

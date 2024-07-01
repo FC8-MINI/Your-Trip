@@ -38,7 +38,7 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
       });
 
       if (result.isConfirmed) {
-        window.location.href = "/cart";
+        router.push("/cart");
       }
     } catch (error) {
       console.error("Swal error:", error);
