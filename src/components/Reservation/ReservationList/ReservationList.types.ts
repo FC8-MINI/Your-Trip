@@ -1,18 +1,15 @@
-import { StaticImageData } from "next/image";
-
-export interface ReservationProps {
-  id: number;
-  image: StaticImageData;
-  name: string;
+export interface ReservationList {
+  reservationId: number;
+  accomodationName: string;
+  accomodationAddress?: string;
+  userName: string;
   roomName: string;
-  checkInDate: string;
-  checkInTime: string;
-  checkOutDate: string;
-  checkOutTime: string;
-  price: number;
-  extraPrice: number;
+  checkIn: string;
+  checkOut: string;
+  totalPrice: number;
+  peopleNumber: number;
 }
 
 export interface ReservationListProps {
-  reservations: ReservationProps[];
+  reservationItems: ReservationList[];
 }
