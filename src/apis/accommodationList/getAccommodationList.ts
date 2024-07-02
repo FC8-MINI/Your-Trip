@@ -1,7 +1,7 @@
 import { AccomodationItem } from "@/components/Accomodation/AccomodationItem";
 import { CategoryType } from "@/components/Category/Category.types";
 import to from "@/utils/awaitToFetch";
-import { AccommodationErrorCode, accommodationErrorCodes } from "./error";
+import { AccommodationErrorCode } from "./error";
 
 interface AccommodationListFilter {
   category?: CategoryType;
@@ -57,6 +57,5 @@ export const getAccommodationList = async ({
         "Content-Type": "application/json",
       },
     }),
-    accommodationErrorCodes,
   );
 };

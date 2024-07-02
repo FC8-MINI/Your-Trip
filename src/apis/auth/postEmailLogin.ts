@@ -1,5 +1,5 @@
 import to from "@/utils/awaitToFetch";
-import { AuthErrorCode, authErrorCodes } from "./error";
+import { AuthErrorCode } from "./error";
 
 interface EmailLoginrData {
   email: string;
@@ -26,6 +26,5 @@ export const postEmailLogin = async (registerData: EmailLoginrData) => {
       credentials: "include",
       body: JSON.stringify(registerData),
     }),
-    authErrorCodes,
   );
 };

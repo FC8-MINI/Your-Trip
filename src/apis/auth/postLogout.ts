@@ -1,5 +1,5 @@
 import to from "@/utils/awaitToFetch";
-import { AuthErrorCode, authErrorCodes } from "./error";
+import { AuthErrorCode } from "./error";
 
 export const postLogout = async () => {
   const baseUrl = `https://api.miniteam2.store/api/auth/logout`;
@@ -12,6 +12,5 @@ export const postLogout = async () => {
       },
       credentials: "include",
     }),
-    authErrorCodes,
   );
 };

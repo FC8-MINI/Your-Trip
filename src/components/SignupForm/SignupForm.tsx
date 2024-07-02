@@ -40,9 +40,9 @@ const SignupForm = () => {
         timerProgressBar: true,
         timer: 1500,
         willClose: () => {
-          if (error.result.resultCode === "NAME_ALREADY_EXISTS") {
-            setFocus("name");
-            setError("name", { type: error.result.resultCode, message: error.result.resultDescription });
+          if (error.result.resultCode === "NICKNAME_ALREADY_EXISTS") {
+            setFocus("nickname");
+            setError("nickname", { type: error.result.resultCode, message: error.result.resultDescription });
           }
           if (error.result.resultCode === "EMAIL_ALREADY_EXISTS") {
             setFocus("email");
@@ -56,7 +56,7 @@ const SignupForm = () => {
           confirmButton: "btn btn-primary",
         },
         icon: "success",
-        title: data.body,
+        title: "회원가입에 성공하셨습니다.",
         showConfirmButton: false,
         timerProgressBar: true,
         timer: 1500,
