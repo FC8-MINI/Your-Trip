@@ -1,5 +1,4 @@
 import ReservationDetail from "@/components/Reservation/ReservationDetail";
-import { dataTagSymbol } from "@tanstack/react-query";
 
 const ReservationDatailPage = async ({ params: { reservationId } }: { params: { reservationId: string } }) => {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/reservation/${reservationId}`;
