@@ -80,7 +80,7 @@ export default async function to<B = {}, E extends ErrorCode = ErrorCode>(
     const response = await promise;
     const data = await response.json();
     console.log(data);
-    if (data.result.resultMessage === "success") {
+    if (successResultCodes.includes(data.result.resultCode)) {
       return [null, data] as [null, ResponseResult<SuccessResultCode> & B];
     } else {
       return [data, null] as [ResponseResult<E>, null];
