@@ -56,6 +56,7 @@ export const getAccommodationList = async ({
       headers: {
         "Content-Type": "application/json",
       },
+      cache: "no-store",
     }),
   );
 };

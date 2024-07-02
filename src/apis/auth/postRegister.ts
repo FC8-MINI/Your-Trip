@@ -21,6 +21,7 @@ export const postRegister = async (registerData: RegisterData) => {
       headers: {
         "Content-Type": "application/json",
       },
+      cache: "no-store",
       body: JSON.stringify(registerData),
     }),
   );

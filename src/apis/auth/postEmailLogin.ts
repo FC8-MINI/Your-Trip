@@ -24,6 +24,7 @@ export const postEmailLogin = async (registerData: EmailLoginrData) => {
         "Content-Type": "application/json",
       },
       credentials: "include",
+      cache: "no-store",
       body: JSON.stringify(registerData),
     }),
   );
