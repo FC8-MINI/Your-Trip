@@ -15,9 +15,8 @@ interface HomeProps {
   };
 }
 
-export default async function Home({ searchParams: { category, page, checkIn, checkOut } }: HomeProps) {
+export default async function Home({ searchParams: { category, checkIn, checkOut, page } }: HomeProps) {
   const [error, data] = await getAccommodationList({ category, checkIn, checkOut, page: Number(page) });
-
   return (
     <>
       <HeroSection />
@@ -27,7 +26,7 @@ export default async function Home({ searchParams: { category, page, checkIn, ch
         <>
           <Category category={category} />
           <AccomodationList category={category} accomodationItems={data.body.content} />
-          <Pagination maxPage={data.body.totalPages} nowPage={Number(page) || 1} category={category} />
+          <Pagination maxPage={data.body.totalPages} nowPage={Number(page) || 1} />
         </>
       )}
     </>
