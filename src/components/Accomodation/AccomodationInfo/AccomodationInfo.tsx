@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import { RiMapPin2Fill, RiSignpostFill, RiTimeFill, RiParkingBoxFill, RiDoubleQuotesL } from "react-icons/ri";
 import { PiCookingPotFill } from "react-icons/pi";
 import {
@@ -23,6 +24,7 @@ import { formatTime } from "@/utils/time";
 import Image from "next/image";
 import SocialAction from "@/components/SocialAction";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const AccomodationInfo = ({
   name,
@@ -35,9 +37,29 @@ const AccomodationInfo = ({
   checkOut,
 }: AccomodationInfoProps) => {
   const [isLike, setIsLike] = useState(false);
+  const router = useRouter();
 
-  const handleToggleLike = () => {
+  const handleToggleLike = async () => {
     setIsLike(!isLike);
+
+    try {
+      const result = await Swal.fire({
+        customClass: {
+          confirmButton: "btn btn-primary",
+        },
+        icon: "success",
+        timerProgressBar: true,
+        title: "찜 목록에 추가했습니다.",
+        confirmButtonText: "찜 목록보기",
+        timer: 2500,
+      });
+
+      if (result.isConfirmed) {
+        router.push("/like");
+      }
+    } catch (error) {
+      console.error("Swal error:", error);
+    }
   };
 
   return (
@@ -89,7 +111,7 @@ const AccomodationInfo = ({
 
         <UseInfoItem>
           <PiCookingPotFill color="var(--color-black)" />
-          <UseInfoText>{cookingAvailable ? "객실 내 취사 가능" : "취사 불가능"}</UseInfoText>
+          <UseInfoText>{cookingAvailable ? "객실 내 취사 가능" : "객실 내 취사 불가능"}</UseInfoText>
         </UseInfoItem>
       </UseInfoList>
 
