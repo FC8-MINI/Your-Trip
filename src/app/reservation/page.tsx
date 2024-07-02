@@ -3,10 +3,12 @@ import Reservation from "@/components/Reservation";
 import ReservationEmpty from "@/components/Reservation/ReservationEmpty";
 
 interface ReservationProps {
-  page?: string;
+  searchParams: {
+    page?: string;
+  };
 }
 
-const ReservationPage = async ({ page }: ReservationProps) => {
+const ReservationPage = async ({ searchParams: { page } }: ReservationProps) => {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/reservation`;
   const response = await fetch(url, {
     method: "GET",
