@@ -1,6 +1,16 @@
 import { useForm, Controller } from "react-hook-form";
-import { TermsContainer, ButtonContainer, StyledButton, TermItem, BoldLabel, RegularLabel } from "./PayTerms.styles";
+import {
+  TermsContainer,
+  ButtonContainer,
+  TermItem,
+  BoldLabel,
+  RegularLabel,
+  PayButtonStyled,
+  ViewRes,
+} from "./PayTerms.styles";
 import { PayTermsProps, FormValues } from "./PayTerms.types";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const terms = [
   { id: "agreeAll", label: "필수 약관 전체 동의" },
@@ -9,7 +19,7 @@ const terms = [
   { id: "agreeProvide", label: "개인정보 제 3자 제공" },
 ];
 
-const PayTerms: React.FC<PayTermsProps> = ({ amount }) => {
+const PayTerms = ({ amount }: PayTermsProps) => {
   const { control, setValue, watch, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       agreeAll: false,
@@ -19,6 +29,7 @@ const PayTerms: React.FC<PayTermsProps> = ({ amount }) => {
       isSubmitted: false,
     },
   });
+
   const formValues = watch();
 
   const handleAgreeAllChange = (checked: boolean) => {
@@ -35,8 +46,17 @@ const PayTerms: React.FC<PayTermsProps> = ({ amount }) => {
 
   const allTermsChecked = terms.every((term) => formValues[term.id as keyof FormValues]);
 
-  const onSubmit = () => {
-    alert("결제가 완료되었습니다");
+  const MySwal = withReactContent(Swal);
+
+  const onSubmit = async () => {
+    await MySwal.fire({
+      title: "결제가 완료되었습니다.",
+      html: <ViewRes href="/reservation">예약내역 조회</ViewRes>,
+      showConfirmButton: false,
+      customClass: {
+        confirmButton: "btn btn-primary",
+      },
+    });
   };
 
   return (
@@ -64,9 +84,9 @@ const PayTerms: React.FC<PayTermsProps> = ({ amount }) => {
         />
       ))}
       <ButtonContainer>
-        <StyledButton $size="large" onClick={handleSubmit(onSubmit)} disabled={!allTermsChecked}>
+        <PayButtonStyled $size="large" onClick={handleSubmit(onSubmit)} disabled={!allTermsChecked}>
           {amount.toLocaleString()}원 결제하기
-        </StyledButton>
+        </PayButtonStyled>
       </ButtonContainer>
     </TermsContainer>
   );

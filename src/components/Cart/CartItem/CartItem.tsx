@@ -13,14 +13,15 @@ import {
 } from "./CartItem.styles";
 import { CartComponentProps } from "./CartItem.types";
 
+// 숙박 일수 계산 함수
 const calculateNights = (checkIn: string, checkOut: string) => {
   const checkInDate = new Date(checkIn);
   const checkOutDate = new Date(checkOut);
   const differenceInTime = checkOutDate.getTime() - checkInDate.getTime();
-  return Math.ceil(differenceInTime / (1000 * 3600 * 24));
+  return Math.ceil(differenceInTime / (1000 * 3600 * 24)); // 숙박 일수 계산
 };
 
-// 날짜를 형식에 맞게 변환하는 함수
+// 날짜 및 시간 형식 변환 함수
 const formatDateTime = (dateString: string) => {
   const date = new Date(dateString);
   const options: Intl.DateTimeFormatOptions = {
@@ -37,6 +38,10 @@ const formatDateTime = (dateString: string) => {
 const CartItem = ({ item, roomNames, index, isSelected, onToggle }: CartComponentProps) => {
   const checkIn: string = item.checkIn;
   const checkOut: string = item.checkOut;
+  const nights = calculateNights(checkIn, checkOut); // 밤 수 계산
+
+  // 예약 URL 생성
+  const PayHref = `/pay?id=${item.id}&imageUrl=${encodeURIComponent(item.imageUrl)}&name=${encodeURIComponent(item.name)}&checkIn=${encodeURIComponent(item.checkIn)}&checkOut=${encodeURIComponent(item.checkOut)}&roomName=${encodeURIComponent(roomNames[index])}&peopleNumber=${item.peopleNumber}&price=${item.price}&nights=${nights}`; // 밤 수 추가
 
   return (
     <ItemContainer>
@@ -48,7 +53,7 @@ const CartItem = ({ item, roomNames, index, isSelected, onToggle }: CartComponen
         <div>
           <PlaceName>{item.name}</PlaceName>
           <RoomPeriod>
-            {roomNames[index]}/{calculateNights(checkIn, checkOut)}박
+            {roomNames[index]}/{nights}박
           </RoomPeriod>
           <Person>/{item.peopleNumber}명</Person>
         </div>
@@ -66,7 +71,7 @@ const CartItem = ({ item, roomNames, index, isSelected, onToggle }: CartComponen
           결제금액
           <span>{item.price.toLocaleString()}원</span>
         </TotalPriceText>
-        <ReservationButton href="/pay">예약</ReservationButton>
+        <ReservationButton href={PayHref}>예약</ReservationButton>
       </ItemInfoBox>
     </ItemContainer>
   );

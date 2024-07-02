@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Button from "@/components/Button";
+import Link from "next/link";
 
 export const TermsContainer = styled.div`
   display: flex;
@@ -22,7 +23,7 @@ export const ButtonContainer = styled.div`
   margin-top: 20px; // 버튼과 위 요소 사이에 간격 추가
 `;
 
-export const StyledButton = styled(Button)<{ $size?: string }>`
+export const PayButtonStyled = styled(Button)<{ $size?: string }>`
   color: var(--color-white);
   background-color: var(--color-primary);
   display: flex;
@@ -38,10 +39,29 @@ export const StyledButton = styled(Button)<{ $size?: string }>`
   }
 `;
 
+export const ViewRes = styled(Link)`
+  padding: 0.8rem 3rem;
+  border-radius: 0.8rem;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  transition: background-color 0.2s;
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+  }
+`;
+
 export const BoldLabel = styled.label`
   font-weight: bold;
 `;
 
 export const RegularLabel = styled.label`
   font-weight: normal;
+`;
+
+export const SwalPopup = styled.div`
+  &.custom-swal-height {
+    height: 400px; // 원하는 높이로 설정
+  }
 `;
