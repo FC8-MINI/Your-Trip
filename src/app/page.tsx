@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 import { getAccommodationList } from "@/apis/accommodationList/getAccommodationList";
 import AccomodationEmpty from "@/components/Accomodation/AccomodationEmpty";
 import AccomodationList from "@/components/Accomodation/AccomodationList";
