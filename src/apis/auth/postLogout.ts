@@ -1,7 +1,7 @@
 import to from "@/utils/awaitToFetch";
 import { AuthErrorCode, authErrorCodes } from "./error";
 
-export const postEmailLogout = async () => {
+export const postLogout = async () => {
   const baseUrl = `https://api.miniteam2.store/api/auth/logout`;
 
   return await to<AuthErrorCode>(

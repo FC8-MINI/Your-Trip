@@ -10,9 +10,9 @@ import {
 } from "./DropdownMenu.styles";
 import { useEffect, useReducer, useRef } from "react";
 import { DROPDOWN_MENU_LINKS } from "./DropdownMenu.constants";
-import { postEmailLogout } from "@/apis/auth/postEmailLogout";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import { postLogout } from "@/apis/auth/postLogout";
 
 const DropdownMenu = () => {
   const router = useRouter();
@@ -37,7 +37,7 @@ const DropdownMenu = () => {
   }, [dropDownMenuListRef, isOpened]);
 
   const onClickLogout = async () => {
-    const [error, data] = await postEmailLogout();
+    const [error, data] = await postLogout();
 
     if (error) {
       await Swal.fire({
