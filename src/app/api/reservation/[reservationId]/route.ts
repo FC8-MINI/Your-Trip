@@ -9,13 +9,14 @@ export async function GET() {
     },
     body: {
       accomodationName: "문게스트하우스 1",
-      userNmae: "김패캠",
+      userName: "김패캠",
+      roomName: "게스트 방",
       checkIn: "2024-04-03T14:00:00",
       checkOut: "2024-04-05T14:00:00",
-      baseGuests: 5,
-      extraCharge: 0,
+      baseGuests: 2,
+      extraPrice: 10000,
       parkingAvailable: true,
-      cookingAvailable: true,
+      cookingAvailable: false,
       roomPrice: 550000,
     },
   };

@@ -1,7 +1,8 @@
 import ReservationDetail from "@/components/Reservation/ReservationDetail";
+import { dataTagSymbol } from "@tanstack/react-query";
 
-const ReservationDatailPage = async ({ params: { id } }: { params: { id: string } }) => {
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/reservation/${id}`;
+const ReservationDatailPage = async ({ params: { reservationId } }: { params: { reservationId: string } }) => {
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/reservation/${reservationId}`;
   const response = await fetch(url, {
     method: "GET",
     headers: {
@@ -14,13 +15,14 @@ const ReservationDatailPage = async ({ params: { id } }: { params: { id: string 
     <ReservationDetail
       accomodationName={data.accomodationName}
       userName={data.userName}
+      roomName={data.roomName}
       checkIn={data.checkIn}
       checkOut={data.checkOut}
-      roomName={data.roomName}
+      baseGuests={data.baseGuests}
       extraPrice={data.extraPrice}
-      roomPrice={data.roomPrice}
       parkingAvailable={data.parkingAvailable}
       cookingAvailable={data.cookingAvailable}
+      roomPrice={data.roomPrice}
     />
   );
 };
