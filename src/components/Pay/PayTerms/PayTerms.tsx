@@ -48,8 +48,8 @@ const PayTerms = ({ amount }: PayTermsProps) => {
 
   const MySwal = withReactContent(Swal);
 
-  const onSubmit = () => {
-    MySwal.fire({
+  const onSubmit = async () => {
+    await MySwal.fire({
       title: "결제가 완료되었습니다.",
       html: <ViewRes href="/reservation">예약내역 조회</ViewRes>,
       showConfirmButton: false,
