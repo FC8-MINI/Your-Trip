@@ -30,7 +30,8 @@ const ReservationList = ({ reservationItems }: ReservationListProps) => {
               <AccomodationNameText>{reservationItem.accomodationName}</AccomodationNameText>
               <RoomNameText>
                 {reservationItem.roomName}
-                <span> &middot; {calculateNight(reservationItem.checkIn, reservationItem.checkOut)}박</span>
+                <span> / {calculateNight(reservationItem.checkIn, reservationItem.checkOut)}박</span>
+                <span> / {reservationItem.peopleNumber}인</span>
               </RoomNameText>
             </div>
 

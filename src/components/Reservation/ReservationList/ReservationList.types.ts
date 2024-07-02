@@ -1,7 +1,7 @@
 export interface ReservationList {
   reservationId: number;
   accomodationName: string;
-  accomodationAddress: string;
+  accomodationAddress?: string;
   userName: string;
   roomName: string;
   checkIn: string;

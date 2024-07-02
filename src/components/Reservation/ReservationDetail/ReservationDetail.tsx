@@ -16,13 +16,14 @@ import Image from "next/image";
 const ReservationDetail = ({
   accomodationName,
   userName,
+  roomName,
   checkIn,
   checkOut,
-  roomName,
+  baseGuests,
   extraPrice,
-  roomPrice,
   parkingAvailable,
   cookingAvailable,
+  roomPrice,
 }: ReservationDetailProps) => {
   return (
     <Container>
@@ -46,6 +47,10 @@ const ReservationDetail = ({
                 <span>{formatTime(checkOut, "YYYY년 MM월 DD일 HH:MM")}</span>
                 <span> / {calculateNight(checkIn, checkOut)}박</span>
               </InfoDd>
+            </div>
+            <div>
+              <InfoDt>기준 인원</InfoDt>
+              <InfoDd>{baseGuests}인</InfoDd>
             </div>
             <div>
               <InfoDt>객실 타입</InfoDt>
