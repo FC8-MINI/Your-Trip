@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Button from "@/components/Button";
+import Link from "next/link";
 
 export const TermsContainer = styled.div`
   display: flex;
@@ -22,7 +23,7 @@ export const ButtonContainer = styled.div`
   margin-top: 20px; // 버튼과 위 요소 사이에 간격 추가
 `;
 
-export const StyledButton = styled(Button)<{ $size?: string }>`
+export const PayButtonStyled = styled(Button)<{ $size?: string }>`
   color: var(--color-white);
   background-color: var(--color-primary);
   display: flex;
@@ -32,6 +33,19 @@ export const StyledButton = styled(Button)<{ $size?: string }>`
   font-size: ${({ $size }) => ($size === "large" ? "1.6rem" : "1rem")};
   padding: ${({ $size }) => ($size === "large" ? "1.2rem 3rem" : "0.8rem 1.5rem")};
   width: ${({ $size }) => ($size === "large" ? "40rem" : "fit-content")};
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+  }
+`;
+
+export const ViewRes = styled(Link)`
+  padding: 0.8rem 3rem;
+  border-radius: 0.8rem;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  transition: background-color 0.2s;
+  text-decoration: none;
 
   &:hover {
     background-color: var(--color-primary-hover);

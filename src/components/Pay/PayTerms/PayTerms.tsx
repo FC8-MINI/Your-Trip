@@ -1,6 +1,16 @@
 import { useForm, Controller } from "react-hook-form";
-import { TermsContainer, ButtonContainer, StyledButton, TermItem, BoldLabel, RegularLabel } from "./PayTerms.styles";
+import {
+  TermsContainer,
+  ButtonContainer,
+  TermItem,
+  BoldLabel,
+  RegularLabel,
+  PayButtonStyled,
+  ViewRes,
+} from "./PayTerms.styles";
 import { PayTermsProps, FormValues } from "./PayTerms.types";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const terms = [
   { id: "agreeAll", label: "필수 약관 전체 동의" },
@@ -19,6 +29,7 @@ const PayTerms: React.FC<PayTermsProps> = ({ amount }) => {
       isSubmitted: false,
     },
   });
+
   const formValues = watch();
 
   const handleAgreeAllChange = (checked: boolean) => {
@@ -35,8 +46,14 @@ const PayTerms: React.FC<PayTermsProps> = ({ amount }) => {
 
   const allTermsChecked = terms.every((term) => formValues[term.id as keyof FormValues]);
 
+  const MySwal = withReactContent(Swal);
+
   const onSubmit = () => {
-    alert("결제가 완료되었습니다");
+    MySwal.fire({
+      title: "결제가 완료되었습니다.",
+      html: <ViewRes href="/Reservation">예약내역 조회</ViewRes>,
+      showConfirmButton: false,
+    });
   };
 
   return (
@@ -64,9 +81,9 @@ const PayTerms: React.FC<PayTermsProps> = ({ amount }) => {
         />
       ))}
       <ButtonContainer>
-        <StyledButton $size="large" onClick={handleSubmit(onSubmit)} disabled={!allTermsChecked}>
+        <PayButtonStyled $size="large" onClick={handleSubmit(onSubmit)} disabled={!allTermsChecked}>
           {amount.toLocaleString()}원 결제하기
-        </StyledButton>
+        </PayButtonStyled>
       </ButtonContainer>
     </TermsContainer>
   );

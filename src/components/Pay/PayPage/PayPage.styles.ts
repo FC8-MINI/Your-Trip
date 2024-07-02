@@ -94,3 +94,20 @@ export const CheckInOutBox = styled.div`
     color: var(--color-gray-dark);
   }
 `;
+
+export const EditButton = styled.button`
+  position: absolute;
+  right: 2.6rem;
+  top: 2.6rem;
+  margin-right: auto;
+  padding: 0.8rem 3rem;
+  border-radius: 0.8rem;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--color-primary-hover);
+  }
+`;
