@@ -10,6 +10,7 @@ import {
   InfoDd,
   ReservationDetailProps,
 } from "@/components/Reservation/ReservationDetail";
+import { calculateNight, formatTime } from "@/utils/time";
 import Image from "next/image";
 
 const ReservationDetail = ({
@@ -41,9 +42,9 @@ const ReservationDetail = ({
             <div>
               <InfoDt>예약 일정</InfoDt>
               <InfoDd>
-                <span>{checkIn} ~</span>
-                <span>{checkOut}</span>
-                <span> / 1박</span>
+                <span>{formatTime(checkIn, "YYYY년 MM월 DD일 HH:MM")} ~ </span>
+                <span>{formatTime(checkOut, "YYYY년 MM월 DD일 HH:MM")}</span>
+                <span> / {calculateNight(checkIn, checkOut)}박</span>
               </InfoDd>
             </div>
             <div>
@@ -55,8 +56,8 @@ const ReservationDetail = ({
               <InfoDd>{parkingAvailable ? "주차 가능" : "주차 불가능"}</InfoDd>
             </div>
             <div>
-              <InfoDt>객실 내 취사 여부</InfoDt>
-              <InfoDd>{cookingAvailable ? "취사 가능" : "취사 불가능"}</InfoDd>
+              <InfoDt>취사 여부</InfoDt>
+              <InfoDd>{cookingAvailable ? "객실 내 취사 가능" : "객실 내 취사 불가능"}</InfoDd>
             </div>
             <div>
               <InfoDt>
