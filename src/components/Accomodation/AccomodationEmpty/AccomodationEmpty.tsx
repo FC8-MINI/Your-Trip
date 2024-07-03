@@ -9,7 +9,7 @@ const AccomodationEmpty = ({ message }: AccomodationEmptyProps) => {
 
   return (
     <Container>
-      <AccomodationEmptyTitle>검색 결과 0개</AccomodationEmptyTitle>
+      <AccomodationEmptyTitle>{"검색 결과 (0개)"}</AccomodationEmptyTitle>
       <DescriptionBox>
         <DescriptionText>
           검색 결과가 없습니다.

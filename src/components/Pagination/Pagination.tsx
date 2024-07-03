@@ -4,10 +4,10 @@ import Link from "next/link";
 import { useMemo } from "react";
 import { PaginationProps } from "./Pagination.types";
 import { PaginationContainer, PaginationItem } from "./Pagination.styles";
-import { usePathnameWithoutPage } from "@/hooks/usePathnameWithoutPage";
+import { usePathnameWithoutQuerys } from "@/hooks/usePathnameWithoutPage";
 
 const Pagination = ({ maxPage, nowPage }: PaginationProps) => {
-  const baseUrl = usePathnameWithoutPage();
+  const baseUrl = usePathnameWithoutQuerys(["page"]);
 
   const pages = useMemo(() => {
     const pages: (number | string)[] = [];

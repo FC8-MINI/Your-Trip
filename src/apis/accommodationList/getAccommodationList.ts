@@ -26,17 +26,15 @@ export const getAccommodationList = async ({
   checkOut = "",
   page = 1,
 }: AccommodationListFilter = {}) => {
-  const baseUrl = `https://api.miniteam2.store/api/accommodation${category && category !== "전체" ? "/category?" : "?"}`;
-
   let query = "";
 
   if (category && category !== "전체") {
     query += `${query && "&"}region=${category}`;
   }
 
-  // if(name) {
-  //   query += `${query && "&"}region=${name}`
-  // }
+  if (name) {
+    query += `${query && "&"}query=${name}`;
+  }
 
   if (checkIn) {
     query += `${query && "&"}check-in=${checkIn}`;
@@ -45,6 +43,8 @@ export const getAccommodationList = async ({
   if (checkOut) {
     query += `${query && "&"}check-out=${checkOut}`;
   }
+
+  const baseUrl = `https://api.miniteam2.store/api/accommodation${query ? "/search?" : "?"}`;
 
   if (page) {
     query += `${query && "&"}page=${page}`;

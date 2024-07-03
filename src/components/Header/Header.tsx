@@ -3,13 +3,8 @@ import Button from "../Button";
 import { HeaderContainer, HeaderRight, HeaderStyled } from "./Header.styles";
 import Image from "next/image";
 import DropdownMenu from "../DropdownMenu";
-import { getUserInfo } from "@/apis/auth/getUserInfo";
 
-const Header = async () => {
-  const [error, data] = await getUserInfo();
-  console.log("error: ", error);
-  console.log("data: ", data);
-
+const Header = () => {
   return (
     <HeaderStyled>
       <HeaderContainer>

@@ -11,6 +11,7 @@ import Pagination from "@/components/Pagination";
 
 interface HomeProps {
   searchParams: {
+    name?: string;
     category?: CategoryType;
     page?: string;
     checkIn?: string;
@@ -18,17 +19,21 @@ interface HomeProps {
   };
 }
 
-export default async function Home({ searchParams: { category, checkIn, checkOut, page } }: HomeProps) {
-  const [error, data] = await getAccommodationList({ category, checkIn, checkOut, page: Number(page) });
+export default async function Home({ searchParams: { name, category, checkIn, checkOut, page } }: HomeProps) {
+  const [error, data] = await getAccommodationList({ name, category, checkIn, checkOut, page: Number(page) });
   return (
     <>
       <HeroSection />
+      <Category category={category} />
       {error ? (
         <AccomodationEmpty message={error.result.resultDescription} />
       ) : (
         <>
-          <Category category={category} />
-          <AccomodationList category={category} accomodationItems={data.body.content} />
+          <AccomodationList
+            isMain={!name && !checkIn && !checkOut}
+            totalElements={data.body.totalElements}
+            accomodationItems={data.body.content}
+          />
           <Pagination maxPage={data.body.totalPages} nowPage={Number(page) || 1} />
         </>
       )}

@@ -1,12 +1,14 @@
 import { usePathname, useSearchParams } from "next/navigation";
 
-export const usePathnameWithoutPage = () => {
+export const usePathnameWithoutQuerys = (querys: string[]) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
-  params.delete("page");
+  querys.map((query) => {
+    params.delete(query);
+  });
 
-  const pathnameWithoutPage = pathname + `${params.size > 0 ? `?${decodeURIComponent(params.toString())}&` : "?"}`;
+  const pathnameWithoutQuerys = pathname + `${params.size > 0 ? `?${decodeURIComponent(params.toString())}&` : "?"}`;
 
-  return pathnameWithoutPage;
+  return pathnameWithoutQuerys;
 };
