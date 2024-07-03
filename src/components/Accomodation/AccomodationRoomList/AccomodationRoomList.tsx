@@ -20,6 +20,7 @@ import { AccomodationRoomListProps } from "./AccomodationRoomList.types";
 import Image from "next/image";
 import Swal from "sweetalert2";
 import Button from "@/components/Button";
+import AccomodationRoomSearch from "../AccomodationRoomSearch";
 
 const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListProps) => {
   const router = useRouter();
@@ -55,6 +56,8 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
 
   return (
     <>
+      <AccomodationRoomSearch />
+
       <InfoTitle>객실 선택</InfoTitle>
 
       <RoomList>
