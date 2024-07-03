@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import CartItem from "../CartItem";
 import { CartListProps } from "./CartList.types";
-import { Cart } from "../CartItem/CartItem.types";
+import { Cart, DeleteRequestPayload } from "../CartItem/CartItem.types";
 import { ListBox, Wrapper, SelectBox, DeleteButton, ControlContainer, InfoContainer } from "./CartList.styles";
 
 const CartList = ({ roomNames, items: initialItems }: CartListProps) => {
@@ -27,10 +27,42 @@ const CartList = ({ roomNames, items: initialItems }: CartListProps) => {
     setSelectedItems(newSelectedItems);
   };
 
-  const handleDelete = () => {
-    const updatedItems = items.filter((_, index) => !selectedItems[index]);
-    setValue("items", updatedItems);
-    setSelectedItems(selectedItems.filter((_, index) => !selectedItems[index]));
+  const handleDelete = async () => {
+    const selectedReservationIds = items
+      .filter((_, index) => selectedItems[index])
+      .map((item) => {
+        if (item.reservationId !== undefined) {
+          return parseInt(item.reservationId, 10);
+        }
+        return null;
+      })
+      .filter((id): id is number => id !== null);
+
+    if (selectedReservationIds.length === 0) {
+      console.warn("No items selected for deletion.");
+      return;
+    }
+
+    const payload: DeleteRequestPayload = { reservationIds: selectedReservationIds };
+    try {
+      const response = await fetch("https://api.miniteam2.store/api/cart", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(payload),
+      });
+      if (response.ok) {
+        const updatedItems = items.filter((_, index) => !selectedItems[index]);
+        setValue("items", updatedItems);
+        setSelectedItems(new Array(updatedItems.length).fill(false));
+      } else {
+        console.error("Error deleting items:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error deleting items:", error);
+    }
   };
 
   return (
@@ -47,7 +79,7 @@ const CartList = ({ roomNames, items: initialItems }: CartListProps) => {
 
           <div>
             {items.map((item, index) => (
-              <InfoContainer key={item.id}>
+              <InfoContainer key={item.roomId}>
                 <CartItem
                   item={item}
                   roomNames={roomNames}

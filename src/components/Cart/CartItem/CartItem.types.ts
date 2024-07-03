@@ -1,13 +1,16 @@
 export interface Cart {
-  id: string;
-  name: string;
-  imageUrl: string;
-  address: string;
+  roomId: number;
+  accommodationName: string;
+  roomName: string;
   checkIn: string;
   checkOut: string;
-  roomName: string;
   peopleNumber: number;
-  price: number;
+  totalPrice: number;
+  imageUrl: string;
+  baseGuests?: number;
+  maxGuests?: number;
+  reservationId?: string;
+  extraPersonCharge?: number;
 }
 
 export interface CartProps {
@@ -19,4 +22,8 @@ export interface CartComponentProps extends CartProps {
   index: number;
   isSelected: boolean;
   onToggle: () => void;
+}
+
+export interface DeleteRequestPayload {
+  reservationIds: number[];
 }

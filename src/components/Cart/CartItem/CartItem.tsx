@@ -41,17 +41,17 @@ const CartItem = ({ item, roomNames, index, isSelected, onToggle }: CartComponen
   const nights = calculateNights(checkIn, checkOut); // 밤 수 계산
 
   // 예약 URL 생성
-  const PayHref = `/pay?id=${item.id}&imageUrl=${encodeURIComponent(item.imageUrl)}&name=${encodeURIComponent(item.name)}&checkIn=${encodeURIComponent(item.checkIn)}&checkOut=${encodeURIComponent(item.checkOut)}&roomName=${encodeURIComponent(roomNames[index])}&peopleNumber=${item.peopleNumber}&price=${item.price}&nights=${nights}`; // 밤 수 추가
+  const PayHref = `/pay?roomid=${item.roomId}&imageUrl=${encodeURIComponent(item.imageUrl)}&roomname=${encodeURIComponent(item.roomName)}&checkIn=${encodeURIComponent(item.checkIn)}&checkOut=${encodeURIComponent(item.checkOut)}&roomName=${encodeURIComponent(roomNames[index])}&peopleNumber=${item.peopleNumber}&price=${item.totalPrice}&nights=${nights}`; // 밤 수 추가
 
   return (
     <ItemContainer>
       <ImageWrapper>
         <ImageCheckbox type="checkbox" checked={isSelected} onChange={onToggle} />
-        <ItemImage src={item.imageUrl} alt={item.name} />
+        <ItemImage src={item.imageUrl} alt={item.accommodationName} />
       </ImageWrapper>
       <ItemInfoBox>
         <div>
-          <PlaceName>{item.name}</PlaceName>
+          <PlaceName>{item.accommodationName}</PlaceName>
           <RoomPeriod>
             {roomNames[index]}/{nights}박
           </RoomPeriod>
@@ -69,7 +69,7 @@ const CartItem = ({ item, roomNames, index, isSelected, onToggle }: CartComponen
         </CheckInOutBox>
         <TotalPriceText>
           결제금액
-          <span>{item.price.toLocaleString()}원</span>
+          <span>{item.totalPrice.toLocaleString()}원</span>
         </TotalPriceText>
         <ReservationButton href={PayHref}>예약</ReservationButton>
       </ItemInfoBox>
