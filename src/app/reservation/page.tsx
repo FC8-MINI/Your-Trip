@@ -21,7 +21,7 @@ const ReservationPage = async ({ page }: ReservationProps) => {
       {body.content.length > 0 ? (
         <>
           <Reservation reservationItems={body.content} />
-          <Pagination maxPage={body.totalPages} nowPage={Number(page) || 1} pagePath="/reservation?" />
+          <Pagination maxPage={body.totalPages} nowPage={Number(page) || 1} />
         </>
       ) : (
         <ReservationEmpty />
