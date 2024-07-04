@@ -46,9 +46,9 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
     }
   };
 
-  const handleReserveButtonClick = async () => {
+  const handleReserveButtonClick = () => {
     try {
-      await router.push("/pay");
+      router.push("/pay");
     } catch (error) {
       console.error("Navigation error:", error);
     }
@@ -64,7 +64,12 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
         {accomodationRoomItems.map((accomodationRoomItem) => (
           <RoomItem key={accomodationRoomItem.id}>
             <RoomImageBox>
-              <Image src="/images/thumb.jpg" fill alt={accomodationRoomItem.name} objectFit="cover" />
+              <Image
+                src={accomodationRoomItem.roomImageUrls[0]}
+                fill
+                alt={accomodationRoomItem.name}
+                objectFit="cover"
+              />
             </RoomImageBox>
 
             <RoomInfoBox>

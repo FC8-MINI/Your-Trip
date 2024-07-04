@@ -28,6 +28,7 @@ import Swal from "sweetalert2";
 
 const AccomodationInfo = ({
   name,
+  accomodationImageUrls,
   description,
   postalCode,
   address,
@@ -65,7 +66,7 @@ const AccomodationInfo = ({
   return (
     <AccomodationInfoStyled>
       <ImageBox>
-        <Image src="/images/thumb.jpg" fill objectFit="cover" alt={name} />
+        <Image src={accomodationImageUrls[0]} fill objectFit="cover" alt={name} />
       </ImageBox>
 
       <TitleBox>

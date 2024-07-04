@@ -6,6 +6,7 @@ export interface AccomodationRoomList {
   maxGuests: number;
   extraPersonCharge: number;
   reservationAvailable: boolean;
+  roomImageUrls: string[];
 }
 
 export interface AccomodationRoomListProps {
