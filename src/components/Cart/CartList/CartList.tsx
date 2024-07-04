@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import CartItem from "../CartItem";
@@ -51,9 +53,13 @@ const CartList = ({ roomNames, items: initialItems }: CartListProps) => {
           "Content-Type": "application/json",
         },
         credentials: "include",
+        cache: "no-store",
         body: JSON.stringify(payload),
       });
       if (response.ok) {
+        const responseData = await response.json();
+        console.log("Response data:", responseData);
+
         const updatedItems = items.filter((_, index) => !selectedItems[index]);
         setValue("items", updatedItems);
         setSelectedItems(new Array(updatedItems.length).fill(false));

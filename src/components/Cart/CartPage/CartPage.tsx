@@ -39,10 +39,42 @@ const CartPage = ({
 }: CartPageProps) => {
   const [cartList, setCartList] = useState<Cart[] | null>(null);
 
+  // useEffect(() => {
+  //   const fetchCart = async () => {
+  //     try {
+  //       const response = await fetch("https://api.miniteam2.store/api/cart", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         credentials: "include",
+  //         cache: "no-store",
+  //         body: JSON.stringify({
+  //           roomId: 1,
+  //           peopleNumber: 5,
+  //           checkIn: "2024-07-05T14:00:00",
+  //           checkOut: "2024-07-06T14:00:00",
+  //         }),
+  //       });
+  //       const data: APIResponse = await response.json();
+  //       console.log(data);
+  //     } catch (error) {
+  //       console.error("Fetch error: ", error);
+  //     }
+  //   };
+  //   fetchCart()
+  //     .then(() => {
+  //       console.log("Fetch completed");
+  //     })
+  //     .catch((error) => {
+  //       console.error("Fetch error: ", error);
+  //     });
+  // }, []);
+
   useEffect(() => {
     const fetchCartList = async () => {
       try {
-        const response = await fetch("https://api.miniteam2.store/api/cart?page=0&size=10", {
+        const response = await fetch("https://api.miniteam2.store/api/cart?page=1&size=10", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -51,6 +83,7 @@ const CartPage = ({
           cache: "no-store",
         });
         const data: APIResponse = await response.json();
+        console.log("cartList", data.body.content);
 
         setCartList(data.body.content);
         console.log("Fetch completed"); // fetch 완료 시 처리할 코드
