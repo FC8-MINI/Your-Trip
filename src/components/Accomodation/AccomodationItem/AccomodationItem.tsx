@@ -32,7 +32,7 @@ const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
     description,
     minPrice,
     reservationAvailable,
-    imageUrls,
+    accomodationImageUrls,
   } = accomodationItem;
 
   return (
@@ -41,7 +41,7 @@ const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
         <Link href={`/accomodation/${id}`}>
           <AccomodationItemStyled>
             <AccomodationItemImageBox className="accomodation-description__image">
-              <Image src={imageUrls[0]} alt={name} fill style={{ "object-fit": "cover" }} />
+              <Image src={accomodationImageUrls[0]} alt={name} fill style={{ "object-fit": "cover" }} />
               {reservationAvailable || <SoldOutImageCover>예약 마감</SoldOutImageCover>}
             </AccomodationItemImageBox>
             <Description>

@@ -10,6 +10,7 @@ import { RiKakaoTalkFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
 import Swal from "sweetalert2";
 import { postEmailLogin } from "@/apis/auth/postEmailLogin";
+import Link from "next/link";
 
 const initialState = { email: "", password: "" };
 
@@ -105,18 +106,22 @@ const LoginForm = () => {
           로그인
         </Button>
       </LoginFormStyled>
-      <Button $size="large">
-        <OAuthText>
-          <FcGoogle />
-          구글로 로그인
-        </OAuthText>
-      </Button>
-      <Button $mode="kakao" $size="large">
-        <OAuthText>
-          <RiKakaoTalkFill />
-          카카오로 로그인
-        </OAuthText>
-      </Button>
+      <Link href="https://api.miniteam2.store/api/auth/google/login">
+        <Button $size="large">
+          <OAuthText>
+            <FcGoogle />
+            구글로 로그인
+          </OAuthText>
+        </Button>
+      </Link>
+      <Link href="https://api.miniteam2.store/api/auth/kakao/login">
+        <Button type="button" $mode="kakao" $size="large">
+          <OAuthText>
+            <RiKakaoTalkFill />
+            카카오로 로그인
+          </OAuthText>
+        </Button>
+      </Link>
       <Hr $size="short" />
       <ToSignupText>계정이 없으신가요?</ToSignupText>
       <Button $size="large" onClick={() => router.push("/signup")}>

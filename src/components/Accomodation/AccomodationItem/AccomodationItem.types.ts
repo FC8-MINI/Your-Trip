@@ -16,7 +16,7 @@ export interface AccomodationItem {
   minPrice: number;
   reservationAvailable: boolean;
   likeCount: number;
-  imageUrls: string[];
+  accomodationImageUrls: string[];
 }
 
 export interface AccomodationItemProps {
