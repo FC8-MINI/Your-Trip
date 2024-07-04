@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Pagination from "@/components/Pagination";
 import Reservation from "@/components/Reservation";
 import ReservationEmpty from "@/components/Reservation/ReservationEmpty";
@@ -8,22 +11,40 @@ interface ReservationProps {
   };
 }
 
-const ReservationPage = async ({ searchParams: { page } }: ReservationProps) => {
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/reservation`;
-  const response = await fetch(url, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const { body } = await response.json();
+const ReservationPage = ({ searchParams: { page } }: ReservationProps) => {
+  const [reservationItems, setReservationItems] = useState([]);
+  const [totalPages, setTotalPages] = useState(1);
+
+  useEffect(() => {
+    const fetchReservation = async () => {
+      try {
+        const url = `https://api.miniteam2.store/api/reservation`;
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const { body } = await response.json();
+
+        setReservationItems(body.content);
+        setTotalPages(body.totalPages);
+      } catch (error) {
+        console.error("Error fetching reservations:", error);
+      }
+    };
+
+    fetchReservation().catch((error) => {
+      console.error("Error in fetchReservations:", error);
+    });
+  }, [page]);
 
   return (
     <>
-      {body.content.length > 0 ? (
+      {reservationItems.length > 0 ? (
         <>
-          <Reservation reservationItems={body.content} />
-          <Pagination maxPage={body.totalPages} nowPage={Number(page) || 1} />
+          <Reservation reservationItems={reservationItems} />
+          <Pagination maxPage={totalPages} nowPage={Number(page) || 1} />
         </>
       ) : (
         <ReservationEmpty />
