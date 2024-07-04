@@ -1,6 +1,6 @@
 export interface ReservationDetailProps {
   accomodationName: string;
-  userName: string;
+  memberName: string;
   roomName: string;
   checkIn: string;
   checkOut: string;
@@ -9,4 +9,5 @@ export interface ReservationDetailProps {
   parkingAvailable: boolean;
   cookingAvailable: boolean;
   roomPrice: number;
+  roomImageUrls: string[];
 }
