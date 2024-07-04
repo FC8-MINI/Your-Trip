@@ -20,7 +20,7 @@ export async function GET(_request: NextRequest, { params }: { params: { id: str
         checkIn: "2024-06-18T00:00:00",
         checkOut: "2024-06-18T00:00:00",
         categoryId: 1,
-        imageUrls: [
+        accomodationImageUrls: [
           "https://i.postimg.cc/cJQR3R80/1-3.jpg",
           "https://i.postimg.cc/tRwwvwfY/Korea-Quality-6-3.jpg",
           "https://i.postimg.cc/HsY6gsPB/2-3.jpg",
@@ -35,7 +35,7 @@ export async function GET(_request: NextRequest, { params }: { params: { id: str
           maxGuests: 4,
           extraPersonCharge: 10000,
           reservationAvailable: true,
-          imageUrls: [
+          roomImageUrls: [
             "https://i.postimg.cc/TwPvPLG0/5-3.jpg",
             "https://i.postimg.cc/PJtbMCn9/4-3.jpg",
             "https://i.postimg.cc/0NhJVZhL/5-3.jpg",
@@ -49,7 +49,7 @@ export async function GET(_request: NextRequest, { params }: { params: { id: str
           maxGuests: 5,
           extraPersonCharge: 10000,
           reservationAvailable: false,
-          imageUrls: [
+          roomImageUrls: [
             "https://i.postimg.cc/cCWVgXpQ/2-3.jpg",
             "https://i.postimg.cc/gkWkqCX8/2-3.jpg",
             "https://i.postimg.cc/MH007WQX/3-3.jpg",
