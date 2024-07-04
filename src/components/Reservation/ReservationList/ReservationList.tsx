@@ -20,7 +20,12 @@ const ReservationList = ({ reservationItems }: ReservationListProps) => {
       {reservationItems.map((reservationItem) => (
         <ReservationHistoryItem key={reservationItem.reservationId}>
           <ImageBox>
-            <Image src="/images/thumb.jpg" alt={reservationItem.accomodationName} fill objectFit="cover" />
+            <Image
+              src={reservationItem.accomodationImageUrls[0]}
+              alt={reservationItem.accomodationName}
+              fill
+              objectFit="cover"
+            />
           </ImageBox>
 
           <ReservationInfoBox>
