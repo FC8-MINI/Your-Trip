@@ -145,13 +145,13 @@ const SignupForm = () => {
       <Button $size="large">
         <OAuthText>
           <FcGoogle />
-          구글로 회원 가입
+          구글로 시작하기
         </OAuthText>
       </Button>
       <Button $mode="kakao" $size="large">
         <OAuthText>
           <RiKakaoTalkFill />
-          카카오로 회원 가입
+          카카오로 시작하기
         </OAuthText>
       </Button>
       <Hr $size="short" />

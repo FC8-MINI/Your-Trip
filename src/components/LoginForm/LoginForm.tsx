@@ -110,7 +110,7 @@ const LoginForm = () => {
         <Button $size="large">
           <OAuthText>
             <FcGoogle />
-            구글로 로그인
+            구글로 시작하기
           </OAuthText>
         </Button>
       </Link>
@@ -118,7 +118,7 @@ const LoginForm = () => {
         <Button type="button" $mode="kakao" $size="large">
           <OAuthText>
             <RiKakaoTalkFill />
-            카카오로 로그인
+            카카오로 시작하기
           </OAuthText>
         </Button>
       </Link>
