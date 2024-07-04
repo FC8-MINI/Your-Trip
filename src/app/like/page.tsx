@@ -1,8 +1,8 @@
 "use client";
 
+import LikeEmpty from "@/components/Like/LikeEmpty";
 import LikeList from "@/components/Like/LikeList";
 import Pagination from "@/components/Pagination";
-import ReservationEmpty from "@/components/Reservation/ReservationEmpty";
 import { useEffect, useState } from "react";
 
 interface LikeProps {
@@ -18,14 +18,12 @@ const Like = ({ searchParams: { page } }: LikeProps) => {
   useEffect(() => {
     const fetchReservation = async () => {
       try {
-        const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/like`;
+        const url = `https://api.miniteam2.store/api/likes`;
         const response = await fetch(url, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
-          // cache: "no-store",
-          // credentials: "include",
         });
         const { body } = await response.json();
 
@@ -49,7 +47,7 @@ const Like = ({ searchParams: { page } }: LikeProps) => {
           <Pagination maxPage={totalPages} nowPage={Number(page) || 1} />
         </>
       ) : (
-        <ReservationEmpty />
+        <LikeEmpty />
       )}
     </>
   );
