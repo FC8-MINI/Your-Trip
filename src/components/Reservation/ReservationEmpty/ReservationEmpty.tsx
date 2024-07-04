@@ -1,15 +1,15 @@
 import Button from "@/components/Button";
-import { ReservationEmptyInfoBox, TitleText, InfoTextBox, ImageBox } from "./ReservationEmpty.styles";
+import { EmptyInfoBox, TitleText, InfoTextBox, ImageBox } from "./ReservationEmpty.styles";
 import Container from "@/components/Container";
 import { useRouter } from "next/navigation";
 
-const AccomodationEmpty = () => {
+const ReservationEmpty = () => {
   const router = useRouter();
 
   return (
     <Container>
       <TitleText>예약 내역</TitleText>
-      <ReservationEmptyInfoBox>
+      <EmptyInfoBox>
         <InfoTextBox>
           <div>
             <strong>예정된 여행이 없습니다.</strong>
@@ -38,9 +38,9 @@ const AccomodationEmpty = () => {
             </defs>
           </svg>
         </ImageBox>
-      </ReservationEmptyInfoBox>
+      </EmptyInfoBox>
     </Container>
   );
 };
 
-export default AccomodationEmpty;
+export default ReservationEmpty;

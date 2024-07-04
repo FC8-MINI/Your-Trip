@@ -7,7 +7,7 @@ export const TitleText = styled.h2`
   font-weight: 700;
 `;
 
-export const ReservationEmptyInfoBox = styled.div`
+export const EmptyInfoBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
