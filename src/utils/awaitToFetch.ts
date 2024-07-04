@@ -79,7 +79,7 @@ export default async function to<B = {}, E extends ErrorCode = ErrorCode>(
   try {
     const response = await promise;
     const data = await response.json();
-    console.log(data);
+
     if (data.result.resultMessage === "success") {
       return [null, data] as [null, ResponseResult<SuccessResultCode> & B];
     } else {
