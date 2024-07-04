@@ -19,6 +19,16 @@ export const InfoBox = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   padding: 2.2rem;
+
+  > div {
+    position: relative;
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
 `;
 
 export const InfoName = styled.h3`
@@ -31,14 +41,14 @@ export const InfoDescText = styled.p`
 
 export const InfoPostcodeText = styled.span`
   display: inline-block;
-  padding-left: 0.6rem;
+  padding-left: 2rem;
   color: var(--color-gray-darker);
   font-size: 1.5rem;
 `;
 
 export const InfoAddressText = styled.span`
   display: inline-block;
-  padding-left: 0.6rem;
+  padding-left: 2rem;
   color: var(--color-gray-darker);
   font-size: 1.5rem;
 `;

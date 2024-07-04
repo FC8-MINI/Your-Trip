@@ -11,6 +11,7 @@ export const LikeListLayout = styled.ul`
   display: grid;
   grid-gap: 4rem 3rem;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 6rem;
 
   @media ${device.notebook} {
     grid-template-columns: repeat(3, minmax(0, 1fr));
