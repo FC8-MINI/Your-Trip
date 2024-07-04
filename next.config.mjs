@@ -4,7 +4,7 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ["i.postimg.cc"],
+    remotePatterns: [{ protocol: "https", hostname: "i.postimg.cc", port: "" }],
   },
 };
 
