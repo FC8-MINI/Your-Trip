@@ -24,6 +24,8 @@ const ReservationPage = ({ searchParams: { page } }: ReservationProps) => {
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
+          cache: "no-store",
         });
         const { body } = await response.json();
 
