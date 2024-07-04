@@ -11,11 +11,11 @@ import {
 import { LikeItemProps } from "./LikeItem.types";
 import { RiMapPin2Fill, RiSignpostFill } from "react-icons/ri";
 
-const LikeItem = ({ id, name, description, postalCode, address }: LikeItemProps) => {
+const LikeItem = ({ name, accomodationImageUrls, description, postalCode, address }: LikeItemProps) => {
   return (
     <LikeItemLayout>
       <ImageBox>
-        <Image src="/images/thumb.jpg" fill objectFit="cover" alt={name} />
+        <Image src={accomodationImageUrls[0]} fill objectFit="cover" alt={name} />
       </ImageBox>
 
       <InfoBox>
