@@ -4,21 +4,23 @@ import { useEffect, useState } from "react";
 import ReservationDetail, { ReservationDetailProps } from "@/components/Reservation/ReservationDetail";
 
 const ReservationDetailPage = ({ params: { reservationId } }: { params: { reservationId: string } }) => {
-  const [data, setData] = useState<ReservationDetailProps>();
+  const [reservationDetail, setReservationDetail] = useState<ReservationDetailProps>();
 
   useEffect(() => {
     const fetchReservationDetail = async () => {
       try {
-        const url = ` https://api.miniteam2.store/api/reservation/detail/${reservationId}`;
+        const url = `https://api.miniteam2.store/api/reservation/detail/${reservationId}`;
         const response = await fetch(url, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
+          cache: "no-store",
         });
 
         const result = await response.json();
-        setData(result.body);
+        setReservationDetail(result.body);
       } catch (error) {
         console.error("Error fetching reservation detail:", error);
       }
@@ -29,23 +31,23 @@ const ReservationDetailPage = ({ params: { reservationId } }: { params: { reserv
     });
   }, [reservationId]);
 
-  if (!data) {
+  if (!reservationDetail) {
     return <div>Error loading data</div>;
   }
 
   return (
     <ReservationDetail
-      accomodationName={data.accomodationName}
-      memberName={data.memberName}
-      roomName={data.roomName}
-      checkIn={data.checkIn}
-      checkOut={data.checkOut}
-      baseGuests={data.baseGuests}
-      extraPrice={data.extraPrice}
-      parkingAvailable={data.parkingAvailable}
-      cookingAvailable={data.cookingAvailable}
-      roomPrice={data.roomPrice}
-      roomImageUrls={data.roomImageUrls}
+      accomodationName={reservationDetail.accomodationName}
+      memberName={reservationDetail.memberName}
+      roomName={reservationDetail.roomName}
+      checkIn={reservationDetail.checkIn}
+      checkOut={reservationDetail.checkOut}
+      baseGuests={reservationDetail.baseGuests}
+      extraPrice={reservationDetail.extraPrice}
+      parkingAvailable={reservationDetail.parkingAvailable}
+      cookingAvailable={reservationDetail.cookingAvailable}
+      roomPrice={reservationDetail.roomPrice}
+      roomImageUrls={reservationDetail.roomImageUrls}
     />
   );
 };

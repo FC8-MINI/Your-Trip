@@ -57,7 +57,7 @@ const ReservationList = ({ reservationItems }: ReservationListProps) => {
               <span>{reservationItem.totalPrice.toLocaleString()}원</span>
             </TotalPriceText>
 
-            <LinkStyled href={`/reservation/${reservationItem.reservationId}`}>예약 상세</LinkStyled>
+            <LinkStyled href={`/reservation/detail/${reservationItem.reservationId}`}>예약 상세</LinkStyled>
           </ReservationInfoBox>
         </ReservationHistoryItem>
       ))}
