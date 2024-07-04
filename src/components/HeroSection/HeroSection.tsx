@@ -6,7 +6,12 @@ const Hero = () => {
   return (
     <HeroStyled>
       <HeroBackgroundImage>
-        <Image src="/images/hero_background_image.jpg" alt="hero section 배경 이미지" fill objectFit="cover" />
+        <Image
+          src="/images/hero_background_image.jpg"
+          alt="hero section 배경 이미지"
+          fill
+          style={{ "object-fit": "cover" }}
+        />
       </HeroBackgroundImage>
       <HeroContainer>
         <HeroTitle>

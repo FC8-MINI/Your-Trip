@@ -15,6 +15,8 @@ export interface AccomodationItem {
   category: string;
   minPrice: number;
   reservationAvailable: boolean;
+  likeCount: number;
+  imageUrls: string[];
 }
 
 export interface AccomodationItemProps {
