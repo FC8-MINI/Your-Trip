@@ -22,9 +22,20 @@ import { AccomodationItemProps } from "./AccomodationItem.types";
 import Image from "next/image";
 import { RiMapPin2Fill } from "react-icons/ri";
 
+const imageStyle = { objectFit: "cover" };
+
 const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
-  const { id, name, address, parkingAvailable, cookingAvailable, description, minPrice, reservationAvailable } =
-    accomodationItem;
+  const {
+    id,
+    name,
+    address,
+    parkingAvailable,
+    cookingAvailable,
+    description,
+    minPrice,
+    reservationAvailable,
+    accomodationImageUrls,
+  } = accomodationItem;
 
   return (
     <li>
@@ -32,7 +43,7 @@ const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
         <Link href={`/accomodation/${id}`}>
           <AccomodationItemStyled>
             <AccomodationItemImageBox className="accomodation-description__image">
-              <Image src="/images/hero_background_image.jpg" alt={name} fill objectFit="cover" />
+              <Image src={accomodationImageUrls[0]} alt={name} fill style={imageStyle} />
               {reservationAvailable || <SoldOutImageCover>예약 마감</SoldOutImageCover>}
             </AccomodationItemImageBox>
             <Description>

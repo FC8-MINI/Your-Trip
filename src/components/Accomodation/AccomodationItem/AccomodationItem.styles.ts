@@ -126,8 +126,7 @@ export const DescriptionPrice = styled.span<DescriptionPriceProps>`
   display: flex;
   align-items: flex-end;
 
-  color: ${({ $reservationAvailable }) =>
-    $reservationAvailable ? "var(--color-gray-dark)" : "var(--color-gray-dark)"};
+  color: ${({ $reservationAvailable }) => ($reservationAvailable ? "#000" : "var(--color-gray-dark)")};
   font-size: 1.8rem;
   font-weight: 600;
   text-decoration: ${({ $reservationAvailable }) => ($reservationAvailable ? "none" : "line-through")};

@@ -1,5 +1,5 @@
 import to from "@/utils/awaitToFetch";
-import { AuthErrorCode, authErrorCodes } from "./error";
+import { AuthErrorCode } from "./error";
 
 interface RegisterData {
   name: string;
@@ -21,8 +21,8 @@ export const postRegister = async (registerData: RegisterData) => {
       headers: {
         "Content-Type": "application/json",
       },
+      cache: "no-store",
       body: JSON.stringify(registerData),
     }),
-    authErrorCodes,
   );
 };

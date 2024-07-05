@@ -6,9 +6,19 @@
 import { AccommodationErrorCode } from "@/apis/accommodationList/error";
 import { AuthErrorCode } from "@/apis/auth/error";
 
-export type SuccessResultCode = "OK" | "CREATED";
+const successResultCodes = [
+  "OK",
+  "CREATED",
+  "DELETE",
+  "NICKNAME_UPDATED",
+  "TOKEN_REFRESHED",
+  "LOGOUT",
+  "WITHDRAW",
+  "REGISTER",
+  "LOGIN",
+] as const;
 
-export type ErrorResultCode = "NOT_FOUND" | "BAD_REQUEST" | "CONFLICT" | "UNAUTHORIZED" | "INTERNAL_SERVER_ERROR";
+export type SuccessResultCode = (typeof successResultCodes)[number];
 
 export type CartErrorCode =
   | "CART_NOT_FOUND"
@@ -65,16 +75,14 @@ export interface ResponseResult<C> {
 
 export default async function to<B = {}, E extends ErrorCode = ErrorCode>(
   promise: Promise<Response>,
-  errorCodes: Record<string, E>,
 ): Promise<[ResponseResult<E>, null] | [null, ResponseResult<SuccessResultCode> & B]> {
   try {
     const response = await promise;
     const data = await response.json();
 
-    if (data.result.resultCode === "OK" || data.result.resultCode === "CREATED") {
+    if (data.result.resultMessage === "success") {
       return [null, data] as [null, ResponseResult<SuccessResultCode> & B];
     } else {
-      data.result.resultCode = errorCodes[data.result.resultDescription];
       return [data, null] as [ResponseResult<E>, null];
     }
   } catch (error) {
@@ -82,8 +90,8 @@ export default async function to<B = {}, E extends ErrorCode = ErrorCode>(
       return [
         {
           result: {
-            resultCode: error.name,
-            resultMessage: "FETCH_ERROR",
+            resultCode: "FETCH_ERROR",
+            resultMessage: error.name,
             resultDescription: error.message,
           },
         } as ResponseResult<E>,
