@@ -26,6 +26,7 @@ const SearchForm = () => {
     formState: { errors },
     setValue,
     setError,
+    clearErrors,
   } = useForm({ defaultValues: initialState });
 
   const onSubmit: SubmitHandler<typeof initialState> = ({ accomodation, checkIn, checkOut }) => {
@@ -43,7 +44,9 @@ const SearchForm = () => {
     setValue("accomodation", params.get("name") || "");
     setValue("checkIn", params.get("checkIn") || "");
     setValue("checkOut", params.get("checkOut") || "");
-  }, [params, setValue]);
+
+    clearErrors();
+  }, [params, setValue, clearErrors]);
 
   return (
     <SearchBox $error={errors.accomodation || errors.checkIn || errors.checkOut}>
