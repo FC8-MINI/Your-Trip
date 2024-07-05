@@ -54,3 +54,11 @@ export const calculateNight = (checkIn: string, checkOut: string): number => {
 
   return Math.round(night);
 };
+
+export function getCurrentKSTDateTodayLocal() {
+  const date = new Date();
+  const offset = TIME_DIFF_KST_AND_UTC * MINUTE_TO_SECOND;
+  const localDate = new Date(date.getTime() + offset * MINUTE_TO_SECOND * SECOND_TO_MILLISECOND);
+
+  return localDate.toISOString().slice(0, 16);
+}
