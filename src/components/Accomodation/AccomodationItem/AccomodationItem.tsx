@@ -47,7 +47,7 @@ const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
             <AccomodationItemImageBox className="accomodation-description__image">
               <Image src={accomodationImageUrls[0]} alt={name} fill style={imageStyle} />
               {reservationAvailable || <SoldOutImageCover>예약 마감</SoldOutImageCover>}
-              {true && (
+              {liked && (
                 <HeartBox>
                   <RiHeart3Fill color="var(--color-primary)" />
                   <RiHeart3Line color="var(--color-white)" />
