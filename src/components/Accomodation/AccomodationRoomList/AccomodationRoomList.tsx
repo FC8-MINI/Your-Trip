@@ -60,24 +60,35 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
         });
 
         if (!response.ok) {
-          const errorData = await response.json();
-          console.error("서버 오류:", errorData);
-          throw new Error("장바구니에 추가하지 못했습니다.");
-        }
+          if (response.status === 409) {
+            await Swal.fire({
+              customClass: {
+                confirmButton: "btn btn-primary",
+              },
+              icon: "error",
+              title: "이미 존재하는 장바구니 항목입니다.",
+              confirmButtonText: "확인",
+            });
+          } else {
+            const errorData = await response.json();
+            console.error("서버 오류:", errorData);
+            throw new Error("장바구니에 추가하지 못했습니다.");
+          }
+        } else {
+          const result = await Swal.fire({
+            customClass: {
+              confirmButton: "btn btn-primary",
+            },
+            icon: "success",
+            timerProgressBar: true,
+            title: "장바구니에 상품이 담겼습니다.",
+            confirmButtonText: "장바구니 보기",
+            timer: 2500,
+          });
 
-        const result = await Swal.fire({
-          customClass: {
-            confirmButton: "btn btn-primary",
-          },
-          icon: "success",
-          timerProgressBar: true,
-          title: "장바구니에 상품이 담겼습니다.",
-          confirmButtonText: "장바구니 보기",
-          timer: 2500,
-        });
-
-        if (result.isConfirmed) {
-          router.push("/cart");
+          if (result.isConfirmed) {
+            router.push("/cart");
+          }
         }
       } catch (error) {
         console.error("Swal 오류:", error);
