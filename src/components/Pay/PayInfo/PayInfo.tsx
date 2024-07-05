@@ -27,12 +27,7 @@ const PayInfo = ({
       <PayTitle>결제</PayTitle>
       <PayContainer>
         <PayImageWrapper>
-          <Image
-            src={`https://i.postimg.cc/cJQR3R80/1-3.jpg`}
-            alt={accommodationName}
-            fill
-            style={{ objectFit: "cover" }}
-          />
+          <Image src={`https://i.postimg.cc/${imageUrl}`} alt={accommodationName} fill style={{ objectFit: "cover" }} />
         </PayImageWrapper>
         <PayInfoBox>
           <AccommodationName>{accommodationName}</AccommodationName>
