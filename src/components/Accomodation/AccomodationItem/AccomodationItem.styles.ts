@@ -47,6 +47,22 @@ export const AccomodationItemImageBox = styled.div`
   transition: transform 0.3s ease-in-out;
 `;
 
+export const HeartBox = styled.div`
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+
+  > svg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    font-size: 2.3rem;
+  }
+`;
+
 export const SoldOutImageCover = styled.div`
   position: absolute;
   top: 0;

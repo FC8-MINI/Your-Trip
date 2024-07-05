@@ -11,6 +11,7 @@ import {
   DescriptionPriceBox,
   DescriptionPriceUnit,
   DescriptionTitle,
+  HeartBox,
   SoldOutImageCover,
   SoldOutPrice,
 } from "./AccomodationItem.styles";
@@ -20,7 +21,7 @@ import { GiMeal } from "react-icons/gi";
 import { TbParking, TbParkingOff } from "react-icons/tb";
 import { AccomodationItemProps } from "./AccomodationItem.types";
 import Image from "next/image";
-import { RiMapPin2Fill } from "react-icons/ri";
+import { RiHeart3Fill, RiHeart3Line, RiMapPin2Fill } from "react-icons/ri";
 
 const imageStyle = { objectFit: "cover" };
 
@@ -35,6 +36,7 @@ const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
     minPrice,
     reservationAvailable,
     accomodationImageUrls,
+    liked,
   } = accomodationItem;
 
   return (
@@ -45,6 +47,12 @@ const AccomodationItem = ({ accomodationItem }: AccomodationItemProps) => {
             <AccomodationItemImageBox className="accomodation-description__image">
               <Image src={accomodationImageUrls[0]} alt={name} fill style={imageStyle} />
               {reservationAvailable || <SoldOutImageCover>예약 마감</SoldOutImageCover>}
+              {true && (
+                <HeartBox>
+                  <RiHeart3Fill color="var(--color-primary)" />
+                  <RiHeart3Line color="var(--color-white)" />
+                </HeartBox>
+              )}
             </AccomodationItemImageBox>
             <Description>
               <DescriptionTitle>{name}</DescriptionTitle>
