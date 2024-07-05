@@ -1,57 +1,19 @@
 import Container from "@/components/Container";
 import { LikeListTitle, LikeListLayout } from "./LikeList.styles";
-import { LikeItemProps } from "../LikeItem/LikeItem.types";
 import LikeItem from "../LikeItem";
+import { LikeListProps } from "./LikeList.types";
 
-const likeItems: LikeItemProps[] = [
-  {
-    id: 1,
-    name: "숙소 이름1",
-    description: "숙소 설명입니다.",
-    postalCode: 12345678,
-    address: "어쩌고 저쩌고 여기저기",
-  },
-  {
-    id: 2,
-    name: "숙소 이름2",
-    description: "숙소2 설명입니다.",
-    postalCode: 12345678,
-    address: "어쩌고 저쩌고 여기저기",
-  },
-  {
-    id: 3,
-    name: "숙소 이름3",
-    description: "숙소 설명입니다.",
-    postalCode: 12345678,
-    address: "어쩌고 저쩌고 여기저기",
-  },
-  {
-    id: 3,
-    name: "숙소 이름3",
-    description: "숙소 설명입니다.",
-    postalCode: 12345678,
-    address: "어쩌고 저쩌고 여기저기",
-  },
-  {
-    id: 3,
-    name: "숙소 이름3",
-    description: "숙소 설명입니다.",
-    postalCode: 12345678,
-    address: "어쩌고 저쩌고 여기저기",
-  },
-];
-
-const LikeList = () => {
+const LikeList = ({ likeItems }: LikeListProps) => {
   return (
     <Container>
       <LikeListTitle>내 찜 목록</LikeListTitle>
       <LikeListLayout>
-        {likeItems.map((likeItem) => {
+        {likeItems.map((likeItem, index) => {
           return (
             <LikeItem
-              key={likeItem.id}
-              id={likeItem.id}
+              key={index}
               name={likeItem.name}
+              accomodationImageUrls={likeItem.accomodationImageUrls}
               description={likeItem.description}
               postalCode={likeItem.postalCode}
               address={likeItem.address}

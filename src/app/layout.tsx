@@ -23,7 +23,7 @@ export default function RootLayout({
       <body>
         <StyledComponentsRegistry>
           <GlobalStyle />
-          <Suspense fallback={<Loading />}>{children}</Suspense>
+          {children}
           <Footer />
         </StyledComponentsRegistry>
       </body>

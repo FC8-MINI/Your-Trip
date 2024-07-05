@@ -20,7 +20,12 @@ const ReservationList = ({ reservationItems }: ReservationListProps) => {
       {reservationItems.map((reservationItem) => (
         <ReservationHistoryItem key={reservationItem.reservationId}>
           <ImageBox>
-            <Image src="/images/thumb.jpg" alt={reservationItem.accomodationName} fill objectFit="cover" />
+            <Image
+              src={reservationItem.accomodationImageUrls[0]}
+              alt={reservationItem.accomodationName}
+              fill
+              objectFit="cover"
+            />
           </ImageBox>
 
           <ReservationInfoBox>
@@ -52,7 +57,7 @@ const ReservationList = ({ reservationItems }: ReservationListProps) => {
               <span>{reservationItem.totalPrice.toLocaleString()}원</span>
             </TotalPriceText>
 
-            <LinkStyled href={`/reservation/${reservationItem.reservationId}`}>예약 상세</LinkStyled>
+            <LinkStyled href={`/reservation/detail/${reservationItem.reservationId}`}>예약 상세</LinkStyled>
           </ReservationInfoBox>
         </ReservationHistoryItem>
       ))}

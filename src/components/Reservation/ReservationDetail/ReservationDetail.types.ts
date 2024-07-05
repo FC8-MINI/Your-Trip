@@ -1,12 +1,13 @@
 export interface ReservationDetailProps {
   accomodationName: string;
-  userName: string;
+  memberName: string;
   roomName: string;
   checkIn: string;
   checkOut: string;
   baseGuests: number;
-  extraPrice: number;
+  extraCharge: number;
   parkingAvailable: boolean;
   cookingAvailable: boolean;
   roomPrice: number;
+  roomImageUrls: string[];
 }

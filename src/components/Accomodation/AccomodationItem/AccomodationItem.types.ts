@@ -17,6 +17,7 @@ export interface AccomodationItem {
   reservationAvailable: boolean;
   likeCount: number;
   accomodationImageUrls: string[];
+  liked: boolean;
 }
 
 export interface AccomodationItemProps {

@@ -129,3 +129,9 @@ export const LinkStyled = styled(Link)`
     text-align: center;
   }
 `;
+
+export const OptionInfoText = styled.p`
+  margin: 4rem 0 1.2rem;
+  font-size: 1.5rem;
+  color: var(--color-gray-darker);
+`;

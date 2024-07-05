@@ -1,19 +1,19 @@
 import Button from "@/components/Button";
-import { EmptyInfoBox, TitleText, InfoTextBox, ImageBox } from "./ReservationEmpty.styles";
+import { EmptyInfoBox, TitleText, InfoTextBox, ImageBox } from "./LikeEmpty.styles";
 import Container from "@/components/Container";
 import { useRouter } from "next/navigation";
 
-const ReservationEmpty = () => {
+const LikeEmpty = () => {
   const router = useRouter();
 
   return (
     <Container>
-      <TitleText>예약 내역</TitleText>
+      <TitleText>내 찜 목록</TitleText>
       <EmptyInfoBox>
         <InfoTextBox>
           <div>
-            <strong>예정된 여행이 없습니다.</strong>
-            <span>지금 새로운 예약을 진행해보세요.</span>
+            <strong>저장된 찜 목록이 없습니다.</strong>
+            <span>지금 새로운 여행지를 찜해보세요.</span>
           </div>
           <Button onClick={() => router.replace("/")} $mode="primary">
             여행지 찾아보기
@@ -43,4 +43,4 @@ const ReservationEmpty = () => {
   );
 };
 
-export default ReservationEmpty;
+export default LikeEmpty;

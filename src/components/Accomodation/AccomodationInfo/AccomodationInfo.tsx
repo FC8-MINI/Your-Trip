@@ -1,4 +1,3 @@
-import { useRouter } from "next/navigation";
 import { RiMapPin2Fill, RiSignpostFill, RiTimeFill, RiParkingBoxFill, RiDoubleQuotesL } from "react-icons/ri";
 import { PiCookingPotFill } from "react-icons/pi";
 import {
@@ -23,11 +22,11 @@ import { AccomodationInfoProps } from "./AccomodationInfo.types";
 import { formatTime } from "@/utils/time";
 import Image from "next/image";
 import SocialAction from "@/components/SocialAction";
-import { useState } from "react";
-import Swal from "sweetalert2";
 
 const AccomodationInfo = ({
+  id,
   name,
+  accomodationImageUrls,
   description,
   postalCode,
   address,
@@ -35,42 +34,17 @@ const AccomodationInfo = ({
   cookingAvailable,
   checkIn,
   checkOut,
+  liked,
 }: AccomodationInfoProps) => {
-  const [isLike, setIsLike] = useState(false);
-  const router = useRouter();
-
-  const handleToggleLike = async () => {
-    setIsLike(!isLike);
-
-    try {
-      const result = await Swal.fire({
-        customClass: {
-          confirmButton: "btn btn-primary",
-        },
-        icon: "success",
-        timerProgressBar: true,
-        title: "찜 목록에 추가했습니다.",
-        confirmButtonText: "찜 목록보기",
-        timer: 2500,
-      });
-
-      if (result.isConfirmed) {
-        router.push("/like");
-      }
-    } catch (error) {
-      console.error("Swal error:", error);
-    }
-  };
-
   return (
     <AccomodationInfoStyled>
       <ImageBox>
-        <Image src="/images/thumb.jpg" fill objectFit="cover" alt={name} />
+        <Image src={accomodationImageUrls[0]} fill objectFit="cover" alt={name} />
       </ImageBox>
 
       <TitleBox>
         <AccomodationName>{name}</AccomodationName>
-        <SocialAction isLike={isLike} handleToggleLike={handleToggleLike} />
+        <SocialAction accommodationId={id} liked={liked} />
       </TitleBox>
 
       <AddressList>

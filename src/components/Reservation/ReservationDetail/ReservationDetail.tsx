@@ -15,22 +15,23 @@ import Image from "next/image";
 
 const ReservationDetail = ({
   accomodationName,
-  userName,
+  memberName,
   roomName,
   checkIn,
   checkOut,
   baseGuests,
-  extraPrice,
+  extraCharge,
   parkingAvailable,
   cookingAvailable,
   roomPrice,
+  roomImageUrls,
 }: ReservationDetailProps) => {
   return (
     <Container>
       <TitleText>예약내역 상세</TitleText>
       <DetailBox>
         <ImageBox>
-          <Image src="/images/thumb.jpg" alt={accomodationName} fill objectFit="cover" />
+          <Image src={roomImageUrls[0]} alt={accomodationName} fill objectFit="cover" />
         </ImageBox>
 
         <InfoBox>
@@ -38,7 +39,7 @@ const ReservationDetail = ({
           <InfoDl>
             <div>
               <InfoDt>예약자 이름</InfoDt>
-              <InfoDd>{userName}</InfoDd>
+              <InfoDd>{memberName}</InfoDd>
             </div>
             <div>
               <InfoDt>예약 일정</InfoDt>
@@ -70,7 +71,7 @@ const ReservationDetail = ({
                 <br />
                 (인원 추가)
               </InfoDt>
-              <InfoDd>{extraPrice.toLocaleString()}원</InfoDd>
+              <InfoDd>{extraCharge.toLocaleString()}원</InfoDd>
             </div>
             <div>
               <InfoDt>총 결제 금액</InfoDt>

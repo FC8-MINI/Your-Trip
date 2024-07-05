@@ -1,4 +1,4 @@
 export interface SocialActionProps {
-  isLike: boolean;
-  handleToggleLike: () => void;
+  accommodationId: number;
+  liked: boolean;
 }
