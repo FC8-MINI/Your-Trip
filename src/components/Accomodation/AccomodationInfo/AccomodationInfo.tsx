@@ -1,4 +1,3 @@
-import { useRouter } from "next/navigation";
 import { RiMapPin2Fill, RiSignpostFill, RiTimeFill, RiParkingBoxFill, RiDoubleQuotesL } from "react-icons/ri";
 import { PiCookingPotFill } from "react-icons/pi";
 import {
@@ -23,10 +22,9 @@ import { AccomodationInfoProps } from "./AccomodationInfo.types";
 import { formatTime } from "@/utils/time";
 import Image from "next/image";
 import SocialAction from "@/components/SocialAction";
-import { useState } from "react";
-import Swal from "sweetalert2";
 
 const AccomodationInfo = ({
+  id,
   name,
   accomodationImageUrls,
   description,
@@ -36,25 +34,8 @@ const AccomodationInfo = ({
   cookingAvailable,
   checkIn,
   checkOut,
+  liked,
 }: AccomodationInfoProps) => {
-  const [isLike, setIsLike] = useState(false);
-
-  const handleToggleLike = async () => {
-    setIsLike(!isLike);
-
-    try {
-      await Swal.fire({
-        icon: "success",
-        timerProgressBar: true,
-        title: "찜 목록에 추가했습니다.",
-        showConfirmButton: false,
-        timer: 2000,
-      });
-    } catch (error) {
-      console.error("Swal error:", error);
-    }
-  };
-
   return (
     <AccomodationInfoStyled>
       <ImageBox>
@@ -63,7 +44,7 @@ const AccomodationInfo = ({
 
       <TitleBox>
         <AccomodationName>{name}</AccomodationName>
-        <SocialAction isLike={isLike} handleToggleLike={handleToggleLike} />
+        <SocialAction accommodationId={id} liked={liked} />
       </TitleBox>
 
       <AddressList>
