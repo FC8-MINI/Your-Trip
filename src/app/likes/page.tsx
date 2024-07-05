@@ -16,7 +16,7 @@ const Like = ({ searchParams: { page } }: LikeProps) => {
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
-    const fetchReservation = async () => {
+    const fetchLike = async () => {
       try {
         const url = `https://api.miniteam2.store/api/likes`;
         const response = await fetch(url, {
@@ -24,18 +24,20 @@ const Like = ({ searchParams: { page } }: LikeProps) => {
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
+          cache: "no-store",
         });
         const { body } = await response.json();
 
         setLikeItems(body.content);
         setTotalPages(body.totalPages);
       } catch (error) {
-        console.error("Error fetching reservations:", error);
+        console.error("Error fetching likes:", error);
       }
     };
 
-    fetchReservation().catch((error) => {
-      console.error("Error in fetchReservations:", error);
+    fetchLike().catch((error) => {
+      console.error("Error in likes:", error);
     });
   }, [page]);
 
