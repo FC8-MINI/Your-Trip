@@ -1,3 +1,5 @@
+import { AccomodationRoomList } from "../AccomodationRoomList";
+
 export interface DescriptionAvailableProps {
   $available: boolean;
 }

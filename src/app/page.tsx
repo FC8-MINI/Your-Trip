@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-import { getAccommodationList } from "@/apis/accommodationList/getAccommodationList";
+import { getAccommodationList } from "@/apis/accommodation/getAccommodationList";
 import AccomodationEmpty from "@/components/Accomodation/AccomodationEmpty";
 import AccomodationList from "@/components/Accomodation/AccomodationList";
 import Category from "@/components/Category";
