@@ -5,7 +5,7 @@ export interface ReservationDetailProps {
   checkIn: string;
   checkOut: string;
   baseGuests: number;
-  extraPrice: number;
+  extraCharge: number;
   parkingAvailable: boolean;
   cookingAvailable: boolean;
   roomPrice: number;

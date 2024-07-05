@@ -20,7 +20,7 @@ const ReservationDetail = ({
   checkIn,
   checkOut,
   baseGuests,
-  extraPrice,
+  extraCharge,
   parkingAvailable,
   cookingAvailable,
   roomPrice,
@@ -71,7 +71,7 @@ const ReservationDetail = ({
                 <br />
                 (인원 추가)
               </InfoDt>
-              <InfoDd>{extraPrice.toLocaleString()}원</InfoDd>
+              <InfoDd>{extraCharge.toLocaleString()}원</InfoDd>
             </div>
             <div>
               <InfoDt>총 결제 금액</InfoDt>
