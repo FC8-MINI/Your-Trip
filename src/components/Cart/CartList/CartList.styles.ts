@@ -1,9 +1,7 @@
-// import { device } from "@/styles/media";
 import styled from "styled-components";
-import { FormProvider as OriginalFormProvider } from "react-hook-form";
 import Button from "@/components/Button";
 
-export const ListBox = styled(OriginalFormProvider)`
+export const ListBox = styled.div`
   flex-direction: column;
   flex-grow: 1;
   width: 100%;

@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import {
   ItemContainer,
   ImageWrapper,
@@ -11,7 +14,7 @@ import {
   CheckInOutBox,
   Person,
 } from "./CartItem.styles";
-import { CartComponentProps } from "./CartItem.types";
+import { CartProps } from "./CartItem.types";
 
 // 숙박 일수 계산 함수
 const calculateNights = (checkIn: string, checkOut: string) => {
@@ -35,27 +38,30 @@ const formatDateTime = (dateString: string) => {
   return date.toLocaleString("ko-KR", options).replace(", ", " ");
 };
 
-const CartItem = ({ item, roomNames, index, isSelected, onToggle }: CartComponentProps) => {
-  const checkIn: string = item.checkIn;
-  const checkOut: string = item.checkOut;
-  const nights = calculateNights(checkIn, checkOut); // 밤 수 계산
+const CartItem = ({ item }: CartProps) => {
+  const [isSelected, setIsSelected] = useState(false);
 
-  // 예약 URL 생성
-  const PayHref = `/pay?roomid=${item.roomId}&imageUrl=${encodeURIComponent(item.imageUrl)}&roomname=${encodeURIComponent(item.roomName)}&checkIn=${encodeURIComponent(item.checkIn)}&checkOut=${encodeURIComponent(item.checkOut)}&roomName=${encodeURIComponent(roomNames[index])}&peopleNumber=${item.peopleNumber}&price=${item.totalPrice}&nights=${nights}`; // 밤 수 추가
+  const toggleSelection = () => {
+    setIsSelected(!isSelected);
+  };
+
+  const checkIn: string = item?.checkIn ?? "";
+  const checkOut: string = item?.checkOut ?? "";
+  const nights = calculateNights(checkIn, checkOut); // 밤 수 계산
 
   return (
     <ItemContainer>
       <ImageWrapper>
-        <ImageCheckbox type="checkbox" checked={isSelected} onChange={onToggle} />
-        <ItemImage src={item.imageUrl} alt={item.accommodationName} />
+        <ImageCheckbox type="checkbox" checked={isSelected} onChange={toggleSelection} />
+        <ItemImage src={item?.roomImageUrls[0] ?? ""} alt={item?.accommodationName ?? "숙소 이미지"} />
       </ImageWrapper>
       <ItemInfoBox>
         <div>
-          <PlaceName>{item.accommodationName}</PlaceName>
+          <PlaceName>{item?.accommodationName ?? "숙소 이름"}</PlaceName>
           <RoomPeriod>
-            {roomNames[index]}/{nights}박
+            {item?.roomName ?? "방 이름"}/{nights}박
           </RoomPeriod>
-          <Person>/{item.peopleNumber}명</Person>
+          <Person>/{item?.peopleNumber ?? 0}명</Person>
         </div>
         <CheckInOutBox>
           <div>
@@ -69,9 +75,9 @@ const CartItem = ({ item, roomNames, index, isSelected, onToggle }: CartComponen
         </CheckInOutBox>
         <TotalPriceText>
           결제금액
-          <span>{item.totalPrice.toLocaleString()}원</span>
+          <span>{item?.totalPrice?.toLocaleString() ?? 0}원</span>
         </TotalPriceText>
-        <ReservationButton href={PayHref}>예약</ReservationButton>
+        <ReservationButton href={`/pay/${item.reservationId}`}>예약</ReservationButton>
       </ItemInfoBox>
     </ItemContainer>
   );
