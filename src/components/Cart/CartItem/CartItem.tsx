@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   ItemContainer,
   ImageWrapper,
@@ -14,17 +13,15 @@ import {
   CheckInOutBox,
   Person,
 } from "./CartItem.styles";
-import { CartProps } from "./CartItem.types";
+import { CartItemProps } from "./CartItem.types";
 
-// 숙박 일수 계산 함수
 const calculateNights = (checkIn: string, checkOut: string) => {
   const checkInDate = new Date(checkIn);
   const checkOutDate = new Date(checkOut);
   const differenceInTime = checkOutDate.getTime() - checkInDate.getTime();
-  return Math.ceil(differenceInTime / (1000 * 3600 * 24)); // 숙박 일수 계산
+  return Math.ceil(differenceInTime / (1000 * 3600 * 24));
 };
 
-// 날짜 및 시간 형식 변환 함수
 const formatDateTime = (dateString: string) => {
   const date = new Date(dateString);
   const options: Intl.DateTimeFormatOptions = {
@@ -38,21 +35,26 @@ const formatDateTime = (dateString: string) => {
   return date.toLocaleString("ko-KR", options).replace(", ", " ");
 };
 
-const CartItem = ({ item }: CartProps) => {
-  const [isSelected, setIsSelected] = useState(false);
-
+const CartItem = ({ item, index, selectedItems, setSelectedItems }: CartItemProps) => {
   const toggleSelection = () => {
-    setIsSelected(!isSelected);
+    const newSelectedItems = selectedItems.map((item, i) => {
+      if (i === index) {
+        return !item;
+      } else {
+        return item;
+      }
+    });
+    setSelectedItems(newSelectedItems);
   };
 
   const checkIn: string = item?.checkIn ?? "";
   const checkOut: string = item?.checkOut ?? "";
-  const nights = calculateNights(checkIn, checkOut); // 밤 수 계산
+  const nights = calculateNights(checkIn, checkOut);
 
   return (
     <ItemContainer>
       <ImageWrapper>
-        <ImageCheckbox type="checkbox" checked={isSelected} onChange={toggleSelection} />
+        <ImageCheckbox type="checkbox" checked={selectedItems[index]} onChange={toggleSelection} />
         <ItemImage src={item?.roomImageUrls[0] ?? ""} alt={item?.accommodationName ?? "숙소 이미지"} />
       </ImageWrapper>
       <ItemInfoBox>

@@ -62,3 +62,11 @@ export const DeleteButton = styled(Button).attrs({ $mode: "common" })`
     background-color: var(--color-gray-hover);
   }
 `;
+
+export const EmptyMessage = styled.div`
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--color-gray-dark);
+  text-align: center;
+  margin-top: 10rem;
+`;

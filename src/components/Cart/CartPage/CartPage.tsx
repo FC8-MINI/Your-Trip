@@ -21,12 +21,13 @@ const CartPage = () => {
           cache: "no-store",
         });
         const data: APIResponse = await response.json();
+        console.log(data);
         console.log("cartList", data.body.content);
+        console.log(data.result.resultCode);
 
         setCartList(data.body.content);
-        console.log("Fetch completed"); // fetch 완료 시 처리할 코드
       } catch (error) {
-        console.error("Fetch error: ", error); // 에러 발생 시 처리할 코드
+        console.error("Fetch error: ", error);
       }
     };
 

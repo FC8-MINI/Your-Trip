@@ -4,7 +4,16 @@ import { useState, useEffect, ChangeEvent } from "react";
 import CartItem from "../CartItem";
 import { CartListProps, DeleteRequestPayload } from "./CartList.types";
 import { Cart } from "../CartItem/CartItem.types";
-import { ListBox, Wrapper, SelectBox, DeleteButton, ControlContainer, InfoContainer } from "./CartList.styles";
+import {
+  ListBox,
+  Wrapper,
+  SelectBox,
+  DeleteButton,
+  ControlContainer,
+  InfoContainer,
+  EmptyMessage,
+} from "./CartList.styles";
+import Swal from "sweetalert2";
 
 const CartList = ({ items: initialItems }: CartListProps) => {
   const [selectedItems, setSelectedItems] = useState<boolean[]>(new Array(initialItems.length).fill(false));
@@ -22,7 +31,6 @@ const CartList = ({ items: initialItems }: CartListProps) => {
 
   const handleDelete = async () => {
     const selectedReservationIds = items.filter((_, index) => selectedItems[index]).map((cart) => cart.reservationId);
-
     const payload: DeleteRequestPayload = { reservationIds: selectedReservationIds };
 
     try {
@@ -38,6 +46,16 @@ const CartList = ({ items: initialItems }: CartListProps) => {
       const responseData = await response.json();
       if (responseData.result.resultMessage === "success") {
         const updatedItems = items.filter((item) => !selectedReservationIds.includes(item.reservationId));
+        await Swal.fire({
+          customClass: {
+            confirmButton: "btn btn-primary",
+          },
+          icon: "success",
+          title: "삭제되었습니다.",
+          showConfirmButton: false,
+          timerProgressBar: true,
+          timer: 1500,
+        });
         setItems(updatedItems);
         setSelectedItems(new Array(updatedItems.length).fill(false));
       } else {
@@ -59,13 +77,17 @@ const CartList = ({ items: initialItems }: CartListProps) => {
           <DeleteButton onClick={handleDelete}>삭제</DeleteButton>
         </ControlContainer>
 
-        <div>
-          {items.map((item, index) => (
-            <InfoContainer key={item.roomId}>
-              <CartItem item={item} />
-            </InfoContainer>
-          ))}
-        </div>
+        {items.length === 0 ? (
+          <EmptyMessage>장바구니가 비어 있습니다</EmptyMessage>
+        ) : (
+          <div>
+            {items.map((item, index) => (
+              <InfoContainer key={item.reservationId}>
+                <CartItem index={index} item={item} selectedItems={selectedItems} setSelectedItems={setSelectedItems} />
+              </InfoContainer>
+            ))}
+          </div>
+        )}
       </Wrapper>
     </ListBox>
   );

@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface Cart {
   roomId: number;
   accommodationName: string;
@@ -13,6 +15,9 @@ export interface Cart {
   extraPersonCharge: number;
 }
 
-export interface CartProps {
+export interface CartItemProps {
   item: Cart;
+  index: number;
+  selectedItems: boolean[];
+  setSelectedItems: Dispatch<SetStateAction<boolean[]>>;
 }
