@@ -19,7 +19,7 @@ import {
   OptionInfoText,
 } from "./AccomodationRoomList.styles";
 import { RiUser3Fill, RiShoppingCart2Line } from "react-icons/ri";
-import { AccomodationRoomListProps } from "./AccomodationRoomList.types";
+import { type AccomodationRoomList, AccomodationRoomListProps } from "./AccomodationRoomList.types";
 import Image from "next/image";
 import Swal from "sweetalert2";
 import Button from "@/components/Button";
@@ -27,7 +27,7 @@ import AccomodationRoomOption from "../AccomodationRoomOption";
 import { useRef, useEffect, useState } from "react";
 import { OptionParams } from "../AccomodationRoomOption/AccomodationRoomOption";
 
-const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListProps) => {
+const AccomodationRoomList = ({ accomodationDetail, accomodationRoomItems }: AccomodationRoomListProps) => {
   const router = useRouter();
   const optionRef = useRef<{ getOptionParams: () => OptionParams }>(null);
   const [cartParams, setCartParams] = useState<{ roomId: number; optionParams: OptionParams | null } | null>(null);
@@ -126,9 +126,37 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
     }
   };
 
-  const handleReserveButtonClick = (roomId: number) => {
+  const handleReserveButtonClick = async (accomodationRoomItem: AccomodationRoomList) => {
+    const optionParams = optionRef.current?.getOptionParams();
+
+    if (!optionParams?.checkIn || !optionParams?.checkOut || !optionParams?.guests) {
+      return await Swal.fire({
+        icon: "error",
+        timerProgressBar: true,
+        title: "모든 항목을 입력해주세요.",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    } else if (optionParams?.guests > accomodationRoomItem.maxGuests) {
+      return await Swal.fire({
+        icon: "error",
+        timerProgressBar: true,
+        title: `최대 입력 가능한 인원 수는 ${accomodationRoomItem.maxGuests} 입니다.`,
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    }
+
     try {
-      router.push(`/pay/${roomId}`);
+      const totalPrice =
+        optionParams.guests > accomodationRoomItem.maxGuests
+          ? (accomodationRoomItem.maxGuests - optionParams.guests) * accomodationRoomItem.extraPersonCharge +
+            accomodationRoomItem.price
+          : accomodationRoomItem.price;
+
+      router.push(
+        `/pay?accommodationName=${accomodationDetail.name}&roomId=${accomodationRoomItem.id}&roomName=${accomodationRoomItem.name}&peopleNumber=${optionParams.guests}&totalPrice=${totalPrice}&checkIn=${optionParams.checkIn + ":00"}&checkOut=${optionParams.checkOut + ":00"}&imageUrl=${accomodationDetail.accomodationImageUrls[0].split("https://i.postimg.cc/")[1]}`,
+      );
     } catch (error) {
       console.error("네비게이션 오류:", error);
     }
@@ -186,7 +214,7 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
                   <Button
                     type="button"
                     $mode="primary"
-                    onClick={() => handleReserveButtonClick(accomodationRoomItem.id)}
+                    onClick={() => handleReserveButtonClick(accomodationRoomItem)}
                     disabled={!accomodationRoomItem.reservationAvailable}
                   >
                     {accomodationRoomItem.reservationAvailable ? "객실 예약" : "예약 마감"}

@@ -33,6 +33,7 @@ const AccomodationRoomOption = forwardRef((props, ref) => {
           type="datetime-local"
           width="full"
           placeholder="체크인 날짜를 입력해주세요."
+          step="60"
         />
       </InputBox>
       <InputBox>
@@ -43,6 +44,7 @@ const AccomodationRoomOption = forwardRef((props, ref) => {
           onChange={(e) => setCheckOutValue(e.currentTarget.value)}
           type="datetime-local"
           placeholder="체크아웃 날짜를 입력해주세요."
+          step="60"
         />
       </InputBox>
       <InputBox>

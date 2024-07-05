@@ -13,7 +13,7 @@ const AccomodationDetail = ({
   return (
     <Container>
       <AccomodationInfo {...accomodationDetail} />
-      <AccomodationRoomList accomodationRoomItems={accomodationRoomItems} />
+      <AccomodationRoomList accomodationDetail={accomodationDetail} accomodationRoomItems={accomodationRoomItems} />
     </Container>
   );
 };

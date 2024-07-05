@@ -1,3 +1,5 @@
+import { AccomodationItem } from "../AccomodationItem";
+
 export interface AccomodationRoomList {
   id: number;
   name: string;
@@ -10,5 +12,6 @@ export interface AccomodationRoomList {
 }
 
 export interface AccomodationRoomListProps {
+  accomodationDetail: AccomodationItem;
   accomodationRoomItems: AccomodationRoomList[];
 }
