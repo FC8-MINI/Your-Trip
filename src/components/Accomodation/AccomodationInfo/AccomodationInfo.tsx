@@ -38,26 +38,18 @@ const AccomodationInfo = ({
   checkOut,
 }: AccomodationInfoProps) => {
   const [isLike, setIsLike] = useState(false);
-  const router = useRouter();
 
   const handleToggleLike = async () => {
     setIsLike(!isLike);
 
     try {
-      const result = await Swal.fire({
-        customClass: {
-          confirmButton: "btn btn-primary",
-        },
+      await Swal.fire({
         icon: "success",
         timerProgressBar: true,
         title: "찜 목록에 추가했습니다.",
-        confirmButtonText: "찜 목록보기",
-        timer: 2500,
+        showConfirmButton: false,
+        timer: 2000,
       });
-
-      if (result.isConfirmed) {
-        router.push("/like");
-      }
     } catch (error) {
       console.error("Swal error:", error);
     }

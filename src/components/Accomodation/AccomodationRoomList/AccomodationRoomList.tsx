@@ -62,12 +62,11 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
         if (!response.ok) {
           if (response.status === 409) {
             await Swal.fire({
-              customClass: {
-                confirmButton: "btn btn-primary",
-              },
               icon: "error",
+              timerProgressBar: true,
               title: "이미 존재하는 장바구니 항목입니다.",
-              confirmButtonText: "확인",
+              timer: 2000,
+              showConfirmButton: false,
             });
           } else {
             const errorData = await response.json();
@@ -75,20 +74,13 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
             throw new Error("장바구니에 추가하지 못했습니다.");
           }
         } else {
-          const result = await Swal.fire({
-            customClass: {
-              confirmButton: "btn btn-primary",
-            },
+          await Swal.fire({
             icon: "success",
             timerProgressBar: true,
             title: "장바구니에 상품이 담겼습니다.",
-            confirmButtonText: "장바구니 보기",
-            timer: 2500,
+            timer: 2000,
+            showConfirmButton: false,
           });
-
-          if (result.isConfirmed) {
-            router.push("/cart");
-          }
         }
       } catch (error) {
         console.error("Swal 오류:", error);
@@ -100,7 +92,7 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
     addToCart().catch((error) => {
       console.error("addToCart 에러:", error);
     });
-  }, [cartParams, router]);
+  }, [cartParams]);
 
   const handleCartButtonClick = (roomId: string) => {
     const optionParams = optionRef.current?.getOptionParams();
