@@ -24,11 +24,17 @@ const SearchForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
     setValue,
+    setError,
   } = useForm({ defaultValues: initialState });
 
   const onSubmit: SubmitHandler<typeof initialState> = ({ accomodation, checkIn, checkOut }) => {
+    if (new Date(checkOut) <= new Date(checkIn)) {
+      setError("checkIn", { type: "INVALID_CHECKIN_DATE", message: "체크아웃이 체크인보다 앞설 수 없습니다." });
+      setError("checkOut", { type: "INVALID_CHECKOUT_DATE", message: "체크아웃이 체크인보다 앞설 수 없습니다." });
+      return;
+    }
+
     const nextUrl = `/?${accomodation ? `name=${accomodation}` : ""}${accomodation && checkIn && checkOut ? "&" : ""}${checkIn && checkOut ? `checkIn=${checkIn}:00&checkOut=${checkOut}:00` : ""}`;
     router.push(nextUrl);
   };
@@ -64,7 +70,6 @@ const SearchForm = () => {
             placeholder="체크인을 입력해주세요."
             autoComplete="off"
             min={getCurrentKSTDateTimeLocal()}
-            max={watch("checkOut")}
             step="60"
             {...register("checkIn", {
               validate: (value, formValues) => {
@@ -84,7 +89,7 @@ const SearchForm = () => {
             label="체크아웃"
             placeholder="체크아웃을 입력해주세요."
             autoComplete="off"
-            min={watch("checkIn") || getCurrentKSTDateTimeLocal()}
+            min={getCurrentKSTDateTimeLocal()}
             step="60"
             {...register("checkOut", {
               validate: (value, formValues) => {
