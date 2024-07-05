@@ -16,6 +16,7 @@ import {
   TotalPriceText,
   RoomButtonBox,
   CartButton,
+  OptionInfoText,
 } from "./AccomodationRoomList.styles";
 import { RiUser3Fill, RiShoppingCart2Line } from "react-icons/ri";
 import { AccomodationRoomListProps } from "./AccomodationRoomList.types";
@@ -29,17 +30,31 @@ import { OptionParams } from "../AccomodationRoomOption/AccomodationRoomOption";
 const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListProps) => {
   const router = useRouter();
   const optionRef = useRef<{ getOptionParams: () => OptionParams }>(null);
-  const [cartParams, setCartParams] = useState<{ roomId: string; optionParams: OptionParams | null } | null>(null);
+  const [cartParams, setCartParams] = useState<{ roomId: number; optionParams: OptionParams | null } | null>(null);
 
   useEffect(() => {
     const addToCart = async () => {
       if (!cartParams) return;
 
       const { roomId, optionParams } = cartParams;
+      const maxGuests = accomodationRoomItems.find((item) => item.id === roomId)?.maxGuests;
 
-      if (!optionParams) {
-        console.error("옵션 파라미터가 존재하지 않습니다.");
-        return;
+      if (!optionParams?.checkIn || !optionParams?.checkOut || !optionParams?.guests) {
+        return await Swal.fire({
+          icon: "error",
+          timerProgressBar: true,
+          title: "모든 항목을 입력해주세요.",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else if (maxGuests && optionParams?.guests > maxGuests) {
+        return await Swal.fire({
+          icon: "error",
+          timerProgressBar: true,
+          title: `최대 입력 가능한 인원 수는 ${maxGuests} 입니다.`,
+          timer: 2000,
+          showConfirmButton: false,
+        });
       }
 
       try {
@@ -53,9 +68,9 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
           cache: "no-store",
           body: JSON.stringify({
             roomId,
-            checkIn: optionParams.checkIn,
-            checkOut: optionParams.checkOut,
-            guests: optionParams.guests,
+            checkIn: optionParams?.checkIn,
+            checkOut: optionParams?.checkOut,
+            guests: optionParams?.guests,
           }),
         });
 
@@ -65,6 +80,14 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
               icon: "error",
               timerProgressBar: true,
               title: "이미 존재하는 장바구니 항목입니다.",
+              timer: 2000,
+              showConfirmButton: false,
+            });
+          } else if (response.status === 500) {
+            await Swal.fire({
+              icon: "error",
+              timerProgressBar: true,
+              title: "로그인이 필요합니다.",
               timer: 2000,
               showConfirmButton: false,
             });
@@ -90,11 +113,11 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
     };
 
     addToCart().catch((error) => {
-      console.error("addToCart 에러:", error);
+      console.error("addToCart 오류:", error);
     });
   }, [cartParams]);
 
-  const handleCartButtonClick = (roomId: string) => {
+  const handleCartButtonClick = (roomId: number) => {
     const optionParams = optionRef.current?.getOptionParams();
     if (optionParams !== undefined) {
       setCartParams({ roomId, optionParams });
@@ -103,7 +126,7 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
     }
   };
 
-  const handleReserveButtonClick = (roomId: string) => {
+  const handleReserveButtonClick = (roomId: number) => {
     try {
       router.push(`/pay/${roomId}`);
     } catch (error) {
@@ -113,6 +136,11 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
 
   return (
     <>
+      <OptionInfoText>
+        * 로그인 후 체크인, 체크아웃, 인원을 입력하시고 원하는 객실의 장바구니 또는 객실 예약 버튼을 클릭 후 예약해
+        주세요.
+      </OptionInfoText>
+
       <AccomodationRoomOption ref={optionRef} />
 
       <InfoTitle>객실 선택</InfoTitle>
@@ -151,14 +179,14 @@ const AccomodationRoomList = ({ accomodationRoomItems }: AccomodationRoomListPro
 
                 <RoomButtonBox>
                   {accomodationRoomItem.reservationAvailable && (
-                    <CartButton type="button" onClick={() => handleCartButtonClick(String(accomodationRoomItem.id))}>
+                    <CartButton type="button" onClick={() => handleCartButtonClick(accomodationRoomItem.id)}>
                       <RiShoppingCart2Line />
                     </CartButton>
                   )}
                   <Button
                     type="button"
                     $mode="primary"
-                    onClick={() => handleReserveButtonClick(String(accomodationRoomItem.id))}
+                    onClick={() => handleReserveButtonClick(accomodationRoomItem.id)}
                     disabled={!accomodationRoomItem.reservationAvailable}
                   >
                     {accomodationRoomItem.reservationAvailable ? "객실 예약" : "예약 마감"}

@@ -1,6 +1,6 @@
 export interface AccomodationRoomList {
   id: number;
-  name?: string;
+  name: string;
   baseGuests: number;
   price: number;
   maxGuests: number;
