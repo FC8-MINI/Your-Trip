@@ -6,7 +6,7 @@ import { SearchBox, SearchButton, SearchFormStyled, SearchInputBox } from "./Sea
 import { useRouter, useSearchParams } from "next/navigation";
 import { CiSearch } from "react-icons/ci";
 import { getCurrentKSTDateTimeLocal } from "@/utils/time";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 const SearchForm = () => {
   const router = useRouter();
@@ -25,12 +25,19 @@ const SearchForm = () => {
     handleSubmit,
     formState: { errors },
     watch,
+    setValue,
   } = useForm({ defaultValues: initialState });
 
   const onSubmit: SubmitHandler<typeof initialState> = ({ accomodation, checkIn, checkOut }) => {
     const nextUrl = `/?${accomodation ? `name=${accomodation}` : ""}${accomodation && checkIn && checkOut ? "&" : ""}${checkIn && checkOut ? `checkIn=${checkIn}:00&checkOut=${checkOut}:00` : ""}`;
     router.push(nextUrl);
   };
+
+  useEffect(() => {
+    setValue("accomodation", params.get("name") || "");
+    setValue("checkIn", params.get("checkIn") || "");
+    setValue("checkOut", params.get("checkOut") || "");
+  }, [params, setValue]);
 
   return (
     <SearchBox $error={errors.accomodation || errors.checkIn || errors.checkOut}>
