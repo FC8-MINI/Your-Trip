@@ -12,6 +12,8 @@ import { LikeItemProps } from "./LikeItem.types";
 import { RiMapPin2Fill, RiSignpostFill } from "react-icons/ri";
 
 const LikeItem = ({ name, accomodationImageUrls, description, postalCode, address }: LikeItemProps) => {
+  const truncatedDescription = description.length > 100 ? `${description.substring(0, 100)}...` : description;
+
   return (
     <LikeItemLayout>
       <ImageBox>
@@ -20,7 +22,7 @@ const LikeItem = ({ name, accomodationImageUrls, description, postalCode, addres
 
       <InfoBox>
         <InfoName>{name}</InfoName>
-        <InfoDescText>{description}</InfoDescText>
+        <InfoDescText>{truncatedDescription}</InfoDescText>
         <div>
           <RiSignpostFill />
           <InfoPostcodeText>{postalCode}</InfoPostcodeText>
