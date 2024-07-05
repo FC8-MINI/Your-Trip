@@ -1,22 +1,23 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface Cart {
-  id: string;
-  name: string;
-  imageUrl: string;
-  address: string;
+  roomId: number;
+  accommodationName: string;
+  roomName: string;
   checkIn: string;
   checkOut: string;
-  roomName: string;
   peopleNumber: number;
-  price: number;
+  totalPrice: number;
+  roomImageUrls: string[];
+  baseGuests: number;
+  maxGuests: number;
+  reservationId: number;
+  extraPersonCharge: number;
 }
 
-export interface CartProps {
+export interface CartItemProps {
   item: Cart;
-  roomNames: string[];
-}
-
-export interface CartComponentProps extends CartProps {
   index: number;
-  isSelected: boolean;
-  onToggle: () => void;
+  selectedItems: boolean[];
+  setSelectedItems: Dispatch<SetStateAction<boolean[]>>;
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ItemContainer,
   ImageWrapper,
@@ -11,17 +13,15 @@ import {
   CheckInOutBox,
   Person,
 } from "./CartItem.styles";
-import { CartComponentProps } from "./CartItem.types";
+import { CartItemProps } from "./CartItem.types";
 
-// 숙박 일수 계산 함수
 const calculateNights = (checkIn: string, checkOut: string) => {
   const checkInDate = new Date(checkIn);
   const checkOutDate = new Date(checkOut);
   const differenceInTime = checkOutDate.getTime() - checkInDate.getTime();
-  return Math.ceil(differenceInTime / (1000 * 3600 * 24)); // 숙박 일수 계산
+  return Math.ceil(differenceInTime / (1000 * 3600 * 24));
 };
 
-// 날짜 및 시간 형식 변환 함수
 const formatDateTime = (dateString: string) => {
   const date = new Date(dateString);
   const options: Intl.DateTimeFormatOptions = {
@@ -35,27 +35,35 @@ const formatDateTime = (dateString: string) => {
   return date.toLocaleString("ko-KR", options).replace(", ", " ");
 };
 
-const CartItem = ({ item, roomNames, index, isSelected, onToggle }: CartComponentProps) => {
-  const checkIn: string = item.checkIn;
-  const checkOut: string = item.checkOut;
-  const nights = calculateNights(checkIn, checkOut); // 밤 수 계산
+const CartItem = ({ item, index, selectedItems, setSelectedItems }: CartItemProps) => {
+  const toggleSelection = () => {
+    const newSelectedItems = selectedItems.map((item, i) => {
+      if (i === index) {
+        return !item;
+      } else {
+        return item;
+      }
+    });
+    setSelectedItems(newSelectedItems);
+  };
 
-  // 예약 URL 생성
-  const PayHref = `/pay?id=${item.id}&imageUrl=${encodeURIComponent(item.imageUrl)}&name=${encodeURIComponent(item.name)}&checkIn=${encodeURIComponent(item.checkIn)}&checkOut=${encodeURIComponent(item.checkOut)}&roomName=${encodeURIComponent(roomNames[index])}&peopleNumber=${item.peopleNumber}&price=${item.price}&nights=${nights}`; // 밤 수 추가
+  const checkIn: string = item?.checkIn ?? "";
+  const checkOut: string = item?.checkOut ?? "";
+  const nights = calculateNights(checkIn, checkOut);
 
   return (
     <ItemContainer>
       <ImageWrapper>
-        <ImageCheckbox type="checkbox" checked={isSelected} onChange={onToggle} />
-        <ItemImage src={item.imageUrl} alt={item.name} />
+        <ImageCheckbox type="checkbox" checked={selectedItems[index]} onChange={toggleSelection} />
+        <ItemImage src={item?.roomImageUrls[0] ?? ""} alt={item?.accommodationName ?? "숙소 이미지"} />
       </ImageWrapper>
       <ItemInfoBox>
         <div>
-          <PlaceName>{item.name}</PlaceName>
+          <PlaceName>{item?.accommodationName ?? "숙소 이름"}</PlaceName>
           <RoomPeriod>
-            {roomNames[index]}/{nights}박
+            {item?.roomName ?? "방 이름"}/{nights}박
           </RoomPeriod>
-          <Person>/{item.peopleNumber}명</Person>
+          <Person>/{item?.peopleNumber ?? 0}명</Person>
         </div>
         <CheckInOutBox>
           <div>
@@ -69,9 +77,9 @@ const CartItem = ({ item, roomNames, index, isSelected, onToggle }: CartComponen
         </CheckInOutBox>
         <TotalPriceText>
           결제금액
-          <span>{item.price.toLocaleString()}원</span>
+          <span>{item?.totalPrice?.toLocaleString() ?? 0}원</span>
         </TotalPriceText>
-        <ReservationButton href={PayHref}>예약</ReservationButton>
+        <ReservationButton href={`/pay/${item.reservationId}`}>예약</ReservationButton>
       </ItemInfoBox>
     </ItemContainer>
   );

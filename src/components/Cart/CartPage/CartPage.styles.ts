@@ -8,7 +8,7 @@ export const CartTitle = styled.h2`
   font-weight: 700;
 `;
 
-export const StyledContainer = styled(Container)`
+export const CartContainer = styled(Container)`
   display: flex;
   flex-direction: column;
 `;

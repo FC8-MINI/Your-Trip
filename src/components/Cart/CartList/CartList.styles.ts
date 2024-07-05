@@ -1,9 +1,7 @@
-// import { device } from "@/styles/media";
 import styled from "styled-components";
-import { FormProvider as OriginalFormProvider } from "react-hook-form";
 import Button from "@/components/Button";
 
-export const ListBox = styled(OriginalFormProvider)`
+export const ListBox = styled.div`
   flex-direction: column;
   flex-grow: 1;
   width: 100%;
@@ -63,4 +61,12 @@ export const DeleteButton = styled(Button).attrs({ $mode: "common" })`
   &:hover {
     background-color: var(--color-gray-hover);
   }
+`;
+
+export const EmptyMessage = styled.div`
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--color-gray-dark);
+  text-align: center;
+  margin-top: 10rem;
 `;
