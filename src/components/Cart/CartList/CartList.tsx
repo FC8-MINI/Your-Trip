@@ -14,10 +14,15 @@ import {
   EmptyMessage,
 } from "./CartList.styles";
 import Swal from "sweetalert2";
+import { useRouter, useSearchParams } from "next/navigation";
+import { usePathnameWithoutQuerys } from "@/hooks/usePathnameWithoutQuerys";
 
 const CartList = ({ items: initialItems }: CartListProps) => {
   const [selectedItems, setSelectedItems] = useState<boolean[]>(new Array(initialItems.length).fill(false));
   const [items, setItems] = useState<Cart[]>(initialItems);
+  const params = useSearchParams();
+  const baseUrl = usePathnameWithoutQuerys(["page"]);
+  const router = useRouter();
 
   useEffect(() => {
     setItems(initialItems);
@@ -58,6 +63,10 @@ const CartList = ({ items: initialItems }: CartListProps) => {
         });
         setItems(updatedItems);
         setSelectedItems(new Array(updatedItems.length).fill(false));
+
+        if (!updatedItems.length) {
+          router.push(baseUrl + `page=${Number(params.get("page")) - 1 || 1}`);
+        }
       } else {
         console.error("Error deleting items:", response.statusText);
       }

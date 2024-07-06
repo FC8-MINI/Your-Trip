@@ -15,7 +15,7 @@ import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { useRouter } from "next/navigation";
-import { usePathnameWithoutQuerys } from "@/hooks/usePathnameWithoutPage";
+import { usePathnameWithoutQuerys } from "@/hooks/usePathnameWithoutQuerys";
 
 const Category = ({ category }: CategoryProps) => {
   const [swiper, setSwiper] = useState<SwiperClass>();

@@ -6,7 +6,7 @@ import { SearchBox, SearchButton, SearchFormStyled, SearchInputBox } from "./Sea
 import { useRouter, useSearchParams } from "next/navigation";
 import { CiSearch } from "react-icons/ci";
 import { getCurrentKSTDateTimeLocal } from "@/utils/time";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 const SearchForm = () => {
   const router = useRouter();
@@ -24,13 +24,30 @@ const SearchForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
+    setError,
+    clearErrors,
     watch,
   } = useForm({ defaultValues: initialState });
 
   const onSubmit: SubmitHandler<typeof initialState> = ({ accomodation, checkIn, checkOut }) => {
+    if (new Date(checkOut) <= new Date(checkIn)) {
+      setError("checkIn", { type: "INVALID_CHECKIN_DATE", message: "체크아웃이 체크인보다 앞설 수 없습니다." });
+      setError("checkOut", { type: "INVALID_CHECKOUT_DATE", message: "체크아웃이 체크인보다 앞설 수 없습니다." });
+      return;
+    }
+
     const nextUrl = `/?${accomodation ? `name=${accomodation}` : ""}${accomodation && checkIn && checkOut ? "&" : ""}${checkIn && checkOut ? `checkIn=${checkIn}:00&checkOut=${checkOut}:00` : ""}`;
     router.push(nextUrl);
   };
+
+  useEffect(() => {
+    setValue("accomodation", params.get("name") || "");
+    setValue("checkIn", params.get("checkIn") || "");
+    setValue("checkOut", params.get("checkOut") || "");
+
+    clearErrors();
+  }, [params, setValue, clearErrors]);
 
   return (
     <SearchBox $error={errors.accomodation || errors.checkIn || errors.checkOut}>
@@ -57,7 +74,6 @@ const SearchForm = () => {
             placeholder="체크인을 입력해주세요."
             autoComplete="off"
             min={getCurrentKSTDateTimeLocal()}
-            max={watch("checkOut")}
             step="60"
             {...register("checkIn", {
               validate: (value, formValues) => {

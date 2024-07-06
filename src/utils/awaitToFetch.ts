@@ -3,8 +3,10 @@
   https://github.com/scopsy/await-to-js
 */
 
-import { AccommodationErrorCode } from "@/apis/accommodationList/error";
+import { AccommodationErrorCode } from "@/apis/accommodation/error";
 import { AuthErrorCode } from "@/apis/auth/error";
+import { CartErrorCode } from "@/apis/cart/error";
+import { ReservationErrorCode } from "@/apis/reservation/error";
 
 const successResultCodes = [
   "OK",
@@ -20,32 +22,7 @@ const successResultCodes = [
 
 export type SuccessResultCode = (typeof successResultCodes)[number];
 
-export type CartErrorCode =
-  | "CART_NOT_FOUND"
-  | "ROOM_NOT_FOUND"
-  | "MEMBER_NOT_FOUND"
-  | "RESERVATION_NOT_FOUND"
-  | "RESERVATION_NOT_IN_CART"
-  | "EXCEEDS_MAX_GUESTS"
-  | "DUPLICATE_RESERVATION"
-  | "RESERVATION_NOT_PENDING"
-  | "RESERVATION_NOT_BELONGS_TO_USER"
-  | "INVALID_CHECKOUT_DATE"
-  | "CONFLICTING_RESERVATION"
-  | "RESERVATION_MISMATCH";
-
 export type LikeErrorCode = "MEMBER_NOT_FOUND" | "ACCOMODATION_NOT_FOUND";
-
-export type ReservationErrorCode =
-  | "RESERVATION_NOT_FOUND"
-  | "NO_ROOMS_AVAILABLE"
-  | "MEMBER_NOT_FOUND"
-  | "OVERLAPPING_RESERVATION"
-  | "ROOM_NOT_FOUND"
-  | "EXCEEDS_MAX_GUESTS"
-  | "INVALID_CHECKOUT_DATE"
-  | "CONFLICTING_RESERVATION"
-  | "DUPLICATED_RESERVATION";
 
 export type ReviewErrorCode =
   | "MEMBER_NOT_FOUND"

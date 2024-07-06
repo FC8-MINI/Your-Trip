@@ -39,9 +39,7 @@ export const getCurrentKSTDateTimeLocal = (): string => {
   const hours = String(kstTime.getUTCHours()).padStart(2, "0");
   const minutes = String(kstTime.getUTCMinutes()).padStart(2, "0");
 
-  const formattedTime = `${year}-${month}-${day}T${hours}:${minutes}`;
-
-  return formatTime(formattedTime, "YYYY년 MM월 DD일 HH:MM");
+  return `${year}-${month}-${day}T${hours}:${minutes}`;
 };
 
 export const calculateNight = (checkIn: string, checkOut: string): number => {

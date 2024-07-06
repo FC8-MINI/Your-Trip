@@ -79,7 +79,24 @@ const CartItem = ({ item, index, selectedItems, setSelectedItems }: CartItemProp
           결제금액
           <span>{item?.totalPrice?.toLocaleString() ?? 0}원</span>
         </TotalPriceText>
-        <ReservationButton href={`/pay/${item.reservationId}`}>예약</ReservationButton>
+        <ReservationButton
+          href={{
+            pathname: "/pay",
+            query: {
+              reservationId: item.reservationId,
+              accommodationName: item.accommodationName,
+              roomId: item.roomId,
+              roomName: item.roomName,
+              peopleNumber: item.peopleNumber,
+              totalPrice: item.totalPrice,
+              checkIn: item.checkIn,
+              checkOut: item.checkOut,
+              imageUrl: item.roomImageUrls[0].split("https://i.postimg.cc/")[1],
+            },
+          }}
+        >
+          예약
+        </ReservationButton>
       </ItemInfoBox>
     </ItemContainer>
   );

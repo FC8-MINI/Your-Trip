@@ -3,13 +3,13 @@
 import { useEffect, useState } from "react";
 import AccomodationDetail from "@/components/Accomodation/AccomodationDetail";
 import { AccomodationItem } from "@/components/Accomodation/AccomodationItem";
-import { AccomodationRoomList } from "@/components/Accomodation/AccomodationRoomList";
+import { AccomodationRoom } from "@/components/Accomodation/AccomodationRoomList";
 import Loading from "@/components/Loading";
 
 const Accomodation = ({ params: { id } }: { params: { id: string } }) => {
   const [data, setData] = useState<{
     accomodation: AccomodationItem;
-    rooms: AccomodationRoomList[];
+    rooms: AccomodationRoom[];
     liked: boolean;
   } | null>(null);
 
