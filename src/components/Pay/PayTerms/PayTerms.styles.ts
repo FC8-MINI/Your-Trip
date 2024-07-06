@@ -1,33 +1,42 @@
 import styled from "styled-components";
 import Button from "@/components/Button";
+import { ContainerStyled } from "@/components/Container";
 
-export const TermsContainer = styled.div`
+export const TermsContainer = styled(ContainerStyled)`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  align-items: flex-start; /* 체크박스와 문구를 왼쪽 정렬 */
-  margin-top: 2rem;
+  align-items: flex-start;
+  margin-top: 5rem;
 `;
 
-export const TermItem = styled.div`
+export const TermsBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-top: 5rem;
+`;
+
+export const TermItem = styled.label`
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* 체크박스와 문구 사이의 간격을 0.5rem으로 설정 */
+  gap: 0.5rem;
 `;
 
 export const ButtonContainer = styled.div`
   display: flex;
-  justify-content: center; // 버튼을 중앙으로 정렬
+  justify-content: center;
   width: 100%;
-  margin-top: 20px; // 버튼과 위 요소 사이에 간격 추가
+  margin-top: 20px;
 `;
 
-export const StyledButton = styled(Button)<{ $size?: string }>`
+export const PayButtonStyled = styled(Button)<{ $size?: string }>`
   color: var(--color-white);
   background-color: var(--color-primary);
   display: flex;
   align-items: center;
-  justify-content: center; // 버튼 내용 중앙 정렬
+  justify-content: center;
 
   font-size: ${({ $size }) => ($size === "large" ? "1.6rem" : "1rem")};
   padding: ${({ $size }) => ($size === "large" ? "1.2rem 3rem" : "0.8rem 1.5rem")};
@@ -38,10 +47,18 @@ export const StyledButton = styled(Button)<{ $size?: string }>`
   }
 `;
 
-export const BoldLabel = styled.label`
+export const BoldLabel = styled.p`
   font-weight: bold;
+  padding-top: 0.1rem;
 `;
 
-export const RegularLabel = styled.label`
+export const RegularLabel = styled.p`
   font-weight: normal;
+  padding-top: 0.1rem;
+`;
+
+export const SwalPopup = styled.div`
+  &.custom-swal-height {
+    height: 400px;
+  }
 `;

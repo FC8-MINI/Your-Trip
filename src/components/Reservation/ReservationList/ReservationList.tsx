@@ -1,4 +1,4 @@
-import * as React from "react";
+import { calculateNight, formatTime } from "@/utils/time";
 import {
   ReservationHistoryList,
   ReservationHistoryItem,
@@ -14,47 +14,50 @@ import {
 import { ReservationListProps } from "./ReservationList.types";
 import Image from "next/image";
 
-const ReservationList: React.FC<ReservationListProps> = ({ reservations }) => {
+const ReservationList = ({ reservationItems }: ReservationListProps) => {
   return (
     <ReservationHistoryList>
-      {reservations.map((reservation) => (
-        <ReservationHistoryItem key={reservation.id}>
+      {reservationItems.map((reservationItem) => (
+        <ReservationHistoryItem key={reservationItem.reservationId}>
           <ImageBox>
-            <Image src="/images/thumb.jpg" alt={reservation.name} fill objectFit="cover" />
+            <Image
+              src={reservationItem.accomodationImageUrls[0]}
+              alt={reservationItem.accomodationName}
+              fill
+              objectFit="cover"
+            />
           </ImageBox>
 
           <ReservationInfoBox>
             <UseCheckText>예약 완료</UseCheckText>
 
             <div>
-              <AccomodationNameText>{reservation.name}</AccomodationNameText>
+              <AccomodationNameText>{reservationItem.accomodationName}</AccomodationNameText>
               <RoomNameText>
-                {reservation.roomName} <span>/ 1박</span>
+                {reservationItem.roomName}
+                <span> / {calculateNight(reservationItem.checkIn, reservationItem.checkOut)}박</span>
+                <span> / {reservationItem.peopleNumber}인</span>
               </RoomNameText>
             </div>
 
             <CheckInOutBox>
               <div>
                 <span>체크인</span>
-                <p>
-                  {reservation.checkInDate} {reservation.checkInTime}
-                </p>
+                <p>{formatTime(reservationItem.checkIn, "YYYY년 MM월 DD일 HH:MM")}</p>
               </div>
 
               <div>
                 <span>체크아웃</span>
-                <p>
-                  {reservation.checkOutDate} {reservation.checkOutTime}
-                </p>
+                <p>{formatTime(reservationItem.checkOut, "YYYY년 MM월 DD일 HH:MM")}</p>
               </div>
             </CheckInOutBox>
 
             <TotalPriceText>
               결제 금액
-              <span>{reservation.price.toLocaleString()}원</span>
+              <span>{reservationItem.totalPrice.toLocaleString()}원</span>
             </TotalPriceText>
 
-            <LinkStyled href={`/reservation/${reservation.id}`}>예약 상세</LinkStyled>
+            <LinkStyled href={`/reservation/detail/${reservationItem.reservationId}`}>예약 상세</LinkStyled>
           </ReservationInfoBox>
         </ReservationHistoryItem>
       ))}

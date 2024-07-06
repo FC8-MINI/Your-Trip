@@ -1,9 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import { useMemo } from "react";
 import { PaginationProps } from "./Pagination.types";
 import { PaginationContainer, PaginationItem } from "./Pagination.styles";
+import { usePathnameWithoutQuerys } from "@/hooks/usePathnameWithoutQuerys";
 
-const Pagination = ({ maxPage, nowPage, category }: PaginationProps) => {
+const Pagination = ({ maxPage, nowPage }: PaginationProps) => {
+  const baseUrl = usePathnameWithoutQuerys(["page"]);
+
   const pages = useMemo(() => {
     const pages: (number | string)[] = [];
     const startPage = Math.max(nowPage - 2, 1);
@@ -29,11 +34,6 @@ const Pagination = ({ maxPage, nowPage, category }: PaginationProps) => {
 
     return pages;
   }, [nowPage, maxPage]);
-
-  const baseUrl = useMemo(() => {
-    if (category) return `/?categroy=${category}&`;
-    else return "/?";
-  }, [category]);
 
   return (
     <PaginationContainer>

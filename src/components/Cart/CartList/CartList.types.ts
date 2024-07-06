@@ -1,8 +1,9 @@
-import { Item } from "../CartItem/CartItem.types";
+import { Cart } from "../CartItem/CartItem.types";
 
 export interface CartListProps {
-  roomNames: string[];
-  peopleOptions: { value: number; label: string }[];
-  dateOptions: { value: string; label: string }[];
-  items: Item[];
+  items: Cart[];
+}
+
+export interface DeleteRequestPayload {
+  reservationIds: number[];
 }

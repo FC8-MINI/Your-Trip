@@ -13,8 +13,21 @@ export interface AccomodationItem {
   checkIn: string;
   checkOut: string;
   category: string;
+  minPrice: number;
+  reservationAvailable: boolean;
+  likeCount: number;
+  accomodationImageUrls: string[];
+  liked: boolean;
 }
 
 export interface AccomodationItemProps {
   accomodationItem: AccomodationItem;
+}
+
+export interface DescriptionPriceProps {
+  $reservationAvailable: boolean;
+}
+
+export interface DescriptionPriceUnitProps {
+  $reservationAvailable: boolean;
 }

@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { device } from "@/styles/media";
+import Link from "next/link";
 
 export const ItemContainer = styled.div`
   display: flex;
@@ -6,6 +8,16 @@ export const ItemContainer = styled.div`
   gap: 3rem;
   border-radius: 1.6rem;
   box-shadow: 0 2px 16px rgb(235, 235, 235);
+  margin-bottom: 3rem;
+
+  @media ${device.tablet} {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    max-width: 100vw;
+    aspect-ratio: 5 / 3;
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -14,14 +26,19 @@ export const ImageWrapper = styled.div`
   width: 34%;
   height: 28rem;
   border-radius: 1.6rem 0 0 1.6rem;
-  display: flex; /* 추가된 부분 */
-  align-items: flex-start; /* 추가된 부분 */
+  display: flex;
+  align-items: flex-start;
+
+  @media ${device.tablet} {
+    width: 100%;
+    height: 50%;
+    border-radius: 1.6rem 1.6rem 0 0;
+  }
 `;
 
 export const ItemImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
 `;
 
 export const ImageCheckbox = styled.input`
@@ -40,6 +57,12 @@ export const ItemInfoBox = styled.div`
   flex-grow: 2;
   position: relative;
   padding: 2.6rem 2.6rem 2.6rem 0;
+
+  @media ${device.tablet} {
+    width: 100%;
+    gap: 1.4rem;
+    padding: 0 2.6rem 2.6rem;
+  }
 `;
 
 export const PlaceName = styled.strong`
@@ -73,7 +96,7 @@ export const TotalPriceText = styled.p`
   }
 `;
 
-export const EditButton = styled.button`
+export const ReservationButton = styled(Link)`
   position: absolute;
   right: 2.6rem;
   top: 2.6rem;
@@ -83,8 +106,15 @@ export const EditButton = styled.button`
   color: var(--color-white);
   background-color: var(--color-primary);
   transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+
   &:hover {
     background-color: var(--color-primary-hover);
+  }
+
+  @media ${device.tablet} {
+    top: 0;
   }
 `;
 
@@ -116,5 +146,9 @@ export const CheckInOutBox = styled.div`
     font-size: 1.3rem;
     font-weight: 600;
     color: var(--color-gray-dark);
+  }
+
+  @media ${device.tablet} {
+    gap: 2rem;
   }
 `;

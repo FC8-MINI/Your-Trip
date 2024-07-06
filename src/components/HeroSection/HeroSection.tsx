@@ -1,12 +1,16 @@
 import Image from "next/image";
 import SearchForm from "../SearchForm";
 import { HeroBackgroundImage, HeroContainer, HeroStyled, HeroTitle } from "./HeroSection.styles";
-
 const Hero = () => {
   return (
     <HeroStyled>
       <HeroBackgroundImage>
-        <Image src="/images/hero_background_image.jpg" alt="hero section 배경 이미지" fill objectFit="cover" />
+        <Image
+          src="/images/hero_background_image.jpg"
+          alt="hero section 배경 이미지"
+          fill
+          style={{ objectFit: "cover" }}
+        />
       </HeroBackgroundImage>
       <HeroContainer>
         <HeroTitle>

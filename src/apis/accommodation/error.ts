@@ -1,0 +1,5 @@
+export type AccommodationErrorCode =
+  | "PAGE_NOT_FOUND"
+  | "RESOURCE_NOT_FOUND"
+  | "INVALID_ROOM_REQUEST"
+  | "INVALID_CATEGORY_CODE_REQUEST";

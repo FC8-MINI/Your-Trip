@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ContainerStyled } from "../Container";
+import { device } from "@/styles/media";
 
 export const HeroStyled = styled.section`
   position: relative;
@@ -31,4 +32,8 @@ export const HeroContainer = styled(ContainerStyled)`
   height: 53rem;
 
   padding-bottom: 5.6rem;
+
+  @media ${device.notebook} {
+    height: 70rem;
+  }
 `;

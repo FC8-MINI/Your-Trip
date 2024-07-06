@@ -152,7 +152,7 @@ const GlobalStyle = createGlobalStyle`
   input,
   select,
   textarea {
-    font-size: 1.6rem;
+    font-size: inherit;
     background-color: transparent;
     border: 0;
     border-radius: 0.6rem;
@@ -171,6 +171,31 @@ const GlobalStyle = createGlobalStyle`
   .category-swiper {
     .swiper-slide {
       width: auto;
+    }
+  }
+
+  .swal2-popup {
+    font-size: 1.6rem;
+
+    .btn {
+      color: var(--color-black);
+      border: .1rem solid var(--color-gray-dark);
+      background-color: var(--color-white);
+      transition: background-color .2s;
+
+      &.btn-primary{
+        color: var(--color-white);
+        background-color: var(--color-primary);
+        border: none;
+
+        &:hover {
+          background-color: var(--color-primary-hover);
+        }
+      }
+
+      &:hover {
+        background-color: var(--color-gray-hover);
+      }
     }
   }
 `;

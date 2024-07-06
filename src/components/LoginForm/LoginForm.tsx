@@ -8,6 +8,9 @@ import Hr from "@/components/Hr";
 import { LoginFormContainer, LoginFormStyled, OAuthText, ToSignupText } from "./LoginForm.styles";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
+import Swal from "sweetalert2";
+import { postEmailLogin } from "@/apis/auth/postEmailLogin";
+import Link from "next/link";
 
 const initialState = { email: "", password: "" };
 
@@ -18,13 +21,48 @@ const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setFocus,
+    setError,
   } = useForm({ defaultValues: initialState });
 
-  const onSubmit: SubmitHandler<typeof initialState> = (data) => {
-    try {
-      router.push("/");
-    } catch (error) {
-      console.error("실패!!");
+  const onSubmit: SubmitHandler<typeof initialState> = async (formData) => {
+    const [error, data] = await postEmailLogin(formData);
+
+    if (error) {
+      await Swal.fire({
+        customClass: {
+          confirmButton: "btn btn-primary",
+        },
+        icon: "error",
+        title: "로그인에 실패했습니다.",
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 1500,
+        willClose: () => {
+          if (error.result.resultCode === "PASSWORD_MISMATCH") {
+            setFocus("password");
+            setError("password", { type: error.result.resultCode, message: error.result.resultDescription });
+          }
+          if (error.result.resultCode === "USER_NOT_FOUND") {
+            setFocus("email");
+            setError("email", { type: error.result.resultCode, message: error.result.resultDescription });
+          }
+        },
+      });
+    } else {
+      await Swal.fire({
+        customClass: {
+          confirmButton: "btn btn-primary",
+        },
+        icon: "success",
+        title: "로그인에 성공했습니다.",
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 1500,
+        willClose: () => {
+          router.push("/");
+        },
+      });
     }
   };
 
@@ -68,18 +106,22 @@ const LoginForm = () => {
           로그인
         </Button>
       </LoginFormStyled>
-      <Button $size="large">
-        <OAuthText>
-          <FcGoogle />
-          구글로 로그인
-        </OAuthText>
-      </Button>
-      <Button $mode="kakao" $size="large">
-        <OAuthText>
-          <RiKakaoTalkFill />
-          카카오로 로그인
-        </OAuthText>
-      </Button>
+      <Link href="https://api.miniteam2.store/api/auth/google/login">
+        <Button $size="large">
+          <OAuthText>
+            <FcGoogle />
+            구글로 시작하기
+          </OAuthText>
+        </Button>
+      </Link>
+      <Link href="https://api.miniteam2.store/api/auth/kakao/login">
+        <Button type="button" $mode="kakao" $size="large">
+          <OAuthText>
+            <RiKakaoTalkFill />
+            카카오로 시작하기
+          </OAuthText>
+        </Button>
+      </Link>
       <Hr $size="short" />
       <ToSignupText>계정이 없으신가요?</ToSignupText>
       <Button $size="large" onClick={() => router.push("/signup")}>

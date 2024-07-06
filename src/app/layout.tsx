@@ -1,5 +1,4 @@
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import Loading from "@/components/Loading";
 import StyledComponentsRegistry from "@/lib/StyledComponentsRegistry";
 import GlobalStyle from "@/styles/GlobalStyle";
@@ -24,10 +23,7 @@ export default function RootLayout({
       <body>
         <StyledComponentsRegistry>
           <GlobalStyle />
-          <Header />
-          <main style={{ marginTop: "7.5rem" }}>
-            <Suspense fallback={<Loading />}>{children}</Suspense>
-          </main>
+          {children}
           <Footer />
         </StyledComponentsRegistry>
       </body>

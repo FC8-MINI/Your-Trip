@@ -1,7 +1,8 @@
 import { AccomodationItem } from "../AccomodationItem";
-import { AccomodationRoomList } from "../AccomodationRoomList";
+import { AccomodationRoom } from "../AccomodationRoomList";
 
 export interface AccomodationDetailProps {
   accomodationDetail: AccomodationItem;
-  accomodationRoomItems: AccomodationRoomList[];
+  accomodationRoomItems: AccomodationRoom[];
+  accomodationLike: boolean;
 }

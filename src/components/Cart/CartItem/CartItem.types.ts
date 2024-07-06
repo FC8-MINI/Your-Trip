@@ -1,22 +1,23 @@
-export interface Item {
-  id: number;
-  imageUrl: string;
-  name: string;
-  address: string;
-  checkInDate: string;
-  checkInTime: string;
-  checkOutDate: string;
-  checkOutTime: string;
+import { Dispatch, SetStateAction } from "react";
+
+export interface Cart {
+  roomId: number;
+  accommodationName: string;
   roomName: string;
-  people: number;
-  price: number;
-  selected?: boolean;
-  isEditOpen?: boolean;
+  checkIn: string;
+  checkOut: string;
+  peopleNumber: number;
+  totalPrice: number;
+  roomImageUrls: string[];
+  baseGuests: number;
+  maxGuests: number;
+  reservationId: number;
+  extraPersonCharge: number;
 }
 
 export interface CartItemProps {
-  item: Item;
-  roomNames: string[];
-  peopleOptions: { value: number; label: string }[];
-  dateOptions: { value: string; label: string }[];
+  item: Cart;
+  index: number;
+  selectedItems: boolean[];
+  setSelectedItems: Dispatch<SetStateAction<boolean[]>>;
 }

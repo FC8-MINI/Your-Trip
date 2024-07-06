@@ -1,11 +1,8 @@
 export interface PayTermsProps {
-  amount: number;
-}
-
-export interface FormValues {
-  agreeAll: boolean;
-  agreeAge: boolean;
-  agreeCollect: boolean;
-  agreeProvide: boolean;
-  isSubmitted: boolean;
+  reservationId?: string;
+  roomId: string;
+  peopleNumber: string;
+  totalPrice: string;
+  checkIn: string;
+  checkOut: string;
 }

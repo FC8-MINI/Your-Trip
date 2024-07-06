@@ -1,7 +1,27 @@
-import PayPage from "@/components/Pay/PayPage";
+import PayInfo from "@/components/Pay/PayInfo";
+import PayTerms from "@/components/Pay/PayTerms";
 
-const Pay = () => {
-  return <PayPage />;
+interface PayPageProps {
+  searchParams: {
+    reservationId?: string;
+    accommodationName: string;
+    roomId: string;
+    roomName: string;
+    peopleNumber: string;
+    totalPrice: string;
+    checkIn: string;
+    checkOut: string;
+    imageUrl: string;
+  };
+}
+
+const PayPage = ({ searchParams }: PayPageProps) => {
+  return (
+    <>
+      <PayInfo {...searchParams} />
+      <PayTerms {...searchParams} />
+    </>
+  );
 };
 
-export default Pay;
+export default PayPage;

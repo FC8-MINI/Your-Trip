@@ -5,11 +5,7 @@ export const LoadingLayout = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  height: calc(100vh - 7.5rem);
   z-index: 999;
   background-color: rgba(255, 255, 255, 0.7);
 `;

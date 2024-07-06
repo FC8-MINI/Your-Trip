@@ -3,7 +3,8 @@ import { PiCookingPotFill } from "react-icons/pi";
 import {
   AccomodationInfoStyled,
   ImageBox,
-  NameText,
+  TitleBox,
+  AccomodationName,
   AddressList,
   AddressItem,
   AddressText,
@@ -15,14 +16,17 @@ import {
   UseInfoText,
   RiDoubleQuotesRStyled,
 } from "./AccomodationInfo.styles";
-import { InfoTitleText } from "../AccomodationDetail/AccomodationDetail.styles";
+import { InfoTitle } from "../AccomodationDetail/AccomodationDetail.styles";
 import Hr from "@/components/Hr";
 import { AccomodationInfoProps } from "./AccomodationInfo.types";
 import { formatTime } from "@/utils/time";
 import Image from "next/image";
+import SocialAction from "@/components/SocialAction";
 
-const AccomodationInfo: React.FC<AccomodationInfoProps> = ({
+const AccomodationInfo = ({
+  id,
   name,
+  accomodationImageUrls,
   description,
   postalCode,
   address,
@@ -30,14 +34,18 @@ const AccomodationInfo: React.FC<AccomodationInfoProps> = ({
   cookingAvailable,
   checkIn,
   checkOut,
-}) => {
+  liked,
+}: AccomodationInfoProps) => {
   return (
     <AccomodationInfoStyled>
       <ImageBox>
-        <Image src="/images/thumb.jpg" fill objectFit="cover" alt={name} />
+        <Image src={accomodationImageUrls[0]} fill objectFit="cover" alt={name} />
       </ImageBox>
 
-      <NameText>{name}</NameText>
+      <TitleBox>
+        <AccomodationName>{name}</AccomodationName>
+        <SocialAction accommodationId={id} liked={liked} />
+      </TitleBox>
 
       <AddressList>
         <AddressItem>
@@ -52,7 +60,7 @@ const AccomodationInfo: React.FC<AccomodationInfoProps> = ({
 
       <Hr $gap={true} />
 
-      <InfoTitleText>숙소 소개</InfoTitleText>
+      <InfoTitle>숙소 소개</InfoTitle>
       <DescBox>
         <RiDoubleQuotesL color="var(--color-gray)" fontSize={28} />
         <DescText>{description}</DescText>
@@ -61,7 +69,7 @@ const AccomodationInfo: React.FC<AccomodationInfoProps> = ({
 
       <Hr $gap={true} />
 
-      <InfoTitleText>숙소 이용 정보</InfoTitleText>
+      <InfoTitle>숙소 이용 정보</InfoTitle>
       <UseInfoList>
         <UseInfoItem>
           <RiTimeFill color="var(--color-black)" />
@@ -77,7 +85,7 @@ const AccomodationInfo: React.FC<AccomodationInfoProps> = ({
 
         <UseInfoItem>
           <PiCookingPotFill color="var(--color-black)" />
-          <UseInfoText>{cookingAvailable ? "객실 내 취사 가능" : "취사 불가능"}</UseInfoText>
+          <UseInfoText>{cookingAvailable ? "객실 내 취사 가능" : "객실 내 취사 불가능"}</UseInfoText>
         </UseInfoItem>
       </UseInfoList>
 

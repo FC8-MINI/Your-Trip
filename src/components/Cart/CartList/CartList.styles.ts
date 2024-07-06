@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { FormProvider as OriginalFormProvider } from "react-hook-form";
+import Button from "@/components/Button";
 
-export const ListBox = styled(OriginalFormProvider)`
+export const ListBox = styled.div`
   flex-direction: column;
   flex-grow: 1;
   width: 100%;
@@ -16,15 +16,14 @@ export const Wrapper = styled.div`
 export const ControlContainer = styled.div`
   display: flex;
   align-items: center;
-  font-size: 1rem;
   justify-content: flex-start;
   height: 6rem;
   border-bottom: 0.1rem solid var(--color-gray);
-  padding-left: 1rem; /* 추가된 부분 */
+  padding-left: 1rem;
+  margin-bottom: 2rem;
 `;
 
 export const InfoContainer = styled.div`
-  padding: 1.5rem 0 0 0;
   justify-content: center;
 `;
 
@@ -36,23 +35,39 @@ export const SelectBox = styled.div`
   }
   & > div {
     margin-left: 0.8rem;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 600;
   }
 `;
 
-export const DeleteButton = styled.button`
+export const DeleteButton = styled(Button).attrs({ $mode: "common" })`
+  color: var(--color-black);
+  background-color: var(--color-white);
+
+  &:hover {
+    background-color: var(--color-gray-hover);
+  }
+
   padding: 0.8rem 3rem;
-  margin-left: auto; /* 수정된 부분 */
+  margin-left: auto;
   margin-right: 2.6rem;
-  border: none;
+  border: 0.1rem solid var(--color-gray);
   border-radius: 0.8rem;
-  color: var(--color-white);
-  background-color: var(--color-gray-dark);
+  color: var(--color-black);
+  background-color: var(--color-white);
   transition: background-color 0.2s;
   cursor: pointer;
 
   &:hover {
-    background-color: var(--color-gray-darker);
+    background-color: var(--color-gray-hover);
   }
+`;
+
+export const EmptyMessage = styled.div`
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--color-gray-dark);
+  text-align: center;
+  margin-top: 20rem;
+  margin-bottom: 20rem;
 `;
