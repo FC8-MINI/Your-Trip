@@ -72,7 +72,19 @@ const DropdownMenu = () => {
     });
 
     if (response.type === "opaqueredirect") {
-      window.location.href = "/";
+      await Swal.fire({
+        customClass: {
+          confirmButton: "btn btn-primary",
+        },
+        icon: "success",
+        title: "회원탈퇴에 성공했습니다.",
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 1500,
+        willClose: () => {
+          window.location.href = "/";
+        },
+      });
     } else {
       await Swal.fire({
         customClass: {
