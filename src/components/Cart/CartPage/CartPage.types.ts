@@ -35,3 +35,7 @@ export interface APIResponse {
     empty: boolean;
   };
 }
+
+export interface CartPageProps {
+  page: number;
+}

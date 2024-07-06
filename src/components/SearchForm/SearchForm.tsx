@@ -27,6 +27,7 @@ const SearchForm = () => {
     setValue,
     setError,
     clearErrors,
+    watch,
   } = useForm({ defaultValues: initialState });
 
   const onSubmit: SubmitHandler<typeof initialState> = ({ accomodation, checkIn, checkOut }) => {
@@ -92,7 +93,7 @@ const SearchForm = () => {
             label="체크아웃"
             placeholder="체크아웃을 입력해주세요."
             autoComplete="off"
-            min={getCurrentKSTDateTimeLocal()}
+            min={watch("checkIn") || getCurrentKSTDateTimeLocal()}
             step="60"
             {...register("checkOut", {
               validate: (value, formValues) => {

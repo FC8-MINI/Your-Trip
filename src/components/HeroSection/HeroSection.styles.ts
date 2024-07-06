@@ -22,10 +22,6 @@ export const HeroTitle = styled.h1`
   line-height: 5rem;
 
   margin-bottom: 3.2rem;
-
-  @media ${device.notebook} {
-    display: none;
-  }
 `;
 
 export const HeroContainer = styled(ContainerStyled)`
@@ -36,4 +32,8 @@ export const HeroContainer = styled(ContainerStyled)`
   height: 53rem;
 
   padding-bottom: 5.6rem;
+
+  @media ${device.notebook} {
+    height: 70rem;
+  }
 `;

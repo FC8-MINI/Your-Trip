@@ -68,5 +68,6 @@ export const EmptyMessage = styled.div`
   font-weight: 500;
   color: var(--color-gray-dark);
   text-align: center;
-  margin-top: 10rem;
+  margin-top: 20rem;
+  margin-bottom: 20rem;
 `;
