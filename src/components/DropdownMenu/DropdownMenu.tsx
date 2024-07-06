@@ -11,12 +11,8 @@ import {
 import { useEffect, useReducer, useRef } from "react";
 import { DROPDOWN_MENU_LINKS } from "./DropdownMenu.constants";
 import Swal from "sweetalert2";
-import { useRouter } from "next/navigation";
-import { delelteAuthWithDraw } from "@/apis/auth/deleteAuthWithDraw";
-import { getLogout } from "@/apis/auth/getLogout";
 
 const DropdownMenu = () => {
-  const router = useRouter();
   const [isOpened, toggleMenu] = useReducer((v) => !v, false);
 
   const dropDownMenuListRef = useRef<HTMLDivElement>(null);
@@ -38,8 +34,6 @@ const DropdownMenu = () => {
   }, [dropDownMenuListRef, isOpened]);
 
   const onClickLogout = async () => {
-    // const [error, data] = await getLogout();
-
     const response = await fetch("https://api.miniteam2.store/api/auth/logout", {
       method: "GET",
       headers: {
@@ -51,7 +45,7 @@ const DropdownMenu = () => {
     });
 
     if (response.type === "opaqueredirect") {
-      window.location.href = "/";
+      window.location.reload();
     } else {
       await Swal.fire({
         customClass: {
@@ -67,8 +61,6 @@ const DropdownMenu = () => {
   };
 
   const onClickWithDraw = async () => {
-    // const [error, data] = await delelteAuthWithDraw();
-
     const response = await fetch("https://api.miniteam2.store/api/auth/withdraw`", {
       method: "DELETE",
       headers: {
@@ -93,19 +85,6 @@ const DropdownMenu = () => {
         timer: 1500,
       });
     }
-
-    // if (error) {
-    //   await Swal.fire({
-    //     customClass: {
-    //       confirmButton: "btn btn-primary",
-    //     },
-    //     icon: "error",
-    //     title: "회원탈퇴에 실패했습니다.",
-    //     showConfirmButton: false,
-    //     timerProgressBar: true,
-    //     timer: 1500,
-    //   });
-    // }
   };
 
   return (

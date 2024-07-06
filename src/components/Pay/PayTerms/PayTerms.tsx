@@ -25,7 +25,7 @@ const PayTerms = ({ reservationId, roomId, peopleNumber, totalPrice, checkIn, ch
         checkIn,
         checkOut,
       });
-      console.log(data);
+
       if (error) {
         if (
           error.result.resultCode === "INVALID_ACCESS_TOKEN" ||
@@ -82,7 +82,7 @@ const PayTerms = ({ reservationId, roomId, peopleNumber, totalPrice, checkIn, ch
         checkIn,
         checkOut,
       });
-      console.log(data);
+
       if (error) {
         if (
           error.result.resultCode === "INVALID_ACCESS_TOKEN" ||
