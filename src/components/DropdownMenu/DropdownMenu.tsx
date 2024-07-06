@@ -61,7 +61,7 @@ const DropdownMenu = () => {
   };
 
   const onClickWithDraw = async () => {
-    const response = await fetch("https://api.miniteam2.store/api/auth/withdraw`", {
+    const response = await fetch("https://api.miniteam2.store/api/auth/withdraw", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
