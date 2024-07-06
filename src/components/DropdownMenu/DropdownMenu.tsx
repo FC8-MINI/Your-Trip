@@ -51,7 +51,7 @@ const DropdownMenu = () => {
     });
 
     if (response.type === "opaqueredirect") {
-      router.push("/");
+      window.location.href = "/";
     } else {
       await Swal.fire({
         customClass: {
@@ -64,25 +64,24 @@ const DropdownMenu = () => {
         timer: 1500,
       });
     }
-
-    // if (error) {
-    //   await Swal.fire({
-    //     customClass: {
-    //       confirmButton: "btn btn-primary",
-    //     },
-    //     icon: "error",
-    //     title: "로그아웃에 실패했습니다.",
-    //     showConfirmButton: false,
-    //     timerProgressBar: true,
-    //     timer: 1500,
-    //   });
-    // }
   };
 
   const onClickWithDraw = async () => {
-    const [error, data] = await delelteAuthWithDraw();
+    // const [error, data] = await delelteAuthWithDraw();
 
-    if (error) {
+    const response = await fetch("https://api.miniteam2.store/api/auth/withdraw`", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      cache: "no-store",
+      redirect: "manual",
+    });
+
+    if (response.type === "opaqueredirect") {
+      window.location.href = "/";
+    } else {
       await Swal.fire({
         customClass: {
           confirmButton: "btn btn-primary",
@@ -94,6 +93,19 @@ const DropdownMenu = () => {
         timer: 1500,
       });
     }
+
+    // if (error) {
+    //   await Swal.fire({
+    //     customClass: {
+    //       confirmButton: "btn btn-primary",
+    //     },
+    //     icon: "error",
+    //     title: "회원탈퇴에 실패했습니다.",
+    //     showConfirmButton: false,
+    //     timerProgressBar: true,
+    //     timer: 1500,
+    //   });
+    // }
   };
 
   return (
