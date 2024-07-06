@@ -49,9 +49,8 @@ const DropdownMenu = () => {
       cache: "no-store",
       redirect: "manual",
     });
-    console.log(response);
 
-    if (response.status === 302) {
+    if (response.type === "opaqueredirect") {
       router.push("/");
     } else {
       await Swal.fire({
