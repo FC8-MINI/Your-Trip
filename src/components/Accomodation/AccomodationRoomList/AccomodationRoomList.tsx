@@ -19,7 +19,7 @@ import {
   OptionInfoText,
 } from "./AccomodationRoomList.styles";
 import { RiUser3Fill, RiShoppingCart2Line } from "react-icons/ri";
-import { type AccomodationRoomList, AccomodationRoomListProps } from "./AccomodationRoomList.types";
+import { AccomodationRoom, AccomodationRoomListProps } from "./AccomodationRoomList.types";
 import Image from "next/image";
 import Swal from "sweetalert2";
 import Button from "@/components/Button";
@@ -126,7 +126,7 @@ const AccomodationRoomList = ({ accomodationDetail, accomodationRoomItems }: Acc
     }
   };
 
-  const handleReserveButtonClick = async (accomodationRoomItem: AccomodationRoomList) => {
+  const handleReserveButtonClick = async (accomodationRoomItem: AccomodationRoom) => {
     const optionParams = optionRef.current?.getOptionParams();
 
     if (!optionParams?.checkIn || !optionParams?.checkOut || !optionParams?.guests) {
