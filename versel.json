@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/api/(.*)",
+      "source": "https://api.miniteam2.store/api/auth/logout",
       "headers": [
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
