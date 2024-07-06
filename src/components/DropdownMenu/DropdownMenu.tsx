@@ -38,9 +38,22 @@ const DropdownMenu = () => {
   }, [dropDownMenuListRef, isOpened]);
 
   const onClickLogout = async () => {
-    const [error, data] = await getLogout();
+    // const [error, data] = await getLogout();
 
-    if (error) {
+    const response = await fetch("https://api.miniteam2.store/api/auth/logout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      cache: "no-store",
+      redirect: "manual",
+    });
+    console.log(response);
+
+    if (response.status === 302) {
+      router.push("/");
+    } else {
       await Swal.fire({
         customClass: {
           confirmButton: "btn btn-primary",
@@ -52,6 +65,19 @@ const DropdownMenu = () => {
         timer: 1500,
       });
     }
+
+    // if (error) {
+    //   await Swal.fire({
+    //     customClass: {
+    //       confirmButton: "btn btn-primary",
+    //     },
+    //     icon: "error",
+    //     title: "로그아웃에 실패했습니다.",
+    //     showConfirmButton: false,
+    //     timerProgressBar: true,
+    //     timer: 1500,
+    //   });
+    // }
   };
 
   const onClickWithDraw = async () => {
