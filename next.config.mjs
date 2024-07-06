@@ -26,14 +26,6 @@ const nextConfig = {
       },
     ];
   },
-  async rewrites() {
-    return [
-      {
-        source: "/:path*",
-        destination: "https://api.miniteam2.store/:path*",
-      },
-    ];
-  },
 };
 
 export default nextConfig;
