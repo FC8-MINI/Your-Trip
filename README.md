@@ -147,12 +147,12 @@ PW : 12345678
 ### 🖥️ 로그인
 
 - 자체로그인, 구글∙카카오로그인
-  ![alt text](login.png)
+![login](https://github.com/FC8-MINI/Your-Trip/assets/157576281/2ccdc191-f160-4f60-93ed-09dae7220953)
 
 ### 🖥️ 회원가입
 
 - 이메일, 비밀번호, 비밀번호 확인, 사용자 이름, 닉네임 작성
-  ![alt text](signup.png)
+![signup](https://github.com/FC8-MINI/Your-Trip/assets/157576281/7139391b-753c-4198-af33-b0cfc9d3852c)
 
 ### 🖥️ 메인 페이지
 
@@ -160,37 +160,42 @@ PW : 12345678
 - 로그아웃 시 로그인 버튼
 - 지역별 카테고리 분류
 - 숙소명, 체크인, 체크아웃 설정 후 숙소 검색
-  ![alt text](main.png)
-  ![alt text](main-search.png)
+![main](https://github.com/FC8-MINI/Your-Trip/assets/157576281/b645a19e-5815-44a8-9a8f-1c3efcf74c05)
+![main-search](https://github.com/FC8-MINI/Your-Trip/assets/157576281/f36ad623-d8c5-4921-9569-0ae01e83ff4b)
 
 ### 🖥️ 숙소 상세
 
 - 로그인 후 옵션 선택(체크인, 체크아웃, 인원)후 장바구니 또는 바로 예약
-  ![alt text](accomodation-detail.png)
+ ![accomodation-detail](https://github.com/FC8-MINI/Your-Trip/assets/157576281/06873483-04e1-4ef3-b6b0-9d0f9c54520d)
+
 
 ### 🖥️ 장바구니
 
 - 장바구니 목록 조회
 - 선택 삭제 또는 전체 삭제
-  ![alt text](cart.png)
+  ![cart](https://github.com/FC8-MINI/Your-Trip/assets/157576281/e95240bb-5ec4-4516-bf8c-12721d2e01b2)
+
 
 ### 🖥️ 결제하기
 
 - 필수 약관 동의 시 결제 버튼 활성화
 - 결제 버튼 클릭 시 예약 내역으로 이동
-  ![alt text](pay.png)
+![pay](https://github.com/FC8-MINI/Your-Trip/assets/157576281/6e9638a3-8c56-4dcd-b84e-2ec0bb5280a8)
+
 
 ### 🖥️ 예약 목록 및 상세
 
 - 예약된 숙소 목록 및 상세 정보 조회
-  ![alt text](reservation.png)
-  ![alt text](reservation-detail.png)
+  ![reservation](https://github.com/FC8-MINI/Your-Trip/assets/157576281/90843709-78e0-4e72-b063-4632b18babdd)
+  ![reservation-detail](https://github.com/FC8-MINI/Your-Trip/assets/157576281/d74fed81-ef8e-4db2-9309-97abcf79ad8a)
+
 
 ### 🖥️ 찜하기 기능
 
 - 숙소 찜하기 추가 및 삭제 기능
 - 찜 목록 조회
-  ![alt text](like.png)
+  ![like](https://github.com/FC8-MINI/Your-Trip/assets/157576281/0e6659d9-a11a-4606-9d4e-1e7201644c0f)
+
 
 <br/>
 
